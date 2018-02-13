@@ -1,0 +1,8 @@
+- name: Application design
+  href: application_design/
+- name: Database
+  href: database_design/
+- name: C#/XAML
+  href: csharp_xaml_design/
+- name: IronPython
+  href: ironpython_design/

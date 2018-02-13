@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SQL object and variable naming </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SQL object and variable naming ">
+    <meta name="generator" content="docfx 2.31.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sql-object-and-variable-naming">SQL object and variable naming</h1>
+
+<h2 id="tables">Tables</h2>
+<p>All tables should be named along the objects they are containig. E.g. the table for storing users must be named <code>User</code>. The first
+letter must be in upper case. Words within a name should be separated using underscores.</p>
+<ol>
+<li>Correct: <code>User</code></li>
+<li>Correct: <code>Group</code></li>
+<li>Correct: <code>User_Group_Assignment</code></li>
+<li>Wrong: <code>UserGroupAssignment</code></li>
+</ol>
+<p>If a word makes only sense written together, use pascal case:</p>
+<ol>
+<li>Correct: <code>GeneralLedgerAccount</code></li>
+<li>Wrong: <code>General_Ledger_Account</code></li>
+<li>Correct: <code>GeneralLedgerAccount_Assignment</code></li>
+</ol>
+<p>If a table contains instancedata, it must start with <code>IT_</code>. If a table just contains data which are used as raw import/export table, it must start with <code>IF_</code>.</p>
+<ol>
+<li><code>IT_</code> = InstanceDataTable</li>
+<li><code>IF_</code> = Interface</li>
+</ol>
+<h3 id="column-names">Column names</h3>
+<p>The base naming convention is pascal case:</p>
+<ol>
+<li>The first letter must be in upper case</li>
+<li>Words are continated with an upper latter, <strong>DO NOT</strong> use undescore</li>
+</ol>
+<p>Sample:</p>
+<ol>
+<li>Correct: <code>FirstName</code></li>
+<li>Correct: <code>CompanyName</code></li>
+<li>Wrong: <code>firstName</code></li>
+<li>Wrong: <code>first_name</code></li>
+</ol>
+<h2 id="procedures">Procedures</h2>
+<p>Procedure and function names should start with the main object they are working with. The name must end with the action that procedure or function is doing:</p>
+<ol>
+<li>Add</li>
+<li>Delete</li>
+<li>Get</li>
+<li>...</li>
+</ol>
+<p>Words within the name should be separated using underscores:</p>
+<ol>
+<li>Correct: <code>Notification_Add</code></li>
+</ol>
+<h3 id="parameter-names">Parameter names</h3>
+<p>Parameter must befin with the direction they are dealing with, e.g, <code>@in_</code> or <code>@out_</code>. The seconds part is the parameter name as camel case, e.g. <code>@in_user_</code>.
+The last part is a short datatype name: <code>@in_userName_vc</code>.</p>
+<p>List of short datatype names:</p>
+<ol>
+<li>varchar = vc</li>
+<li>integer = int</li>
+<li>date = date</li>
+<li>time = time</li>
+<li>datetime = dt</li>
+<li>uniqueidentifier = ui</li>
+<li>numeric = nc</li>
+<li>bigint = bint</li>
+<li>long binary = lb</li>
+</ol>
+<p>Complete sample: <code>CREATE OR REPLACE PROCEDURE User_Get(in @in_userId_ui UNIQUEIDENTIFIER) ...</code></p>
+<h3 id="return-values">Return values</h3>
+<p>Return value names must follow the rules of table columns.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/simplic/documentation/blob/master/guidelines/database_design/object_name.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
