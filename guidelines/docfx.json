@@ -54,7 +54,7 @@
         ]
       }
     ],
-    "dest": "../site/guidlines/_site",
+    "dest": "../_site/guidlines/_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
