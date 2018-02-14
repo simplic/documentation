@@ -4,5 +4,8 @@
   href: code_format.md
 - name: Object names
   href: object_name.md
-- name: SELECT statements
-  href: select.md
+- name: Statements
+  href: statements.md
+  items:
+  - name: SELECT
+    href: statements_select.md
