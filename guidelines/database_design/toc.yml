@@ -9,3 +9,9 @@
   items:
   - name: SELECT
     href: statements_select.md
+  - name: INSERT
+    href: statements_select.md
+  - name: UPDATE
+    href: statements_select.md
+  - name: DELETE
+    href: statements_select.md
