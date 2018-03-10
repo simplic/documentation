@@ -55,10 +55,13 @@
       }
     ],
     "dest": "../_site/guidlines/_site",
-    "globalMetadataFiles": [],
+    "globalMetadataFiles": 
+    [
+      "globalMetadata.json"
+    ],
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "../template/default"
     ],
     "postProcessors": [],
     "noLangKeyword": false,
