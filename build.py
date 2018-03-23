@@ -7,7 +7,7 @@
 def build():
 	print ('Build documentation using build.py')
 
-	ürint ('Build completed')
+	print ('Build completed')
 
 # Start build script
 if __name__ == '__main__':

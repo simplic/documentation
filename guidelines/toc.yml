@@ -6,3 +6,5 @@
   href: csharp_xaml_design/
 - name: IronPython
   href: ironpython_design/
+  name: Nuget Packages
+  href: nuget_packages/
