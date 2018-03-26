@@ -5,16 +5,16 @@
     "content": [
       {
         "files": [
-          "application_design/**.md",
-          "application_design/**/toc.yml",
+          "gui/**.md",
+          "gui/**/toc.yml",
           "toc.yml",
           "*.md"
         ]
       },
       {
         "files": [
-          "csharp_xaml_design/**.md",
-          "csharp_xaml_design/**/toc.yml",
+          "csharp/**.md",
+          "csharp/**/toc.yml",
           "toc.yml",
           "*.md"
         ]
