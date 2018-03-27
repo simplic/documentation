@@ -75,7 +75,7 @@ CREATE TABLE "IT_Telematic_Queue" (
 ```
 
 # System Resolver
-System resolver classes are basically system providers. System Resolver types need to be registered to the unity container with a name ending with "SystemResolver" (Take a look at [Dependency Injection](../../dependency_injection.md)).
+System resolver classes are basically system providers. System Resolver types need to be registered to the unity container with a name ending with "SystemResolver" (Take a look at [Dependency Injection](../../architecture/dependency_injection.md)).
 
 **Example:**
 ```csharp
