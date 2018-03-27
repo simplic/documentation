@@ -1,5 +1,5 @@
 > Please note that this a WIP document. Any feedback is welcome.
-> Contact me at [yavuz.guenay@simplic.biz](mailto:yavuz.guenay@simplic.biz)
+
 # Dependency Injection
 ## What is dependency injection ?
 Dependency injection is a very simple concept.
