@@ -1,0 +1,31 @@
+- name: Getting Started
+  href: getting_started/intro.md
+  items:
+  - name: Coding Standards and Naming Conventions
+    href: getting_started/conventions.md
+
+- name: Architecture
+  href: architecture/intro.md
+  item:
+  - name: Dependency Injection (DI)
+    href: architecture/dependency_injection.md
+- name: Framework
+  href: framework/intro.md
+  items:
+  - name: Services
+    href: framework/services/intro.md
+    items:
+        - name: Icon Service
+          href: framework/services/icon_service.md
+        - name: Localization Service
+          href: framework/services/localization_service.md
+        - name: Sms Service
+          href: framework/services/sms_service.md
+- name: Simplic Plugins
+  href: plugins/intro.md
+  items:
+  - name: Logistics
+    href: plugins/logistics/intro.md
+    items:
+      - name: Telematic
+        href: plugins/logistics/telematic.md
