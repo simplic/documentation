@@ -9,5 +9,7 @@ Contains all simplic product, support and development documentation.
 ## Build
 
 1. Clone the repository
-2. Execute the `build.py` script
-3. Serve: `docfx guidelines/docfx.json --serve`
+3. Serve: 
+  - for develeopers: `docfx dev/docfx.json --serve`
+  - for supporters: `docfx support/docfx.json --serve`
+  - for end users: `docfx user/docfx.json --serve`
