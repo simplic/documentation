@@ -7,7 +7,7 @@ Namespace: `Simplic.UI.Control`
 Class: `DatePicker`
 Derives from: `Telerik.Windows.Controls.RadDatePicker`
 
-The controls supprts multiple formats:
+The controls supports multiple formats:
 
 1. `dd.MM.yyyy`
 2. `ddMMyyyy`
