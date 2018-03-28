@@ -7,6 +7,11 @@
       href: markup_extensions/icon.md
     - name: Localization
       href: markup_extensions/localization.md
+- name: Controls
+  href: controls_intro.md
+  items:
+  - name: DatePicker
+    href: controls_datepicker.md
 - name: Icons
   href: icons.md
   items:
