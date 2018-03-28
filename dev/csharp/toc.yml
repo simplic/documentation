@@ -3,7 +3,6 @@
   items:
   - name: Coding Standards and Naming Conventions
     href: getting_started/conventions.md
-
 - name: Architecture
   href: architecture/intro.md
   item:
@@ -29,3 +28,10 @@
     items:
       - name: Telematic
         href: plugins/logistics/telematic.md
+        items:
+            - name: FleetBoard
+              href: plugins/logistics/fleetboard.md      
+              items:
+                - name: Python Script
+                  href: plugins/logistics/fleetboard_python.md
+

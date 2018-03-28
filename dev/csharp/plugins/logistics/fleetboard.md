@@ -1,7 +1,8 @@
 > Please note that this a WIP document. Any feedback is welcome.
 
 # FleetBoard 
-Short FleetBoard introduction comes here.
+FleetBoard is a platform that enables the communication between back-end servers 
+and vehicles.
 
 # How does FleetBoard work ?
 FleetBoard has SOAP back end. We used their demo client app and extended it a bit.
@@ -18,5 +19,3 @@ FleetBoard is a flexible communication platform with vehicles. Important things 
 You define TMStructures, TMObjectTypes and FormDefs in the back-end. They will be sent to the vehicle using [TransportManagementService](https://webservices.fleetboard.com/technical-documentation/services-and-methods/transportmanagementservice.html)
 
 In order to communicate with a vehicle you need to create a TMObject using the TM service. You need to pass structure id, object type id, vehicle id and form defs as a ```IEnumerable<KeyValuePair<long, string>>```.
-
-
