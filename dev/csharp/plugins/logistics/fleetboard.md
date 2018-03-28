@@ -11,11 +11,12 @@ You can read their docs here: [FleetBoard Docs](https://webservices.fleetboard.c
 
 FleetBoard is a flexible communication platform with vehicles. Important things to know are:
 
-- [TMStructure](https://webservices.fleetboard.com/technical-documentation/documents/tmstructure-document.html)
-- [TMObjectType](https://webservices.fleetboard.com/technical-documentation/documents/tmobjecttype-document.html)
-- [TMObject](https://webservices.fleetboard.com/technical-documentation/documents/tmobject-document.html)
-- [FormDef](https://webservices.fleetboard.com/technical-documentation/documents/formdef-document/formdef-document-logistics-service-3rd-generation.html)
+- <a target="_blank" href="https://webservices.fleetboard.com/technical-documentation/documents/tmstructure-document.html">TMStructure</a>
+- <a target="_blank" href="https://webservices.fleetboard.com/technical-documentation/documents/tmobjecttype-document.html">TMObjectType</a>
+- <a target="_blank" href="https://webservices.fleetboard.com/technical-documentation/documents/tmobject-document.html">TMObject</a>
+- <a target="_blank" href="https://webservices.fleetboard.com/technical-documentation/documents/formdef-document/formdef-document-logistics-service-3rd-generation.html">FormDef</a>_
 
-You define TMStructures, TMObjectTypes and FormDefs in the back-end. They will be sent to the vehicle using [TransportManagementService](https://webservices.fleetboard.com/technical-documentation/services-and-methods/transportmanagementservice.html)
+You define TMStructures, TMObjectTypes and FormDefs in the back-end. They will be sent to the vehicle using <a target="_blank" href="https://webservices.fleetboard.com/technical-documentation/services-and-methods/transportmanagementservice.html">TransportManagementService</a>
 
 In order to communicate with a vehicle you need to create a TMObject using the TM service. You need to pass structure id, object type id, vehicle id and form defs as a ```IEnumerable<KeyValuePair<long, string>>```.
+
