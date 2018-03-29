@@ -5,7 +5,7 @@
     href: getting_started/conventions.md
 - name: Architecture
   href: architecture/intro.md
-  item:
+  items:
   - name: Dependency Injection (DI)
     href: architecture/dependency_injection.md
 - name: Framework
