@@ -1,7 +1,7 @@
 # IronPython entrypoint (main.py)
 
 The simplic framework (Simplic Studio) provides an entrypoint for IronPython scripting. The file
-must be placed under `/private/main.py`. The file will be executed after the user login was successfull.
+must be placed under `/private/main.py` in the __simplic repository__. The file will be executed after the user login was successfull.
 
 Sample:
 
