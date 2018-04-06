@@ -6,9 +6,9 @@ it will be recognized as package.
 A structure could look like this:
 
 ```
-\/__init__.py
-\/packages_sample\/__init__.py
-\/packages_sample\/PackageSample.py
+/__init__.py
+/packages_sample/__init__.py
+/packages_sample/PackageSample.py
 ```
 
 
