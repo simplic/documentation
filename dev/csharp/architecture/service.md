@@ -6,7 +6,7 @@ We use services to decouple business logic and repository. We like to keep our r
 
 # What is it ?
 A quote from [Wikipedia](https://en.wikipedia.org/wiki/Microservices)
->Microservices is a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services. 
+>Microservices is a software development technique a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services. 
 >In a microservices architecture, services are fine-grained and the protocols are lightweight. 
 >The benefit of decomposing an application into different smaller services is that it improves 
 >modularity and makes the application easier to understand, develop and test. 
@@ -28,7 +28,7 @@ public interface IUserService
 }
 ```
 
-**Note:** We derive our interface from repository so we dont have to repeat available methods in our service. It is perfectly fine to define same methods here as well but we like to keep things clean.
+**Note:** We can derive our interface from repository so we dont have to repeat available methods in our service. 
 
 Then write the implementation of it:
 ```csharp
@@ -56,3 +56,6 @@ public UserService : IUserService
     ..
 }
 ```
+
+**Note:** Don't forget to register your service via the unity container. Check [Dependency Injection
+](dependency_injection.md) section for more information on that.
