@@ -6,7 +6,7 @@ to use Nuget packages. In order to do that we have create a private nuget packag
 
 In order to be able to use our nuget package feed, you need to add it to your source list as follows:
 
-- in visual studio go to Tools -> NuGet Package Manager -> Package Manager Settings -> Package Sources. Click on green plus icon and enter the following: Name: Simplic, Source: http://simplic.biz:10380/nuget . if you encounter any problems try running this command in cmd : ```nuget setapikey 65398cf6H4 -source "http://simplic.biz:10380/nuget"```
+- in visual studio go to Tools -> NuGet Package Manager -> Package Manager Settings -> Package Sources. Click on green plus icon and enter the following: Name: Simplic, Source: http://simplic.biz:10380/nuget . if you encounter any problems try running this command in cmd : ```nuget setapikey {ask for api key} -source "http://simplic.biz:10380/nuget"```
 
 ## Adding a package (project) to simplic nuget package feed
 Nuget accepts only .nupkg files. So we need to create a .nuspec file for each project we want to upload to the nuget feed. 
