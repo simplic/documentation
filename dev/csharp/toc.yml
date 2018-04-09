@@ -8,6 +8,10 @@
   items:
   - name: Dependency Injection (DI)
     href: architecture/dependency_injection.md
+  - name: Repository Pattern
+    href: architecture/repository.md
+  - name: Service Pattern
+    href: architecture/service.md
 - name: Framework
   href: framework/intro.md
   items:
