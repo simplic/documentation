@@ -32,7 +32,7 @@ public interface IUserService
 
 Then write the implementation of it:
 ```csharp
-public UserService : IUserService
+public UserService : IUserService, IUserRepository
 {
     private readonly IUserRepository userRepository;
 
