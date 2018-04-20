@@ -14,4 +14,4 @@ All python files should start with the following header, to ensure all informati
 # --------------------------------------------------------
 ```
 
-All information within `<` and `>` should be fileld with your individual information.
+All information within `<` and `>` should be filled with your individual information.
