@@ -6,3 +6,74 @@
   href: fileheader.md
 - name: Packages
   href: packages.md
+- name: API
+  href: api.md
+  items:
+  - name: ArchiveManager
+    href: api/ArchiveManager.md
+  - name: BarcodeValidation
+    href: api/BarcodeValidation.md
+  - name: BarcodeValidationResult
+    href: api/BarcodeValidationResult.md
+  - name: DBConnection
+    href: api/DBConnection.md
+  - name: DependencyInjection
+    href: api/DependencyInjection.md
+  - name: DocumentProcessing
+    href: api/DocumentProcessing.md
+  - name: EPLReportManager
+    href: api/EPLReportManager.md
+  - name: ExternKey
+    href: api/ExternKey.md
+  - name: FulltextIndexManager
+    href: api/FulltextIndexManager.md
+  - name: GlobalConfiguration
+    href: api/GlobalConfiguration.md
+  - name: Log
+    href: api/Log.md
+  - name: MimeType
+    href: api/MimeType.md
+  - name: PythonDataTemplateHook
+    href: api/PythonDataTemplateHook.md
+  - name: PythonExtendableControlHook
+    href: api/PythonExtendableControlHook.md
+  - name: PythonRibbonWindow
+    href: api/PythonRibbonWindow.md
+  - name: PythonSimplicAPIModule
+    href: api/PythonSimplicAPIModule.md
+  - name: PythonStackRibbonWindow
+    href: api/PythonStackRibbonWindow.md
+  - name: PythonTableViewModel
+    href: api/PythonTableViewModel.md
+  - name: PythonViewModel
+    href: api/PythonViewModel.md
+  - name: PythonViewModelHook
+    href: api/PythonViewModelHook.md
+  - name: PythonWindowHook
+    href: api/PythonWindowHook.md
+  - name: ReportManager
+    href: api/ReportManager.md
+  - name: Role
+    href: api/Role.md
+  - name: RoleManager
+    href: api/RoleManager.md
+  - name: ScanClient
+    href: api/ScanClient.md
+  - name: Script
+    href: api/Script.md
+  - name: SequenceManager
+    href: api/SequenceManager.md
+  - name: ServerModuleBase
+    href: api/ServerModuleBase.md
+  - name: Sql
+    href: api/Sql.md
+  - name: StackRegisterHelper
+    href: api/StackRegisterHelper.md
+  - name: Tenant
+    href: api/Tenant.md
+  - name: TenantManager
+    href: api/TenantManager.md
+  - name: UserManager
+    href: api/UserManager.md
+  - name: WorkflowManager
+    href: api/WorkflowManager.md
