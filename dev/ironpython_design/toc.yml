@@ -2,5 +2,7 @@
   href: intro.md
 - name: Entrypoint (main.py)
   href: mainpy.md
+- name: File header
+  href: fileheader.md
 - name: Packages
   href: packages.md
