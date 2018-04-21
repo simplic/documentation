@@ -4,6 +4,8 @@
   href: code_format.md
 - name: Object names
   href: object_name.md
+- name: Trigger
+  href: trigger.md
 - name: Statements
   href: statements.md
   items:
