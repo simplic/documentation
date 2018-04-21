@@ -14,8 +14,8 @@
   - name: SELECT
     href: statements_select.md
   - name: INSERT
-    href: statements_select.md
+    href: statements_insert.md
   - name: UPDATE
-    href: statements_select.md
+    href: statements_update.md
   - name: DELETE
-    href: statements_select.md
+    href: statements_delete.md
