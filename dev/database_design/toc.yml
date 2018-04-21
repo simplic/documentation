@@ -1,5 +1,7 @@
 - name: Introduction
   href: intro.md
+- name: Connection strings (SAP Sybase Sql Anywhere)
+  href: Connection strings (SAP Sybase Sql Anywhere).md
 - name: Formatting and keywords
   href: code_format.md
 - name: Object names
