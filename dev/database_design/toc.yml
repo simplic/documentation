@@ -1,17 +1,23 @@
 - name: Introduction
   href: intro.md
+- name: Connection strings (SAP Sybase Sql Anywhere)
+  href: Connection strings (SAP Sybase Sql Anywhere).md
 - name: Formatting and keywords
   href: code_format.md
 - name: Object names
   href: object_name.md
+- name: Function and procedure header
+  href: Function and procedure header.md
+- name: Trigger
+  href: trigger.md
 - name: Statements
   href: statements.md
   items:
   - name: SELECT
     href: statements_select.md
   - name: INSERT
-    href: statements_select.md
+    href: statements_insert.md
   - name: UPDATE
-    href: statements_select.md
+    href: statements_update.md
   - name: DELETE
-    href: statements_select.md
+    href: statements_delete.md
