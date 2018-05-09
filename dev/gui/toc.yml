@@ -13,7 +13,7 @@
   - name: DatePicker
     href: controls_datepicker.md
   - name: LookUptextBox
-    href: controls_lookuptextboxr.md
+    href: controls_lookuptextbox.md
 - name: Icons
   href: icons.md
   items:
