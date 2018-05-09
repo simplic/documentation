@@ -1,11 +1,10 @@
-DatePicker
-The DatePicker control is the default control for date input.
+# LookUpTextBox
 
-Assembly: Simplic.UI Namespace: Simplic.UI.Control Class: DatePicker Derives from: Telerik.Windows.Controls.RadDatePicker
+The `LookUpTextBox` control is the default control for a pick list
 
-The controls supports multiple formats:
+Assembly: `Simplic.UI`
+Namespace: `Simplic.Framework.DBUI`
+Class: `LookupTextBox`
+Derives from: `LookupTextBoxBase, IDisposable`
 
-dd.MM.yyyy
-ddMMyyyy
-ddMMyy
-Furthermore an autocomplete mode is integrated.
+
