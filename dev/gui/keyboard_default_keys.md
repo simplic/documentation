@@ -4,7 +4,7 @@ The following list contains all default keyboard behaviours:
 
 | Key | Modifier 1 | Modifier 2 | Modifier 3 | Action                |
 |-----|------------|------------|------------|-----------------------|
-| F3  |            |            |            | Open page or open itembox |
+| F3  |            |            |            | Open/jump to search or open itembox |
 | F5  |            |            |            | Open data for editing |
 | F7  |            |            |            | Remove data           |
 | F8  |            |            |            | Add new data          |
