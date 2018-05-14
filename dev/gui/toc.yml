@@ -17,6 +17,8 @@
   items:
   - name: Naming
     href: icons_filename.md
+- name: Text formatting
+  href: Text formatting.md
 - name: Keyboard
   href: keyboard.md
   items:

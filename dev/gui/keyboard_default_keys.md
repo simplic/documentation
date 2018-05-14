@@ -19,4 +19,3 @@ The following list contains all default keyboard behaviours:
 | Tab  |            |            |            | Focus next input control       |
 | Tab  |   Control         |            |            | Switch tab items in tab control       |
 | Esc  |            |            |            | Cancel current data processing/close window       |
-
