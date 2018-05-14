@@ -17,3 +17,8 @@
   items:
   - name: Naming
     href: icons_filename.md
+- name: Keyboard
+  href: keyboard.md
+  items:
+  - name: Default keys
+    href: keyboard_default_keys.md
