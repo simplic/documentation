@@ -35,9 +35,13 @@ the parameter is true.
 </dbui:LookupTextBox.SelectionProvider>
 </simplic:LookupTextBox>
 ```
+
 ### C# Viewmodel
-```ruby
- private Dictionary<string, object> lookUpParameters;
+
+```csharp
+public class SampleViewModel
+{
+        private Dictionary<string, object> lookUpParameters;
  
         /// <summary>
         /// Constructor
@@ -46,7 +50,7 @@ the parameter is true.
         public DunningProposalViewModel(DunningProposal proposal)
         {
             lookUpParameters = new Dictionary<string, object>();
-            LookUpParameters.Add("_param1", PersonalAccountDunningGroup.Guid);
+            LookUpParameters.Add("sample_parameter", PersonalAccountDunningGroup.Guid);
         }
 
         /// <summary>
@@ -59,13 +63,15 @@ the parameter is true.
                 return lookUpParameters;
             }
         }
+}
 ```
-### SQL
-```ruby
+### SQL of the grid view
+
+```sql
 SELECT dc.*,dt.Name as TypeName,cast(dc.LevelNumber as varchar) +' / '+dt.Name as Friendlyname  FROM IT_Financial_DunningLevel dc
 join IT_Financial_DunningType dt on dt.Guid = dc.TypeId 
 where 1 = 1 and dc.Guid != '00000000-0000-0000-0000-000000000000'
 and (cast(dc.LevelNumber as varchar) LIKE '%[SearchString]%' or dt.Name  LIKE '%[SearchString]%' ) 
-and dc.GroupId = '[_param1]'
+and dc.GroupId = '[sample_parameter]'
 order by dc.LevelNumber
 ```
