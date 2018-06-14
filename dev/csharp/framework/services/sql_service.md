@@ -1,6 +1,6 @@
 # Sql Service
 
-Wir using a service approach to make database request. 
+We are using a service approach to make database requests. 
 
 The following code shows an example:
 ```csharp
