@@ -85,7 +85,7 @@ public interface IClientRepository { .. }
 public interface IProductManager { .. }
 ```
 
-We check nullables with HasValue method instead of != null. It is clearer to understand what type it is.
+We check nullables with `Nullable<>.HasValue` property instead of `Nullable<> != null`. It is clearer to understand what type it is.
 ```csharp
 public Guid? nullableId { get; set; }
 
