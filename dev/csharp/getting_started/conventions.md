@@ -85,6 +85,17 @@ public interface IClientRepository { .. }
 public interface IProductManager { .. }
 ```
 
+We check nullables with `Nullable<>.HasValue` property instead of `Nullable<> != null`. It is clearer to understand what type it is.
+```csharp
+public Guid? nullableId { get; set; }
+
+// Correct
+if (nullableId.HasValue)
+
+// Dont use
+if (nullableId != null)
+```
+
 **Events and Delegates**
 
 - √ **DO** add the suffix "EventHandler" to names of delegates that are used in events.
