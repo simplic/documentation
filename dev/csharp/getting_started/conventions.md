@@ -87,13 +87,15 @@ public interface IProductManager { .. }
 
 We check nullables with `Nullable<>.HasValue` property instead of `Nullable<> != null`. It is clearer to understand what type it is.
 ```csharp
-public Guid? nullableId { get; set; }
+public Guid? NullableId { get; set; }
 
 // Correct
-if (nullableId.HasValue)
+if (NullableId.HasValue)
+..
 
 // Dont use
-if (nullableId != null)
+if (NullableId != null)
+..
 ```
 
 **Events and Delegates**
