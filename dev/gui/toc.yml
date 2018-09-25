@@ -12,8 +12,17 @@
   items:
   - name: DatePicker
     href: controls_datepicker.md
+  - name: LookUpTextBox
+    href: controls_lookuptextbox.md
 - name: Icons
   href: icons.md
   items:
   - name: Naming
     href: icons_filename.md
+- name: Text formatting
+  href: Text formatting.md
+- name: Keyboard
+  href: keyboard.md
+  items:
+  - name: Default keys
+    href: keyboard_default_keys.md

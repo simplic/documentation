@@ -18,12 +18,14 @@
   - name: Services
     href: framework/services/intro.md
     items:
+        - name: Sql Service
+          href: framework/services/sql_service.md
         - name: Icon Service
           href: framework/services/icon_service.md
         - name: Localization Service
           href: framework/services/localization_service.md
         - name: Sms Service
-          href: framework/services/sms_service.md
+          href: framework/services/sms_service.md        
 - name: Simplic Plugins
   href: plugins/intro.md
   items:
