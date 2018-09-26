@@ -1,3 +1,3 @@
 # API
 
-The followin documentation contains the current simplic studio python api reference.
+The following documentation contains the current simplic studio python api reference.
