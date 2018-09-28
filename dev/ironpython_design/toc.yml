@@ -1,5 +1,7 @@
 - name: Introduction
   href: intro.md
+- name: Coding conventions
+  href: code-convention.md
 - name: Entrypoint (main.py)
   href: mainpy.md
 - name: File header
