@@ -1,6 +1,6 @@
 # Dependency injection
 
-The simplic python api provides a simple way, to resolve services. To resolve a service, the `DependencyInjection` package is required:
+The simplic python api provides a simple way, to resolve services. To resolve a service the `DependencyInjection` package is required:
 
 ```python
 # Import package
