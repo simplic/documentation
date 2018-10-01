@@ -8,6 +8,8 @@
   href: fileheader.md
 - name: Packages
   href: packages.md
+- name: Dependency injection
+  href: dependency-injection.md
 - name: API
   href: api.md
   items:
