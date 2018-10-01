@@ -13,7 +13,7 @@ A service can be resovled using the `resolve` method:
 # Import package
 from simplic import DependencyInjection
 
-# Imoprt service
+# Imorpt service
 from Simplic.Authorization import IAuthorizationService
 
 # Resolve instance
