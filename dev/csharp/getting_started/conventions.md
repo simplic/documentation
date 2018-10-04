@@ -98,6 +98,22 @@ if (NullableId != null)
 ..
 ```
 
+**Properties and Fields**
+If you dont do anything else than just assign the value to a field, use auto property instead.
+
+```csharp
+// Correct
+public string Name { get; set; }
+
+// Dont use
+private string name;
+public string Name 
+{
+	get { return name; }
+	set { name = value; }
+}
+```
+
 **Events and Delegates**
 
 - √ **DO** add the suffix "EventHandler" to names of delegates that are used in events.
