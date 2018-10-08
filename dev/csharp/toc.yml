@@ -46,4 +46,4 @@
   - name: Sample Configuration
     href: flow/sample_configuration.md
   - name: Adding new Nodes
-    href: flow/add_new.md
+    href: flow/new_node.md
