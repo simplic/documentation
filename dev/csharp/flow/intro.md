@@ -14,7 +14,7 @@ Action nodes have an abstract method called `public override bool Execute(IFlowR
 which gets called whenever the node is to be processed.
 
 ### Event Node:
-Event nodes also have an abstract method plus an event name.
+Event nodes also have an abstract method and an event name. Event name is important for the node to be triggered at the right event.
 
 ## Creating Nodes
 A flow system without nodes is basically useless. In order for it to work a flow system needs nodes. Luckily defining nodes is a piece of cake.
@@ -104,7 +104,7 @@ public DataPin InPinToPrint { get; set; }
 
 ## Putting all together
 
-Here is a full node definition:
+Here is a full action node definition:
 
 ```csharp
 [ActionNodeDefinition(DisplayName = "Console out", Name = "ConsoleWriteLineNode", Category = "Common")]
@@ -135,5 +135,80 @@ public class ConsoleWriteLineNode : ActionNode
 
     public override string FriendlyName { get { return nameof(ConsoleWriteLineNode); } }
     public override string Name { get { return nameof(ConsoleWriteLineNode); } }        
+}
+```
+
+and a full event node:
+ 
+```csharp
+[EventNodeDefinition(DisplayName = "On Check Directory Content", Name = "OnCheckDirectoryContentNode", EventName = "OnCheckDirectoryContent", Category = "IO")]
+public class OnCheckDirectoryContentNode : EventNode
+{
+    public override bool Execute(IFlowRuntimeService runtime, DataPinScope scope)
+    {
+        var args = runtime.FlowEventArgs as OnCheckDirectoryContentEventArgs;
+
+        if (args == null)
+        {
+            Console.WriteLine($"Arguments not found in {nameof(OnCheckDirectoryContentNode)}");
+            return false;
+        }
+        if (string.IsNullOrWhiteSpace(args.DirectoryPath))
+        {
+            Console.WriteLine($"Path null or mpety in {nameof(OnCheckDirectoryContentNode)}");
+            return false;
+        }
+
+        scope.SetValue(OutPinDirectoryPath, args.DirectoryPath);
+
+        if (!Directory.Exists(args.DirectoryPath))
+        {
+            Console.WriteLine($"Directory not found `{args.DirectoryPath}` {nameof(OnCheckDirectoryContentNode)}");
+            return false;
+        }
+
+        if (OutPinDirectoryPath != null && Directory.GetFiles(args.DirectoryPath).Any())
+        {
+            runtime.EnqueueNode(OutNode, scope);
+        }
+
+        return true;
+    }
+
+    [FlowPinDefinition(DisplayName = "Out", Name = "OutNode", PinDirection = PinDirection.Out)]
+    public ActionNode OutNode { get; set; }
+
+    [DataPinDefinition(
+        Id = "f980c0e6-5dc3-4064-8db7-c95b08d90664",
+        ContainerType = DataPinContainerType.Single,
+        DataType = typeof(string),
+        Direction = PinDirection.Out,
+        Name = "OutPinDirectoryPath",
+        DisplayName = "Pin Directory Path")]
+    public DataPin OutPinDirectoryPath { get; set; }
+
+    public override string EventName
+    {
+        get
+        {
+            return "OnCheckDirectoryContent";
+        }
+    }
+
+    public override string FriendlyName
+    {
+        get
+        {
+            return nameof(OnCheckDirectoryContentNode);
+        }
+    }
+
+    public override string Name
+    {
+        get
+        {
+            return nameof(OnCheckDirectoryContentNode);
+        }
+    }
 }
 ```
