@@ -40,4 +40,10 @@
               items:
                 - name: Python Script
                   href: plugins/logistics/fleetboard_python.md
-
+- name: Flow System
+  href: flow/intro.md
+  items:
+  - name: Sample Configuration
+    href: flow/sample_configuration.md
+  - name: Adding new Nodes
+    href: flow/add_new.md
