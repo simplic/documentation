@@ -27,7 +27,7 @@ public class OnSomethingHappenedNode : EventNode
 
 After this definition, you need to define the pins. The pins are used to connect nodes. 
 
-## Putting all together
+## Putting it all together
 
 Here is a full action node definition:
 
@@ -136,4 +136,15 @@ public class OnCheckDirectoryContentNode : EventNode
         }
     }
 }
+```
+
+## Registering the node
+In order to be able to use the node we just created, we need to register this node to the IoC (Unity in our case). 
+
+You need to register your node with a node resolver, as all the nodes could behave differently but need to inherit a base node. Luckily we have a `GenericNodeResolver` to use for basic nodes.
+
+Registering a node:
+
+```csharp
+container.RegisterType<INodeResolver, GenericNodeResolver<ArchiveFileNode>>("ArchiveFileNode");
 ```
