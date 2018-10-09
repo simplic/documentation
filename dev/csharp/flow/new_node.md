@@ -146,5 +146,5 @@ You need to register your node with a node resolver, as all the nodes could beha
 Registering a node:
 
 ```csharp
-container.RegisterType<INodeResolver, GenericNodeResolver<ArchiveFileNode>>("ArchiveFileNode");
+container.RegisterType<INodeResolver, GenericNodeResolver<OnCheckDirectoryContentNode>>("OnCheckDirectoryContentNode");
 ```
