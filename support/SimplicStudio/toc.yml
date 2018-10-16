@@ -3,6 +3,9 @@
 - name: Ini file
   href: ini.md
 - name: Kanban
-  href: Kanban/intro.md
+  href: kanban/intro.md
+  items:
   - name: Grid integration
-    href: Kanban/gridintegration.md
+    href: kanban/gridintegration.md
+  - name: Kanban flow
+    href: kanban/flow.md
