@@ -1,8 +1,8 @@
 # Repository
 
-All simplic repositories must follow this rules:
+All simplic repositories must follow these rules:
 
-* All repositories needs a README.md
+* All repositories need a README.md
 * All repositories require a `.github` directory, which contains a `PULL_REQUEST_TEMPLATE.md`. File content:
 
 ```markdown
