@@ -42,6 +42,14 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "git/**.md",
+          "git/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
       }
     ],
     "resource": [
