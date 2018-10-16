@@ -18,7 +18,9 @@ A branch should only contains changes, that belongs together. Initial branches m
 Commit messages should be as descriptive as possible. Adding a prefix for the action is recommended:
 
 > Add: new message box when closing a contact
+>
 > Remove: Title bar in contact window
+>
 > Change: Viewmodels are always dirty
 
 A commit should always contains changes that belongs togehter.
