@@ -46,7 +46,7 @@ If the second parameter is set to true, the flow system will be triggered too.
 
 **Result**
 
-![/images/Kanban_API.png](/images/Kanban_API.png)
+![Kanban_API.png](~/images/Kanban_API.png)
 
 Setting tile color is possible using the `.Color` option.
 
@@ -83,4 +83,4 @@ data_service.TrackChanges(data, True)
 
 # Result
 
-![/images/Kanban_API2.png](/images/Kanban_API2.png)
+![Kanban_API2.png](~/images/Kanban_API2.png)

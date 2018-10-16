@@ -14,4 +14,4 @@ The `<action>` part is optional, if an icon isn't connect with an action, the ca
 
 The action must be named as the action displayed as icon overlay: `personalaccount_add_32x.png`
 
-![personalaccount_add_32x.png](~/images/personalaccount_add_32x.png.png)
+![personalaccount_add_32x.png](~/images/personalaccount_add_32x.png)
