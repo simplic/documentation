@@ -11,7 +11,8 @@ A branch should start with the following prefix:
 
 E.g. `f_new_contact_window`, `b_message_box_title`.
 
-A branch should only contains changes, that belongs together. Initial branches might contain some more changes.
+A branch should only contains changes that belongs together. Initial branches might contain some more changes. If a branch contains changes,
+it should start with `f_`.
 
 ### Default branches
 
