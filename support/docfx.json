@@ -5,8 +5,8 @@
     "content": [
       {
         "files": [
-          "welcome/**.md",
-          "welcome/**/toc.yml",
+          "SimplicStudio/**.md",
+          "SimplicStudio/**/toc.yml",
           "toc.yml",
           "*.md"
         ]
