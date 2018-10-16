@@ -15,3 +15,6 @@ I've checked the following points:
 - [ ] All `public` things have comments
 - [ ] This has been followed: [conventions](https://simplic.github.io/dev/csharp/getting_started/conventions.html)
 ```
+
+* The `dev`-branch should always be the default branch
+* The `master`-branch should be protected and a reviewer is required.
