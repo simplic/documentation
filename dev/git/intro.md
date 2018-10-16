@@ -31,7 +31,7 @@ Commit messages should be as descriptive as possible. Adding a prefix for the ac
 >
 > Change: Viewmodels are always dirty
 
-A commit should always contains changes that belongs togehter.
+A commit should always contain changes that belong together.
 
 ---
 
