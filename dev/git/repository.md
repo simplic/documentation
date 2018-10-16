@@ -3,7 +3,7 @@
 All simplic repositories must follow this rules:
 
 * All repositories needs a README.md
-* All repositories requires a `.github` directory, which contains a `PULL_REQUEST_TEMPLATE.md`. File content:
+* All repositories require a `.github` directory, which contains a `PULL_REQUEST_TEMPLATE.md`. File content:
 
 ```markdown
 I've checked the following points:
