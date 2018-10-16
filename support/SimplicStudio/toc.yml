@@ -1,2 +1,8 @@
 - name: Introduction
   href: intro.md
+- name: Ini file
+  href: ini.md
+- name: Kanban
+  href: Kanban/intro.md
+  - name: Grid integration
+    href: Kanban/gridintegration.md
