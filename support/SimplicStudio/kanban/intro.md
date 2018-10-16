@@ -5,4 +5,4 @@ or the service based API under the namespace `Simplic.Kanban`.
 
 The system can be configurated using the editor under `Configuration -> Kanban configuration`:
 
-![kanban.png](kanban.png)
+![/images/kanban.png](/images/kanban.png)

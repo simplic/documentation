@@ -1,7 +1,10 @@
 - name: Introduction
   href: intro.md
-- name: Ini file
-  href: ini.md
+- name: General options and settings
+  href: general/intro.md
+  items:
+  - name: Ini file (Studio.ini)
+    href: general/ini.md
 - name: Kanban
   href: kanban/intro.md
   items:
@@ -9,3 +12,7 @@
     href: kanban/gridintegration.md
   - name: Kanban flow
     href: kanban/flow.md
+  - name: API/Scripting
+    href: kanban/scripting.md
+  - name: Database
+    href: kanban/database.md
