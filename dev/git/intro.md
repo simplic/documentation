@@ -11,12 +11,12 @@ A branch should start with the following prefix:
 
 E.g. `f_new_contact_window`, `b_message_box_title`.
 
-A branch should only contains changes that belongs together. Initial branches might contain some more changes. If a branch contains changes,
+A branch should only contain changes that belong together. Initial branches might contain some more changes. If a branch contains changes,
 it should start with `f_`.
 
 ### Default branches
 
-All simplic repositories contains two default branches: `master` and `dev`.
+All simplic repositories contain two default branches: `master` and `dev`.
 
 * `master`: Contains the current release
 * `dev`: Contains a working but untested version of the product
