@@ -13,6 +13,13 @@ E.g. `f_new_contact_window`, `b_message_box_title`.
 
 A branch should only contains changes, that belongs together. Initial branches might contain some more changes.
 
+### Default branches
+
+All simplic repositories contains two default branches: `master` and `dev`.
+
+* `master`: Contains the current release
+* `dev`: Contains a working but untested version of the product
+
 ## Commit messages
 
 Commit messages should be as descriptive as possible. Adding a prefix for the action is recommended:
