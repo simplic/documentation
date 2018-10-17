@@ -7,3 +7,5 @@
     href: Newsletter/configuration.md
   - name: Variable fields
     href: Newsletter/fields.md
+  - name: Opt-In and Opt-Out
+    href: Newsletter/optinout.md
