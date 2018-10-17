@@ -1,5 +1,10 @@
 - name: Introduction
   href: intro.md
+- name: Contact
+  href: Contact/intro.md
+  items:
+  - name: Geocoding
+    href: Contact/geocoding.md
 - name: Newsletter
   href: Newsletter/intro.md
   items:
