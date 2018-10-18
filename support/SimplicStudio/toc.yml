@@ -5,6 +5,8 @@
   items:
   - name: Ini file (Studio.ini)
     href: general/ini.md
+  - name: Application arguments
+    href: general/args.md
 - name: Kanban
   href: kanban/intro.md
   items:
