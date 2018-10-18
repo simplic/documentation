@@ -16,3 +16,10 @@
     href: kanban/scripting.md
   - name: Database
     href: kanban/database.md
+- name: Task scheduler
+  href: Task scheduler/intro.md
+  items:
+  - name: Flow integration
+    href: Task scheduler/flowintegration.md
+  - name: Dashboard
+    href: Task scheduler/dashboard.md
