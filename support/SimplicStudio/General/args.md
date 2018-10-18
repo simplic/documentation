@@ -28,3 +28,8 @@ This article is about the arguments which are available in the `Simplic Studio.e
 | `--name <service-name>` | Name of the application server                             | `--name sample_server` |
 | `--install` | Installs the application server as windows service                             | `--install` |
 | `--uninstall` | Uninstalls the application server as windows service                             | `--install` |
+
+### Sample
+
+* Login with pass through: `"Simplic Studio.exe" --username sample_user --password mypassword --passthrough`
+* Install application server: `ApplicationServer.exe --name FlowService --install`
