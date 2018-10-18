@@ -1,7 +1,8 @@
 # Scheduler dashboard
 
-The simplic task scheduler system is basing on ([angfire.io](https://www.hangfire.io/). Hangfire supports a simple dashboard
-for task monitoring. The dashboard is available, if the simplic `Web API` is hosted in an application server instance.
+The simplic task scheduler system is based on ([Hangfire](https://www.hangfire.io/). 
+Hangfire supports a simple dashboard for task monitoring. The dashboard is available, 
+if the simplic `Web API` is hosted in an application server instance.
 
 > Hint: If you want to start the webservice in a console application, it must be executed in administration context.
 
