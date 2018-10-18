@@ -1,12 +1,13 @@
 # Task scheduler
 
-The simplic task scheduler allows you to execute task with a given time schedule. The scheduler can be configurated
+The simplic task scheduler allows you to execute a task within a scheduled time span. The scheduler can be configured
 under the **Configuration** section. 
 
 > Hint: Only active scheduler will be executed.
 
-When configuration a scheduler, the `Windows-Server` and `App-Server` are two important options. The scheduler system will only execute tasks,
-if the server name and app-server-name are matching with the currently hosting simplic application server.
+When configuring a scheduler, the `Windows-Server` and `App-Server` are two important options. 
+The scheduler system will only execute tasks, if the server name and app-server-name are matching 
+with the currently hosting simplic application server.
 
 ## Modes
 
@@ -15,8 +16,9 @@ A task is divided into two modes:
 * `Seconds`
 * `Cron`
 
-If the `Seconds` mode is selected, the task will be executed in the given interval. The smallest value is 10 seconds. If the `Cron` mode is selected,
-you can schedule a task by using the linux cron-job syntax.
+If the `Seconds` mode is selected, the task will be executed in the given interval. 
+The smallest value is 10 seconds. If the `Cron` mode is selected, you can schedule a task by 
+using the linux cron-job syntax.
 
 ### Cron sample:
 
