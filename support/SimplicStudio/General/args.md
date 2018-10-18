@@ -16,7 +16,7 @@ This article is about the arguments which are available in the `Simplic Studio.e
 | `--nocache` | Disables the cache system                            | `--nocache` |
 | `--username` | Default username for login process. Will be used for pass through too.                            | `--username sample` |
 | `--password` | default password for login process. Will be used for pass through too.                            | `--password mypassword123` |
-| `--passthrough` | Disables the cache system                            | `--passthrough` |
+| `--passthrough` | Tries to execute the login process by using the information from `--username` and `--password`.                            | `--passthrough` |
 
 ## ApplicationServer.exe only
 
