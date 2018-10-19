@@ -25,3 +25,24 @@
     href: Task scheduler/flowintegration.md
   - name: Dashboard
     href: Task scheduler/dashboard.md
+- name: Reporting
+  href: Reporting/intro.md
+  items:
+  - name: EPL reports
+    href: Reporting/EPL/intro.md
+    items:
+    - name: Base configuration
+      href: Reporting/EPL/configuration.md
+    - name: Report designs
+      href: Reporting/EPL/reportdesign.md
+    - name: Grid based reports
+      href: Reporting/EPL/gridbased.md
+    - name: Contextless reports
+      href: Reporting/EPL/contextless.md
+    - name: Script integration
+      href: Reporting/EPL/scripting.md
+- name: Printer
+  href: Printer/intro.md
+  items:
+  - name: Script integration
+    href: Printer/scripting.md
