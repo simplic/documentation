@@ -18,7 +18,6 @@ q418
 B15,25,0,1,2,2,70,B,"{value}"
 
 P{amount}
-
 ```
 
 This design will print a simple barcode in the following format:
