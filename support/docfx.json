@@ -50,6 +50,14 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "ProjectManagement/**.md",
+          "ProjectManagement/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
       }
     ],
     "resource": [
