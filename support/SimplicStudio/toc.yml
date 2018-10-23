@@ -41,8 +41,30 @@
       href: Reporting/EPL/contextless.md
     - name: Script integration
       href: Reporting/EPL/scripting.md
+  - name: Telerik reports
+    href: Reporting/Telerik/intro.md
+    items:
+    - name: Sql-Report
+      href: Reporting/Telerik/sql-report.md
+    - name: Key-Value-Report
+      href: Reporting/Telerik/key-value-report.md
+    - name: Parameter-Report
+      href: Reporting/Telerik/parameter-report.md
+    - name: Stack window integration
+      href: Reporting/Telerik/stack-window-report.md
+    - name: Grid integration
+      href: Reporting/Telerik/grid-integration.md
+    - name: Flow integration
+      href: Reporting/Telerik/flow-integration.md
+    - name: Script integration
+      href: Reporting/Telerik/script-integration.md
 - name: Printer
   href: Printer/intro.md
   items:
   - name: Script integration
     href: Printer/scripting.md
+- name: Troubleshooting
+  href: Troubleshooting/intro.md
+  items:
+  - name: Grid user profiles
+    href: Troubleshooting/Grid user profiles.md
