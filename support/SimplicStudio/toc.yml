@@ -68,3 +68,5 @@
   items:
   - name: Grid user profiles
     href: Troubleshooting/Grid user profiles.md
+  - name: App crash during auto login
+    href: Troubleshooting/Application crash auto login.md
