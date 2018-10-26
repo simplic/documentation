@@ -125,7 +125,8 @@ public string Name
 - √ **DO** add the suffix "Callback" to names of delegates other than those used as event handlers. 
 - X **DO NOT** add the suffix "Delegate" to a delegate.
 
-** Unused Legacy Code **
+**Unused Legacy Code**
+
 We don't just comment out old code and commmit it. It is already versioned on git server, so there is no need to comment out old code.
 Just remove the old code.
 
