@@ -28,9 +28,14 @@ public class ClassName
 ```
 
 
-We use **PascalCase** for constants:
+We use **PascalCase** for `public` constants:
 ```csharp
 public const float ConstantName = 3.14f;
+```
+
+and **camelCase** for `private` constants:
+```csharp
+private const float constantName = 3.14f;
 ```
 
 We use implicit type **`var`** for variable declarations:
