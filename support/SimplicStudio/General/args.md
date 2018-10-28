@@ -19,7 +19,8 @@ This article is about the arguments which are available in the `Simplic Studio.e
 | `--password <password>` | default password for login process. Will be used for pass through too                            | `--password mypassword123` |
 | `--passthrough` | Tries to execute the login process by using the information from `--username` and `--password`.                            | `--passthrough` |
 | `--localization <language>` | Overrides the default localization                            | `--localization de` |
-| `--no-plugins` | no plugins will be loaded                            | `--no-plugins` |
+| `--no-plugins` | No plugins will be loaded                            | `--no-plugins` |
+| `--app` | Defines the application main window that should be shown after the login. Default is `simplic-studio`                            | `--app simplic-studio` |
 
 ## ApplicationServer.exe only
 

@@ -25,7 +25,12 @@
         - name: Localization Service
           href: framework/services/localization_service.md
         - name: Sms Service
-          href: framework/services/sms_service.md        
+          href: framework/services/sms_service.md   
+  - name: Application window
+    href: framework/application window/intro.md  
+    items:   
+      - name: Creating application window
+        href: framework/application window/create-application-window.md
 - name: Simplic Plugins
   href: plugins/intro.md
   items:
