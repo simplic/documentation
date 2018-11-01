@@ -137,16 +137,22 @@ function getNewFileUrl(item, gitContribute, gitUrlPattern) {
 }
 
 function getRemoteUrl(remote, startLine, gitContribute, gitUrlPattern) {
-    var gitInfo = getGitInfo(gitContribute, remote);
-    if (!gitInfo.repo || !gitInfo.branch || !gitInfo.path) {
-        return '';
+    var repo = undefined;
+    var branch = undefined;
+    if (gitContribute && gitContribute.repo) repo = gitContribute.repo;
+    if (repo == undefined && remote && remote.repo) repo = remote.repo;
+    if (gitContribute && gitContribute.branch) branch = gitContribute.branch;
+    if (branch == undefined && remote && remote.branch) branch = remote.branch;
+
+    if (repo == undefined || branch == undefined) return '';
+
+    if (repo.substr(-4) === '.git') {
+        repo = repo.substr(0, repo.length - 4);
     }
 
-    var patternName = getPatternName(gitInfo.repo, gitUrlPattern);
+    var patternName = getPatternName(repo, gitUrlPattern);
     if (!patternName) return '';
-
-    gitInfo.startLine = startLine;
-    return gitUrlPatternItems[patternName].generateUrl(gitInfo);
+    return gitUrlPatternItems[patternName].generateUrl(repo, branch, remote.path, startLine);
 }
 
 function getGitInfo(gitContribute, gitRemote) {
