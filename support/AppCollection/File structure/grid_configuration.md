@@ -9,7 +9,7 @@ The select statement of the grid profile has to return the following to columns:
 1. `Guid` - Instance data guid
 2. `StackGuid` - Id of the stack
 
-Sample:
+**Sample**:
 
 ```sql
 select
