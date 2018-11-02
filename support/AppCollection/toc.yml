@@ -5,6 +5,11 @@
   items:
   - name: Geocoding
     href: Contact/geocoding.md
+- name: File structure
+  href: File structure/intro.md
+  items:
+  - name: Grid configuration
+    href: File structure/grid_configuration.md
 - name: Newsletter
   href: Newsletter/intro.md
   items:
