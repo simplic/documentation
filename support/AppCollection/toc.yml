@@ -10,6 +10,8 @@
   items:
   - name: Grid configuration
     href: File structure/grid_configuration.md
+  - name: Keyboard
+    href: File structure/keyboard.md
 - name: Newsletter
   href: Newsletter/intro.md
   items:
