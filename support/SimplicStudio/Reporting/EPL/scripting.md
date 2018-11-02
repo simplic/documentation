@@ -30,7 +30,7 @@ Design:
 ; Design
 
 @{
-	amount = amount + 1
+	amount = copies + 1
 }@
 
 N
@@ -38,7 +38,7 @@ Q152,24
 q418
 ;R130,10
 
-B15,25,0,1,2,2,70,B,"{value}"
+B15,25,0,1,2,2,70,B,"{barcode}"
 
 P{amount}
 
