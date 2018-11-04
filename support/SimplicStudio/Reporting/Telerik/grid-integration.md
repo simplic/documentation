@@ -28,5 +28,5 @@ FROM SampleColumn
 The following parameter can be used in the telerik sql data source:
 
 ```sql
-SELECT Column1, Column2 FROm Sample WHERE Gudi = @Guid
+SELECT Column1, Column2 FROM Sample WHERE Gudi = @Guid
 ```
