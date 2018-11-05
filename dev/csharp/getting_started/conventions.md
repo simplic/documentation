@@ -1,4 +1,4 @@
-﻿# Coding Standards and Naming Conventions
+# Coding Standards and Naming Conventions
 
 Below are our C# coding standards, naming conventions, and best practices.
 
@@ -83,13 +83,13 @@ String firstName;
 Int32 lastIndex;
 Boolean isSaved;
 ```
-
+### Interfaces
 We prefix interfaces with the letter **I**. Interface names are noun (phrases) or adjectives.
 ```csharp
 public interface IClientRepository { .. }
 public interface IProductManager { .. }
 ```
-
+### Nullables
 We check nullables with `Nullable<>.HasValue` property instead of `Nullable<> != null`. It is clearer to understand what type it is.
 ```csharp
 public Guid? NullableId { get; set; }
@@ -102,8 +102,7 @@ if (NullableId.HasValue)
 if (NullableId != null)
 ..
 ```
-
-**Properties and Fields**
+### Properties and Fields
 If you dont do anything else than just assign the value to a field, use auto property instead.
 
 ```csharp
@@ -118,21 +117,18 @@ public string Name
 	set { name = value; }
 }
 ```
-
-**Events and Delegates**
+### Events and Delegates
 
 - √ **DO** add the suffix "EventHandler" to names of delegates that are used in events.
 - √ **DO** add the suffix "Callback" to names of delegates other than those used as event handlers. 
 - X **DO NOT** add the suffix "Delegate" to a delegate.
 
-**Unused Legacy Code**
-
+### Unused Legacy Code
 We don't just comment out old code and commmit it. It is already versioned on git server, so there is no need to comment out old code.
 Just remove the old code.
 
-**Linq-Expressions**
-
-We use linq functional expressions:
+### Linq Expressions
+We use method-based LINQ queries:
 
 - √ **DO** `var ids = items.Select(x => x.ExternalId).Cast<decimal>()`.
 - X **DO NOT** `var ids = from item in items select (decimal)item.ExternalId`.
