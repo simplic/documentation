@@ -63,6 +63,11 @@
   items:
   - name: Script integration
     href: Printer/scripting.md
+- name: Localization
+  href: Localization/intro.md
+  items:
+  - name: Frontend localization
+    href: Localization/frontendlocalization.md
 - name: Troubleshooting
   href: Troubleshooting/intro.md
   items:
