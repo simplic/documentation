@@ -16,6 +16,6 @@ A localization file looks like this:
 }
 ```
 
-## Customizing keys
+## Customizing
 
 To customize the localizations, a localization file must be placed under: `/private/Localization`. The file must follow the naming conventions above. Since the private localization files will be loaded after the public files, the key-value pairs will be override the public key-values.
