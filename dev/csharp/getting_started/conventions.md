@@ -130,3 +130,9 @@ public string Name
 We don't just comment out old code and commmit it. It is already versioned on git server, so there is no need to comment out old code.
 Just remove the old code.
 
+**Linq-Expressions**
+
+We use linq functional expressions:
+
+- √ **DO** `var ids = items.Select(x => x.ExternalId).Cast<decimal>()`.
+- X **DO NOT** `var ids = from item in items select (decimal)item.ExternalId`.
