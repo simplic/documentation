@@ -6,7 +6,7 @@ Commands must be added by using the navigation command service:
 var navigationCommand = ServiceLocator.Current.GetInstance<INavigationCommandService>();
 ```
 
-> This example use the `CommonServiceLocator`. It is recommended to resolve services using a constructor.
+> This example uses the `CommonServiceLocator`. It is recommended to resolve services using a constructor.
 
 To add a new command, an instance of `NavigationCommand` must be created and added:
 
@@ -29,7 +29,7 @@ Now the command is available
 ## Execute command
 
 If a command is executed, the `ExecuteCommand` of the service will be invoked. The following
-examples shows how to handle the execution:
+examples show how to handle the execution:
 
 ```
 // Handle commands

@@ -1,6 +1,6 @@
 # Navigation commands
 
-Navigation commands allows to navigate within the simplic framework by typing in a command. Commands
+Navigation commands allow to navigate within the simplic framework by typing in a command. Commands
 can be simple shortcuts, application names or even generic commands, like starting a call.
 
 ![~/images/navigation_command_sample.png](~/images/navigation_command_sample.png)
@@ -24,14 +24,14 @@ The search algorithm lists the commands in the following order:
 
 1. The input matches a command/shortcut
 2. A command name starts with the input string and has no parameter
-3. A command name starts with the input string and has parameter
+3. A command name starts with the input string and has a parameter
 
-The 2nd and 3rd might switch if a commands requies parameters or not.
+The 2nd and 3rd might switch if a command requires parameters or not.
 
 If a command contains multiple words within the name, the search engine splits the words by the space character.
-This allows to just type in the beginning of any word.
+This allows to just type at the beginning of any word.
 
-Parameter must be seperated by using a space character from the command. Take a look at the phone call sample at the bottom.
+Parameter must be separated by using a space character from the command. Take a look at the phone call sample at the bottom.
 
 ## Examples
 
