@@ -45,6 +45,11 @@
               items:
                 - name: Python Script
                   href: plugins/logistics/fleetboard_python.md
+- name: Navigation commands
+  href: navigation commands/intro.md
+  items:
+  - name: Add navigation command
+    href: navigation commands/add_command.md
 - name: Flow System
   href: flow/intro.md
   items:
