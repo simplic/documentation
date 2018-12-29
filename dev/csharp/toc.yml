@@ -31,6 +31,11 @@
     items:   
       - name: Creating application window
         href: framework/application window/create-application-window.md
+  - name: Navigation commands
+    href: framework/navigation commands/intro.md
+    items:
+    - name: Add navigation command
+      href: framework/navigation commands/add_command.md
 - name: Simplic Plugins
   href: plugins/intro.md
   items:
@@ -45,11 +50,6 @@
               items:
                 - name: Python Script
                   href: plugins/logistics/fleetboard_python.md
-- name: Navigation commands
-  href: navigation commands/intro.md
-  items:
-  - name: Add navigation command
-    href: navigation commands/add_command.md
 - name: Flow System
   href: flow/intro.md
   items:
