@@ -1,6 +1,6 @@
 # Add new command
 
-Commands must be added by using the navigation command interface: 
+Commands must be added by using the navigation command service: 
 
 ```csharp
 var navigationCommand = ServiceLocator.Current.GetInstance<INavigationCommandService>();
