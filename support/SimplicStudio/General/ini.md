@@ -8,7 +8,8 @@ The following options are available withing a section:
 
 | Key                  | Description                                                       | Sample                                               | Default value |
 |----------------------|-------------------------------------------------------------------|------------------------------------------------------|---------------|
-| UserConnectionString | Connection string without uid and pwd                             | server=simplic;dbn=simplic;charset=utf-8;links=TCPIP |               |
+| UserConnectionString | Connection string without uid and pwd             | `UserConnectionString=server=simplic;dbn=simplic;charset=utf-8;links=TCPIP` |               |
 | SectionFriendlyName  | Friendly name for the login dialog                                |                                                      |               |
 | IsHiddenSection      | If set to 1, the section will not  be visible in the login dialog |                                                      | 0             |
 | ConnectionString     | Connection string with uid and pwd. Depricated!                   |                                                      |               |
+| Theme                | Sets the simplic theme. Allowed values: fluent, windows8, office2016. Default is fluent  | `Theme=windows8`            | fluent              |
