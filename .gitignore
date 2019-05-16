@@ -10,3 +10,5 @@ _site
 /.vs/documentation/v15/.suo
 /.vs/slnx.sqlite
 /.vs
+/support/.vs/support/v15
+/support/.vs
