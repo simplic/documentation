@@ -10,6 +10,11 @@
   href: packages.md
 - name: Dependency injection
   href: dependency-injection.md
+- name: Samples
+  href: samples/intro.md
+  items:
+  - name: Get printer name including redirection
+    href: samples/printer_name_redirection.md
 - name: API
   href: api.md
   items:
