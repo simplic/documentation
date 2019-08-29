@@ -67,8 +67,9 @@ DependencyInjection.register_instance(ITransactionHook, "ERPHook1", ERPHook())
 **Setting the default quantity to 10:**
 
 ```python
-from Simplic.ERP.Core import ITransactionHook, TransactionItemQuantity
+from Simplic.ERP.Core import ITransactionHook
 from simplic import DependencyInjection
+from Simplic.Data import PreciseDecimal
 
 class ERPHook(ITransactionHook):
 
@@ -76,8 +77,7 @@ class ERPHook(ITransactionHook):
 		pass
 		
 	def AddItem(self, transaction, item):
-		if item is TransactionItemQuantity:
-			item.Quantity = 10
+		item.Quantity = PreciseDecimal(10)
 		
 	def RemoveItem(self, transaction, item):
 		pass
