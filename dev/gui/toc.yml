@@ -26,3 +26,8 @@
   items:
   - name: Default keys
     href: keyboard_default_keys.md
+  name: Flow Nodes
+  href: nodes.md
+  items:
+  - name: Financial Accounting
+    href: fa_nodes.md
