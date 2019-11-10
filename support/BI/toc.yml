@@ -2,3 +2,6 @@
   href: intro.md
 - name: Configuration
   href: Configuration/intro.md
+  items:
+  - name: SQL Pivot
+    href: Configuration/sql_pivot.md
