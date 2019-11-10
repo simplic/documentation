@@ -65,3 +65,27 @@ Service to open the shipment window.
     "service": "Shipment"
 }
 ```
+
+__Tour__
+
+Service to open the tour window.
+
+```json
+{
+	"displayName": "Open tour",
+    "key": "<Name of the column, that contains a tour guid>",
+    "service": "Tour"
+}
+```
+
+__Transport order__
+
+Service to open the transport order window.
+
+```json
+{
+	"displayName": "Transport order tour",
+    "key": "<Name of the column, that contains a shipment guid>",
+    "service": "TransportOrder"
+}
+```

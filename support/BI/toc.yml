@@ -5,3 +5,5 @@
   items:
   - name: SQL Pivot
     href: Configuration/sql_pivot.md
+  - name: Custom menu entry service
+    href: Configuration/custom_context_menu_resolver.md
