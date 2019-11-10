@@ -11,6 +11,10 @@ from System.Windows import MessageBox
 class SampleContextMenuService(IBusinessIntelligenceContextMenuResolver):
 
 	def Open(self, configuration, key, parameter):
+		# configuration: Contains the full configuration object
+		# key: The key from the context menu configuration
+		# parametr: The selected row as dictionary. The keys are the same as in the underlying view.
+
 		# Show value
 		MessageBox.Show('Selected shipment: ' + str(parameter[key]))
 
