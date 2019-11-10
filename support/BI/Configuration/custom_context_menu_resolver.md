@@ -21,7 +21,7 @@ class SampleContextMenuService(IBusinessIntelligenceContextMenuResolver):
 DependencyInjection.register_instance(IBusinessIntelligenceContextMenuResolver, "BISampleContextMenu", SampleContextMenuService())
 ```
 
-The context menu can be registered this way in the configuration file. The `service` name must be the same as in te `register_instance` code line.
+The context menu can be registered this way in the configuration file. The `service` name must be the same as in the `register_instance` code line.
 
 ```json
 {
