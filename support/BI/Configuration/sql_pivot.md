@@ -16,6 +16,8 @@ A configuration file has the following structure:
 {
   "id": "<Id of the configuration (same as file name)=>",
   "name": "<Name of the configuration>",
+  "collapseRows": false,
+  "collapseGroups": true
   "dataSource": {
     "sqlViewName": "<SQL view as data source>",
     "connectionStringName": "<Connection string>",
