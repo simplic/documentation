@@ -58,6 +58,8 @@ List of available services:
 
 __Shipment__
 
+> For using the shipment context menu the plugin `Simplic.PlugIn.Logistics.BI` is required.
+
 Service to open the shipment window.
 
 ```json

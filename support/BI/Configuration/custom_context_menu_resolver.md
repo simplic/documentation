@@ -30,3 +30,5 @@ The context menu can be registered this way in the configuration file. The `serv
     "service": "BISampleContextMenu"
 }
 ```
+
+> For using the shipment context menu the plugin `Simplic.PlugIn.Logistics.BI` is required.
