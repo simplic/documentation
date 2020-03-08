@@ -50,6 +50,14 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "cloud/**.md",
+          "cloud/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
       }
     ],
     "resource": [

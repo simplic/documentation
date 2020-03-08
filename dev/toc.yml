@@ -10,3 +10,5 @@
   href: nuget_packages/
 - name: Git
   href: git/
+- name: Cloud
+  href: cloud/
