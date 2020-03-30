@@ -1,2 +1,19 @@
 - name: Introduction
   href: intro.md
+  items:
+  - name: General structure
+    href: general_structure.md
+  - name: Communication
+    href: communication.md
+  - name: Web Api
+    href: web_api.md
+  - name: Service
+    href: service.md
+  - name: DB
+    href: db.md
+  - name: Authorization
+    href: authorization.md
+  - name: Automapper
+    href: automapper.md
+  - name: Repositories
+    href: repositories.md
