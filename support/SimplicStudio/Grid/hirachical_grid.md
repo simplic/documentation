@@ -23,7 +23,8 @@ t.c.guide
 
 **Create a hierarchical grid**
 
-At the beginning a Simplic-Grid must be created. The grid can access the parameter of the overlying grid. The syntax for this is: `:<Name>'. Example: `:OrganizationContactId`.
+At the beginning a Simplic-Grid must be created. The grid can access the parameter of the overlying grid. 
+The syntax for this is: `:<Name>`. Example: `:OrganizationContactId`.
 
 A complete statement looks like this:
 
@@ -41,12 +42,12 @@ ContactId.
 
 where 1 = 1
 AND ISNULL(dc.IsDeleted, 0) = 0
-and dc.ContactIDRef = :OrganizationContactId
+and dc.ContactIDRef = :OrganizationContactId -- << Parameter
 
 ORDER BY dc.CompanyName, dc.LastName, dc.FirstName
 ```
 
-If the parameter is stored in the statement, the configuration is complete.
+If the parameter is stored in the statement, the configuration of the nested grid is complete.
 
 **Connecting grids**
 
