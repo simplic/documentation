@@ -4,7 +4,7 @@ Using hierarchical grids, information can be displayed nested.
 
 ![~/images/hierarchical_grid_sample.png](~/images/hierarchical_grid_sample.png)
 
-To mark a grid as a hierarchical grid, the following steps are necessary:
+To use a grid as a hierarchical grid, the following steps are necessary:
 
 **Parameter definition**
 
