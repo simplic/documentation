@@ -3,6 +3,8 @@
   items:
   - name: Coding Standards and Naming Conventions
     href: getting_started/conventions.md
+  - name: How to track changes
+    href: getting_started/changetracking.md
 - name: Architecture
   href: architecture/intro.md
   items:
