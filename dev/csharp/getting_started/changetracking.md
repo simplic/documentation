@@ -12,8 +12,7 @@ Then choose the poco you want to track. The nuget package contains some attribut
     // Every Property that has this attribute wont be tracked
     [IgnoreChangeTracking]
 
-Assign the attribute **[TrackingKey]** to your primary property that you use to store the poco into the database
-
+The **[TrackingKey]** attribute should be assigned to the property that represents the primary key in the database
 Furthermore, every property you want to track and show it with a flexible name (english & german) needs the attribute **[ChangeTrackingDisplayName(Key ="YourTranslationKey")]** 
 
 After that, for every property you dont want to track, assign this attribute to it 
