@@ -21,3 +21,4 @@ steps:
     SourceFolder: 'angular_doc'
     Contents: '**'
     TargetFolder: '_site/angular_doc'
+
