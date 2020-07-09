@@ -8,9 +8,10 @@
   - name: Application arguments
     href: general/args.md
 - name: Grids
-  href: grid/intro.md
-  - name: Hirachical grid
-    href: grid/hirachical_grid.md
+  href: Grid/intro.md
+  items:
+  - name: Hierarchical grid
+    href: Grid/hierarchical_grid.md
 - name: Kanban
   href: kanban/intro.md
   items:
