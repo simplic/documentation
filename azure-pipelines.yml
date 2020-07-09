@@ -22,7 +22,7 @@ steps:
 
 - task: GitClone@2
   inputs:
-    RepositoryURL: 'https://github.com/simplic/simplic.github.io.git'
+    RepositoryURL: 'https://github.com/simplic/simplic.github.io'
     RepositoryPath: 'C:\documentation_clone'
     Branch: 'master'
     FallbackBranch: 'master'
