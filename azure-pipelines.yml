@@ -1,0 +1,31 @@
+trigger:
+- master
+- dev
+
+pr:
+  branches:
+    include:
+    - '*'
+
+pool:
+  vmImage: windows-2019
+
+steps:
+
+- task: DocFxTask@0
+  inputs:
+    solution: 'docfx.json'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'angular_doc'
+    Contents: '**'
+    TargetFolder: '_site/angular_doc'
+
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: '_site'
+    azureSubscription: 'Microsoft Partner Network(1)(3dea457d-9161-4000-be91-e8b466c4ceba)'
+    Destination: 'AzureBlob'
+    storage: 'clouddocumentation'
+    ContainerName: '$web'
