@@ -19,3 +19,17 @@ steps:
 - task: DocFxTask@0
   inputs:
     solution: 'support/docfx.json'
+
+- task: GitClone@2
+  inputs:
+    RepositoryURL: 'https://github.com/simplic/simplic.github.io.git'
+    RepositoryPath: 'C:\documentation_clone'
+    Branch: 'master'
+    FallbackBranch: 'master'
+    BaseBranch: 'master'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '_site'
+    Contents: '**'
+    TargetFolder: 'C:\documentation_clone'
