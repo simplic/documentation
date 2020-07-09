@@ -14,10 +14,12 @@ steps:
 
 - task: DocFxTask@0
   inputs:
-    solution: 'docfx.json'
+    solution: 'dev/docfx.json'
 
-- task: CopyFiles@2
+- task: DocFxTask@0
   inputs:
-    SourceFolder: 'angular_doc'
-    Contents: '**'
-    TargetFolder: '_site/angular_doc'
+    solution: 'support/docfx.json'
+
+- task: DocFxTask@0
+  inputs:
+    solution: 'user/docfx.json'
