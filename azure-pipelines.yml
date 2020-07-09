@@ -19,7 +19,3 @@ steps:
 - task: DocFxTask@0
   inputs:
     solution: 'support/docfx.json'
-
-- task: DocFxTask@0
-  inputs:
-    solution: 'user/docfx.json'
