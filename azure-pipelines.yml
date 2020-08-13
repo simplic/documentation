@@ -1,35 +1,26 @@
 trigger:
-- master
-- dev
+  branches:
+    include:
+      - master
+      - dev
 
 pr:
   branches:
     include:
-    - '*'
+      - "*"
 
 pool:
-  vmImage: windows-2019
+  vmImage: "windows-latest"
 
 steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "3.8.5"
+    displayName: "Use Python $(python.version)"
 
-- task: DocFxTask@0
-  inputs:
-    solution: 'dev/docfx.json'
-
-- task: DocFxTask@0
-  inputs:
-    solution: 'support/docfx.json'
-
-- task: GitClone@2
-  inputs:
-    RepositoryURL: 'https://github.com/simplic/simplic.github.io'
-    RepositoryPath: 'C:\documentation_clone'
-    Branch: 'master'
-    FallbackBranch: 'master'
-    BaseBranch: 'master'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '_site'
-    Contents: '**'
-    TargetFolder: 'C:\documentation_clone'
+  - task: PythonScript@0
+    inputs:
+      scriptSource: "filePath"
+      scriptPath: "test.py"
+      workingDirectory: "dev/build"
+      displayName: "Running test.py"

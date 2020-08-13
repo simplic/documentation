@@ -12,3 +12,9 @@
   href: git/
 - name: Cloud
   href: cloud/
+- name: API - Core
+  href: api_core/
+  homepage: api_core/getting_started/introduction.md
+- name: API - Plugins
+  href: api_plugins/
+  homepage: api_plugins/index.md
