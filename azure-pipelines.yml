@@ -25,6 +25,7 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
+        git config --system core.longpaths true
         cd documentation
         cd dev
         cd build
