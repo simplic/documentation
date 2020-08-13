@@ -1,8 +1,7 @@
 trigger:
   branches:
     include:
-      - master
-      - dev
+      - withapi
 
 pr:
   branches:
