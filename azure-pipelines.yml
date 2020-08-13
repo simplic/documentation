@@ -33,4 +33,5 @@ steps:
         cd dev
         cd build
         pip install -r requirements.txt
+        choco install docfx -y
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
