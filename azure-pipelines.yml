@@ -14,11 +14,11 @@ pool:
 steps:
   - checkout: self
     persistCredentials: true
-  
-     task: CmdLine@2
-      inputs:
-        script: |
-          git clone https://github.com/simplic/documentation -b withapi
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        git clone https://github.com/simplic/documentation -b withapi
 
   - task: UsePythonVersion@0
     inputs:
