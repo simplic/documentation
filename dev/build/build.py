@@ -81,14 +81,19 @@ class Progress(git.remote.RemoteProgress):
         print (f'{op_code}, {cur_count}, {max_count},{message}')
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--git-user', help='Your GitHub username')
+parser.add_argument('--git-pass', help='Your GitHub password')
 parser.add_argument('--ftp-user', help='The ftp username')
 parser.add_argument('--ftp-pass', help='The ftp password')
 args = vars(parser.parse_args())
 
+git_user = args['git_user']
+git_pass = args['git_pass']
 ftp_user = args['ftp_user']
 ftp_pass = args['ftp_pass']
 
-if not ftp_user or not ftp_pass:
+
+if not all([git_user, git_pass, ftp_user, ftp_pass]):
     print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
     exit()
 
@@ -107,8 +112,8 @@ for link in repo_links:
     repo_name = link.split('/simplic/')[1]
     dest = 'clones/' + repo_name
     try:
-        add_dir(dest)
-        git.Repo.clone_from(link, dest, branch='master', progress=Progress())
+        authed_link = link.replace('github.com', f'{git_user}:{git_pass}@github.com')
+        git.Repo.clone_from(authed_link, dest, branch='master')
     except Exception as e: # git.exc.GitCommandError
         print(str(e))
 

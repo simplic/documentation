@@ -1,10 +1,10 @@
 {
   "links": [
-    "https://github.com/simplic/simplic-filestructure.git",
-    "https://github.com/simplic/simplic-flow.git",
-    "https://github.com/simplic/simplic-lexer.git",
     "https://github.com/simplic/simplic-framework.git",
     "https://github.com/simplic/simplic-logistics.git",
-    "https://github.com/simplic/simplic-appcollection.git"
+    "https://github.com/simplic/simplic-appcollection.git",
+    "https://github.com/simplic/simplic-filestructure.git",
+    "https://github.com/simplic/simplic-flow.git",
+    "https://github.com/simplic/simplic-lexer.git"
   ]
 }
