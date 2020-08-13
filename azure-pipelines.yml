@@ -12,9 +12,6 @@ pool:
   vmImage: "windows-latest"
 
 steps:
-  - checkout: self
-    persistCredentials: true
-
   - task: CmdLine@2
     inputs:
       script: |
@@ -28,5 +25,6 @@ steps:
   - task: PythonScript@0
     inputs:
       scriptSource: "filePath"
-      scriptPath: "documentation/dev/build/test.py"
+      scriptPath: "_test.py"
+      workingDirectory: "D:/a/1/s/documentation/dev/build"
       displayName: "Running test.py"
