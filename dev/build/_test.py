@@ -9,4 +9,4 @@ args = vars(parser.parse_args())
 print(args)
 
 print(args['--git-token'] == '***')
-print(args['--git-token'] == 'heyhey'
+print(args['--git-token'] == 'heyhey')
