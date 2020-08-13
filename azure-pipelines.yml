@@ -28,4 +28,4 @@ steps:
         cd documentation
         cd dev
         cd build
-        python _test.py --git-token $(test)
+        python build.py --ftp-user $(ftp_user) --ftp-pass '$(ftp-pass)'

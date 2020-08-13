@@ -30,7 +30,6 @@ def add_dir(path):
         os.mkdir(path)
 
 def generate_py_api(repo, ftp_user, ftp_pass):
-    add_dir('xml')
     ftp = ftplib.FTP('')
     ftp.connect('simplic.biz', 22)
     ftp.login(user=ftp_user, passwd=ftp_pass)
@@ -77,19 +76,19 @@ def write_py_api_toc():
     
             print(f'Generated Python API toc for {_dir}')
 
+class Progress(git.remote.RemoteProgress):
+    def update(self, op_code, cur_count, max_count=None, message=''):
+        print (f'{op_code}, {cur_count}, {max_count},{message}')
+
 parser = argparse.ArgumentParser()
-parser.add_argument('--git-token', help='Your GitHub access token')
-parser.add_argument('--git-pass', help='Your GitHub password')
 parser.add_argument('--ftp-user', help='The ftp username')
 parser.add_argument('--ftp-pass', help='The ftp password')
 args = vars(parser.parse_args())
 
-git_token = args['git_token']
-git_pass = args['git_pass']
 ftp_user = args['ftp_user']
 ftp_pass = args['ftp_pass']
 
-if not all([git_token, git_token, ftp_user, ftp_pass]):
+if not ftp_user or not ftp_pass:
     print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
     exit()
 
@@ -101,15 +100,18 @@ with open('../docfx.json', 'r') as f:
 with open('repositories.json') as f:
     repo_links = json.load(f)['links']
 
+add_dir('clones')
+add_dir('xml')
+
 for link in repo_links:
     repo_name = link.split('/simplic/')[1]
     dest = 'clones/' + repo_name
     try:
-        git.Repo.clone_from(link, dest, branch='master')
+        git.Repo.clone_from(link, dest, branch='master', progress=Progress())
     except Exception as e: # git.exc.GitCommandError
         print(str(e))
 
-    repo=Repo(dest, repo_name)
+    repo = Repo(dest, repo_name)
 
     files = [f'build/{dest}/src/**.csproj'] if not repo.name == 'simplic-service' else [f'build/{dest}/**.csproj']
     # If associated plugin exists, append to that metadata
