@@ -28,4 +28,5 @@ steps:
         cd documentation
         cd dev
         cd build
+        pip install requirements.txt
         python build.py --ftp-user $(ftp_user) --ftp-pass '$(ftp-pass)'
