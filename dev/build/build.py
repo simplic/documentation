@@ -140,6 +140,8 @@ for link in repo_links:
         add_dir(f'../api_plugins/{repo.part_of}')
         with open(f'../api_plugins/{repo.part_of}/introduction.md', 'w+') as f:
             f.write(repo.introduction)
+    
+    print(f'{repo.name} done')
 
 write_py_api_toc()
 
