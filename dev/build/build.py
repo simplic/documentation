@@ -107,6 +107,7 @@ for link in repo_links:
     repo_name = link.split('/simplic/')[1]
     dest = 'clones/' + repo_name
     try:
+        add_dir(dest)
         git.Repo.clone_from(link, dest, branch='master', progress=Progress())
     except Exception as e: # git.exc.GitCommandError
         print(str(e))
