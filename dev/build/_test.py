@@ -8,4 +8,5 @@ parser.add_argument('--ftp-pass', help='The ftp password')
 args = vars(parser.parse_args())
 print(args)
 
-print(os.environ)
+print(args['--git-token'] == '***')
+print(args['--git-token'] == 'heyhey'
