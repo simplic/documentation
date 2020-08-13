@@ -12,6 +12,9 @@ pool:
   vmImage: "windows-latest"
 
 steps:
+  - checkout: self
+    persistCredentials: true
+
   - task: CmdLine@2
     inputs:
       script: |
