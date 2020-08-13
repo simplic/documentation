@@ -28,5 +28,5 @@ steps:
   - task: PythonScript@0
     inputs:
       scriptSource: "filePath"
-      scriptPath: "D:/documentation/dev/build/test.py"
+      scriptPath: "documentation/dev/build/test.py"
       displayName: "Running test.py"
