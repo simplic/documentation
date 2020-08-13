@@ -12,13 +12,13 @@ pool:
   vmImage: "windows-latest"
 
 steps:
-  - task: GitClone@2
-    inputs:
-      RepositoryURL: "https://github.com/simplic/documentation"
-      RepositoryPath: "C:/documentation_clone"
-      Branch: "withapi"
-      FallbackBranch: "master"
-      BaseBranch: "master"
+  - checkout: self
+    persistCredentials: true
+  
+     task: CmdLine@2
+      inputs:
+        script: |
+          git clone https://github.com/simplic/documentation -b withapi
 
   - task: UsePythonVersion@0
     inputs:
@@ -28,5 +28,5 @@ steps:
   - task: PythonScript@0
     inputs:
       scriptSource: "filePath"
-      scriptPath: "C:/documentation_clone/dev/build/test.py"
+      scriptPath: "D:/documentation/dev/build/test.py"
       displayName: "Running test.py"
