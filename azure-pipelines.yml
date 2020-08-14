@@ -36,7 +36,9 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
-        cd C:/documentation/dev/build
+        cd C:/documentation
+        cd dev
+        cd build
         pip install -r requirements.txt
         choco install docfx -y
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
@@ -45,11 +47,12 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        cd C:/documentation/dev
+        cd C:/documentation
+        cd dev
         docfx --serve
-        cd C:/documentation/support
+        cd ../support
         docfx --serve
-        cd C:/documentation/user
+        cd ../user
         docfx --serve
     displayName: "Compiling html files"
 
