@@ -60,13 +60,10 @@ steps:
 
   - task: CopyFiles@2
     inputs:
-      SourceFolder: "D:/documentation/_site/dev"
-      Contents: |
-        api_core/**
-        **/**
+      SourceFolder: "D:/documentation/_site/dev/_site"
+      Contents: "**"
       TargetFolder: "D:/simplic.github.io/dev"
       OverWrite: true
-      flattenFolders: true
     displayName: "Copying dev html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
