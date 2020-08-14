@@ -57,10 +57,9 @@ steps:
         docfx --serve
     displayName: "Compiling html files"
     
-    - task: CopyFiles
+    - task: CopyFiles@2
       sourceFolder: 
-      contents: |
-        **/documentation/_site/dev
+      Contents: "**/documentation/_site/**"
       TargetFolder: C:/simplic.github.io
       CleanTargetFolder: true
       displayName: "Copying html files to simplic.github.io (local folder)"
