@@ -33,11 +33,16 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
+        choco install docfx -y
         cd D:/documentation
         cd dev
         cd build
         pip install -r requirements.txt
-        choco install docfx -y
+    displayName: "Installing prequisites"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
     displayName: "Generate API Documentation"
 
@@ -55,11 +60,11 @@ steps:
 
   - task: CopyFiles@2
     inputs:
-      SourceFolder: "D:/documentation/_site"
+      SourceFolder: "D:/documentation/_site/dev"
       Contents: "**"
-      TargetFolder: "D:/simplic.github.io"
-      CleanTargetFolder: true
-    displayName: "Copying html files to simplic.github.io (local folder)"
+      TargetFolder: "D:/simplic.github.io/dev"
+      OverWrite: true
+    displayName: "Copying dev html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
     inputs:
