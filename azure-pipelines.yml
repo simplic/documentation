@@ -55,8 +55,8 @@ steps:
         cd ../user
         docfx --serve
     displayName: "Compiling html files"
-  
-   - task: CmdLine@2
+
+  - task: CmdLine@2
     inputs:
       script: |
         cd D:/documentation/_site
