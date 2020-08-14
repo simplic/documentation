@@ -57,13 +57,12 @@ def generate_py_api(repo, ftp_user, ftp_pass):
     os.remove(f'xml/{repo.py_api_xml_name}')
 
 def write_py_api_toc():
-    if os.path.exists('../api_core/api_python/toc.yml'): # for testing pipeline!
-        with open('../api_core/api_python/toc.yml', 'w+') as f:
-            toc = ''
-            for _f in os.listdir('../api_core/api_python'):
-                if _f != 'toc.yml':
-                    toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
-            f.write(toc)
+    with open('../api_core/api_python/toc.yml', 'w+') as f:
+        toc = ''
+        for _f in os.listdir('../api_core/api_python'):
+            if _f != 'toc.yml':
+                toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
+        f.write(toc)
     
     dirs = [f for f in os.listdir('../api_plugins') if os.path.isdir(f'../api_plugins/{f}')]
     for _dir in dirs:

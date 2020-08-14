@@ -58,6 +58,14 @@ steps:
         docfx --serve
     displayName: "Compiling html files"
 
+  - task: DeleteFiles@1
+    inputs:
+      SourceFolder: "D:/simplic.github.io"
+      Contents: |
+        "**"
+        "!.git/**/*"
+    displayName: "Cleaning out old simplic.github.io files"
+
   - task: CopyFiles@2
     inputs:
       SourceFolder: "D:/documentation/_site/dev/_site"
