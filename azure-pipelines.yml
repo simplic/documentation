@@ -18,7 +18,7 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        git clone https://github.com/simplic/documentation -b withapi
+        git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b withapi C:/documentation
     displayName: "Cloning documentation repository"
 
   - task: CmdLine@2
@@ -36,9 +36,7 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
-        cd documentation
-        cd dev
-        cd build
+        cd C:/documentation/dev/build
         pip install -r requirements.txt
         choco install docfx -y
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
@@ -47,13 +45,11 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        cd ..
+        cd C:/documentation/dev
         docfx --serve
-        cd ..
-        cd support
+        cd C:/documentation/support
         docfx --serve
-        cd ..
-        cd user
+        cd C:/documentation/user
         docfx --serve
     displayName: "Compiling html files"
 

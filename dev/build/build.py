@@ -158,7 +158,6 @@ p.wait()
 with open('../docfx.json', 'w+') as f:
     docfx['metadata'] = []
     json.dump(docfx, f)
-    print(docfx)
 
 # write api_plugin and api_plugin/* toc
 api_plugins_toc = ''
