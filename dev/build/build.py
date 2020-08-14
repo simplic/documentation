@@ -149,7 +149,7 @@ for i, link in enumerate(repo_links):
         with open(f'../api_plugins/{repo.part_of}/introduction.md', 'w+') as f:
             f.write(repo.introduction)
     
-    print(f'Just added {repo.name} to metadata. {i+1} out of {len(links)} done.')
+    print(f'Just added {repo.name} to metadata. {i+1} out of {len(repo_links)} done.')
 
 write_py_api_toc()
 
