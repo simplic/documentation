@@ -36,9 +36,7 @@ steps:
         git config --global user.email "simplic_pipeline@example.com"
         git config --global user.name "Simplic Azure Pipeline"
         choco install docfx -y
-        cd D:/documentation
-        cd dev
-        cd build
+        cd D:/documentation/dev/build
         pip install -r requirements.txt
     displayName: "Installing prequisites"
 
@@ -47,17 +45,16 @@ steps:
       script: |
         cd D:/documentation/dev/build
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
-    displayName: "Generate API Documentation"
+    displayName: "Generating API Documentation"
 
   - task: CmdLine@2
     inputs:
       script: |
-        cd D:/documentation
-        cd dev
+        cd D:/documentation/dev
         docfx --serve
-        cd ../support
+        cd D:/documentation/support
         docfx --serve
-        cd ../user
+        cd D:/documentation/user
         docfx --serve
     displayName: "Compiling html files"
 
@@ -65,8 +62,8 @@ steps:
     inputs:
       SourceFolder: "D:/documentation/_site/dev"
       Contents: |
-        "**/**"
-        "*"
+        **/*
+        *
       TargetFolder: "D:/simplic.github.io/dev"
       OverWrite: true
     displayName: "Copying dev html files to simplic.github.io (local folder)"
