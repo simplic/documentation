@@ -19,6 +19,13 @@ steps:
     inputs:
       script: |
         git clone https://github.com/simplic/documentation -b withapi
+    displayName: "Cloning documentation repository"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi C:/simplic.github.io
+    displayName: "Cloning simplic.github.io repository"
 
   - task: UsePythonVersion@0
     inputs:
@@ -35,3 +42,26 @@ steps:
         pip install -r requirements.txt
         choco install docfx -y
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
+    displayName: "Generate API Documentation"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cd ..
+        docfx --serve
+        cd ..
+        cd support
+        docfx --serve
+        cd ..
+        cd user
+        docfx --serve
+    displayName: "Compiling html files"
+    
+    - task: CopyFiles
+      sourceFolder: 
+      contents: |
+        **/documentation/_site/dev
+      TargetFolder: C:/simplic.github.io
+      CleanTargetFolder: true
+      displayName: "Copying html files to simplic.github.io (local folder)"
+
