@@ -63,7 +63,7 @@ steps:
       Contents: "**/documentation/_site/**"
       TargetFolder: C:/simplic.github.io
       CleanTargetFolder: true
-      displayName: "Copying html files to simplic.github.io (local folder)"
+    displayName: "Copying html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
     inputs:
