@@ -62,8 +62,8 @@ steps:
     inputs:
       SourceFolder: "D:/documentation/_site/dev"
       Contents: |
-        **/*
-        *
+        api_core/**
+        **/**
       TargetFolder: "D:/simplic.github.io/dev"
       OverWrite: true
       flattenFolders: true
