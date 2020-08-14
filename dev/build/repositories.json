@@ -1,3 +1,6 @@
 {
-  "links": ["https://github.com/simplic/simplic-lexer.git"]
+  "links": [
+    "https://github.com/simplic/simplic-framework.git",
+    "https://github.com/simplic/simplic-lexer.git"
+  ]
 }
