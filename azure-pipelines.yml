@@ -37,7 +37,6 @@ steps:
       script: |
         git config --system core.longpaths true
         cd D:/documentation
-        dir /s /b /o:gn
         cd dev
         cd build
         pip install -r requirements.txt
@@ -49,7 +48,6 @@ steps:
     inputs:
       script: |
         cd D:/documentation
-        dir /s /b /o:gn
         cd dev
         docfx --serve
         cd ../support
@@ -57,13 +55,12 @@ steps:
         cd ../user
         docfx --serve
     displayName: "Compiling html files"
-
-  - task: CopyFiles@2
+  
+   - task: CmdLine@2
     inputs:
-      sourceFolder:
-      Contents: "**/documentation/_site/**"
-      TargetFolder: D:/simplic.github.io
-      CleanTargetFolder: true
+      script: |
+        cd D:/documentation/_site
+        copy *.* /y D:/simplic.github.io
     displayName: "Copying html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
@@ -72,6 +69,6 @@ steps:
         cd D:/simplic.github.io
         dir /s /b /o:gn
         git add .
-        git commit -m '@pipeline: Comitting compiled html files'
+        git commit -m 'at pipeline: Comitting compiled html files'
         git push
     displayName: "Test if files were copied and push"
