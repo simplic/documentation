@@ -66,6 +66,7 @@ steps:
         *
       TargetFolder: "D:/simplic.github.io/dev"
       OverWrite: true
+      flattenFolders: true
     displayName: "Copying dev html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
