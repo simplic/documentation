@@ -109,7 +109,7 @@ with open('repositories.json') as f:
 add_dir('clones')
 add_dir('xml')
 
-for link in repo_links:
+for i, link in enumerate(repo_links):
     repo_name = link.split('/simplic/')[1]
     dest = 'clones/' + repo_name
     try:
@@ -149,7 +149,7 @@ for link in repo_links:
         with open(f'../api_plugins/{repo.part_of}/introduction.md', 'w+') as f:
             f.write(repo.introduction)
     
-    print(f'{repo.name} done')
+    print(f'Just added {repo.name} to metadata. {i+1} out of {len(links))} done.')
 
 write_py_api_toc()
 
