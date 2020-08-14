@@ -64,3 +64,10 @@ steps:
       TargetFolder: C:/simplic.github.io
       CleanTargetFolder: true
       displayName: "Copying html files to simplic.github.io (local folder)"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cd C:/simplic.github.io
+        dir /s /b /o:gn
+    displayName: "Test if files were copied"
