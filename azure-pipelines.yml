@@ -18,13 +18,13 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b withapi C:/documentation
+        git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b withapi D:/documentation
     displayName: "Cloning documentation repository"
 
   - task: CmdLine@2
     inputs:
       script: |
-        git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi C:/simplic.github.io
+        git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi D:/simplic.github.io
     displayName: "Cloning simplic.github.io repository"
 
   - task: UsePythonVersion@0
@@ -36,7 +36,8 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
-        cd C:/documentation
+        cd D:/documentation
+        dir /s /b /o:gn
         cd dev
         cd build
         pip install -r requirements.txt
@@ -47,7 +48,8 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        cd C:/documentation
+        cd D:/documentation
+        dir /s /b /o:gn
         cd dev
         docfx --serve
         cd ../support
@@ -60,14 +62,14 @@ steps:
     inputs:
       sourceFolder:
       Contents: "**/documentation/_site/**"
-      TargetFolder: C:/simplic.github.io
+      TargetFolder: D:/simplic.github.io
       CleanTargetFolder: true
     displayName: "Copying html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
     inputs:
       script: |
-        cd C:/simplic.github.io
+        cd D:/simplic.github.io
         dir /s /b /o:gn
         git add .
         git commit -m '@pipeline: Comitting compiled html files'
