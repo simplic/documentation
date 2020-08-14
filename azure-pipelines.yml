@@ -33,6 +33,8 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
+        git config --global user.email "simplic_pipeline@example.com"
+        git config --global user.name "Simplic Azure Pipeline"
         choco install docfx -y
         cd D:/documentation
         cd dev
@@ -61,7 +63,9 @@ steps:
   - task: CopyFiles@2
     inputs:
       SourceFolder: "D:/documentation/_site/dev"
-      Contents: "**"
+      Contents: |
+        "**/**"
+        "*"
       TargetFolder: "D:/simplic.github.io/dev"
       OverWrite: true
     displayName: "Copying dev html files to simplic.github.io (local folder)"
