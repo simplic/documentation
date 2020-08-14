@@ -45,6 +45,7 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
+        cd D:/documentation/dev/build
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
     displayName: "Generate API Documentation"
 
