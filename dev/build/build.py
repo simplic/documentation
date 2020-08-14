@@ -119,8 +119,10 @@ for link in repo_links:
         print(str(e))
 
     repo = Repo(dest, repo_name)
+    files = [f'build/{dest}/src/**.csproj']
+    if repo.name in ['simplic-service.git', 'Simplic-Import-Tyre24.git', 'simplic-change-tracking.git']:
+        files = [f'build/{dest}/**.csproj']
 
-    files = [f'build/{dest}/src/**.csproj'] if not repo.name == 'simplic-service' else [f'build/{dest}/**.csproj']
     # If associated plugin exists, append to that metadata
     for i, m in enumerate(docfx['metadata']):
             if repo.part_of in m['dest']:
