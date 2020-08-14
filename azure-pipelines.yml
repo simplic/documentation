@@ -12,9 +12,6 @@ pool:
   vmImage: "windows-latest"
 
 steps:
-  - checkout: self
-    persistCredentials: true
-
   - task: CmdLine@2
     inputs:
       script: |
@@ -56,11 +53,12 @@ steps:
         docfx --serve
     displayName: "Compiling html files"
 
-  - task: CmdLine@2
+  - task: CopyFiles@2
     inputs:
-      script: |
-        cd D:/documentation/_site
-        copy *.* /y D:/simplic.github.io
+      SourceFolder: "D:/documentation/_site"
+      Contents: "**"
+      TargetFolder: "D:/simplic.github.io"
+      CleanTargetFolder: true
     displayName: "Copying html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
