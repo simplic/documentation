@@ -66,6 +66,22 @@ steps:
       OverWrite: true
     displayName: "Copying dev html files to simplic.github.io (local folder)"
 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "D:/documentation/_site/support/_site"
+      Contents: "**"
+      TargetFolder: "D:/simplic.github.io/support"
+      OverWrite: true
+    displayName: "Copying support html files to simplic.github.io (local folder)"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "D:/documentation/_site/user/_site"
+      Contents: "**"
+      TargetFolder: "D:/simplic.github.io/user"
+      OverWrite: true
+    displayName: "Copying user html files to simplic.github.io (local folder)"
+
   - task: CmdLine@2
     inputs:
       script: |
