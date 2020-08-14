@@ -70,8 +70,8 @@ steps:
     inputs:
       script: |
         cd D:/simplic.github.io
-        dir /s /b /o:gn
         git add .
-        git commit -m 'at pipeline: Comitting compiled html files'
+        git status
+        git commit -m "Comitting compiled html files"
         git push
     displayName: "Test if files were copied and push"
