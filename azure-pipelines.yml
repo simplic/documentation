@@ -1,12 +1,10 @@
-trigger:
-  branches:
-    include:
-      - withapi
+trigger: none
 
-pr:
-  branches:
-    include:
-      - "*"
+pr: none
+
+schedules:
+  - cron: "0 10 * * *"
+    displayName: "Nightly documentation build"
 
 pool:
   vmImage: "windows-latest"
