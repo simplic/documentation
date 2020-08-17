@@ -1,2 +1,4 @@
 - name: Introduction
   href: introduction.md
+- name: Reading the API Documentation
+  href: reading_the_api.md
