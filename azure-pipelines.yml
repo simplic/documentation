@@ -3,7 +3,7 @@ trigger: none
 pr: none
 
 schedules:
-  - cron: "7 10 * * *"
+  - cron: "8 8 * * *"
     displayName: "Nightly documentation build"
     branches:
       include:
