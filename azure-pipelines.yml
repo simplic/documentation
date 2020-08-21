@@ -4,6 +4,7 @@ pr: none
 
 schedules:
   - cron: "0 0 * * *"
+    always: true
     displayName: "Nightly documentation build"
     branches:
       include:
