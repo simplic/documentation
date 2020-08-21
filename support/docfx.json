@@ -1,6 +1,5 @@
 {
-  "metadata": [
-  ],
+  "metadata": [],
   "build": {
     "content": [
       {
@@ -20,12 +19,7 @@
         ]
       },
       {
-        "files": [
-          "HR/**.md",
-          "HR/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["HR/**.md", "HR/**/toc.yml", "toc.yml", "*.md"]
       },
       {
         "files": [
@@ -36,28 +30,13 @@
         ]
       },
       {
-        "files": [
-          "ERP/**.md",
-          "ERP/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["ERP/**.md", "ERP/**/toc.yml", "toc.yml", "*.md"]
       },
       {
-        "files": [
-          "Logistics/**.md",
-          "Logistics/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["Logistics/**.md", "Logistics/**/toc.yml", "toc.yml", "*.md"]
       },
       {
-        "files": [
-          "BI/**.md",
-          "BI/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["BI/**.md", "BI/**/toc.yml", "toc.yml", "*.md"]
       },
       {
         "files": [
@@ -70,31 +49,19 @@
     ],
     "resource": [
       {
-        "files": [
-          "images/**"
-        ]
+        "files": ["images/**"]
       }
     ],
     "overwrite": [
       {
-        "files": [
-          
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**"
-        ]
+        "files": [],
+        "exclude": ["obj/**", "_site/**"]
       }
     ],
     "dest": "../_site/support/_site",
-    "globalMetadataFiles": 
-    [
-      "globalMetadata.json"
-    ],
+    "globalMetadataFiles": ["globalMetadata.json"],
     "fileMetadataFiles": [],
-    "template": [
-      "../template/support"
-    ],
+    "template": ["default", "../template/support"],
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,
