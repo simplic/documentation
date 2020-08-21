@@ -40,7 +40,7 @@
     "dest": "../_site/dev/_site",
     "globalMetadataFiles": ["globalMetadata.json"],
     "fileMetadataFiles": [],
-    "template": ["../template/dev"],
+    "template": ["default", "../template/dev"],
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,
