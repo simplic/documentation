@@ -42,6 +42,7 @@
     "https://github.com/simplic/simplic-autoupdater.git",
     "https://github.com/simplic/simplic-patch-installer.git",
     "https://github.com/simplic/simplic-cloud-api.git",
-    "https://github.com/simplic/simplic-erp.git"
+    "https://github.com/simplic/simplic-erp.git",
+    "https://github.com/simplic/simplic-service.git"
   ]
 }

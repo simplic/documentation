@@ -24,6 +24,8 @@ class Repo:
 
             if self.contains_py_api:
                 self.py_api_xml_name = config['py_api_xml_name']
+            self.exclude = [] #config['exclude'] #["**/*Test*.csproj", "**/*Test*/**/*"]
+
 
 def add_dir(path):
     if not os.path.exists(path):
@@ -115,26 +117,27 @@ for i, link in enumerate(repo_links):
     try:
         authed_link = link.replace('github.com', f'{git_user}:{git_pass}@github.com')
         git.Repo.clone_from(authed_link, dest, branch='master')
-    except Exception as e: # git.exc.GitCommandError
+    except git.exc.GitCommandError as e: # git.exc.GitCommandError
         print(str(e))
 
     repo = Repo(dest, repo_name)
     files = [f'build/{dest}/src/**.csproj']
     if repo.name in ['simplic-service.git', 'Simplic-Import-Tyre24.git', 'simplic-change-tracking.git']:
         files = [f'build/{dest}/**.csproj']
-
-    # If associated plugin exists, append to that metadata
-    for i, m in enumerate(docfx['metadata']):
-            if repo.part_of in m['dest']:
-                m['src']['files'] += files
-                break
+    
+    # If associated plugin is already in metadata, append to it
+    for m in docfx['metadata']:
+        if repo.part_of in m['dest']:
+            m['src']['files'] += files
+            m['src']['exclude'] += repo.exclude
+            break
     else:
         if repo.part_of == 'core':
-            metadata = {'src': {'files': files},
-                'dest': 'api_core/api'}
+            metadata = {'src': {'files': files, 'exclude': repo.exclude},
+                'dest': 'api_core/api','filter': 'filter.yml'}
         else:
-                metadata = {'src': {'files': files},
-                'dest': f'api_plugins/{repo.part_of}/api'}
+            metadata = {'src': {'files': files, 'exclude': repo.exclude},
+            'dest': f'api_plugins/{repo.part_of}/api', 'filter': 'filter.yml'}
         docfx['metadata'].append(metadata)
     
     if repo.contains_py_api:
@@ -177,4 +180,3 @@ for plugin in plugins:
 
 with open('../api_plugins/toc.yml', 'w+') as f:
     f.write(api_plugins_toc)
-
