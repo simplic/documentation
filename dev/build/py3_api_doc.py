@@ -83,7 +83,7 @@ def get_module(docs, type_name):
         return docs[type_name]
 
 
-def gen_docu_from_xml(xml_file_path, dest_dir):
+def generate_documentation_from_xml(xml_file_path, dest_dir):
     modDocs = dict()
 
     # open xml file
