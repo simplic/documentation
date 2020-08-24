@@ -17,7 +17,7 @@ Adding a repository to the api documentation is as easy as doing the following t
 
 to the root directory of your repositories master branch.
 
-1. Add the repositories HTTPS clone link to the `repositories.json` file located in dev/Build
+2. Add the repositories HTTPS clone link to the `repositories.json` file located in dev/Build
 
 If the repository you want to add is a main repository, it should also contain a manually written `introduction.md` file that describes what functionalities the plugin provides.
 
