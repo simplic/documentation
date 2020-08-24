@@ -1,7 +1,7 @@
 import json
 import os
 import git
-from py3_api_doc import gen_docu_from_xml
+from py3_api_doc import generate_documentation_from_xml
 import ftplib
 import subprocess
 import argparse
@@ -45,12 +45,12 @@ def generate_py_api(repo, ftp_user, ftp_pass):
 
     if repo.part_of == 'core':
         add_dir('../api_core/api_python')
-        gen_docu_from_xml(f'xml/{repo.py_api_xml_name}',
+        generate_documentation_from_xml(f'xml/{repo.py_api_xml_name}',
                       f'../api_core/api_python')
     else:
         add_dir(f'../api_plugins/{repo.part_of}')
         add_dir(f'../api_plugins/{repo.part_of}/api_python')
-        gen_docu_from_xml(f'xml/{repo.py_api_xml_name}',
+        generate_documentation_from_xml(f'xml/{repo.py_api_xml_name}',
                       f'../api_plugins/{repo.part_of}/api_python')
    
     print(f'Generated Python API files for {repo.name}')
