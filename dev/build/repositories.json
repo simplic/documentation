@@ -38,11 +38,11 @@
     "https://github.com/simplic/sql-dotnet.git",
     "https://github.com/simplic/simplic-commandshell.git",
     "https://github.com/simplic/simplic-lexer.git",
-    "https://github.com/simplic/Simplic-Import-Tyre24.git",
+    "https://github.com/simplic/Simplic-Import-Tyre4.git",
     "https://github.com/simplic/simplic-autoupdater.git",
     "https://github.com/simplic/simplic-patch-installer.git",
     "https://github.com/simplic/simplic-cloud-api.git",
-    "https://github.com/simplic/simplic-erp.git",
-    "https://github.com/simplic/simplic-service.git"
+    "https://github.com/simplic/simplic-service.git",
+    "https://github.com/simplic/simplic-erp.git"
   ]
 }

@@ -24,7 +24,7 @@ class Repo:
 
             if self.contains_py_api:
                 self.py_api_xml_name = config['py_api_xml_name']
-            self.exclude = [] #config['exclude'] #["**/*Test*.csproj", "**/*Test*/**/*"]
+            self.exclude = config['exclude'] #["**/*Test*.csproj", "**/*Test*/**/*"]
 
 
 def add_dir(path):
