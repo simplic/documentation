@@ -31,7 +31,8 @@
       { "files": ["git/**.md", "git/**/toc.yml", "toc.yml", "*.md"] },
       { "files": ["cloud/**.md", "cloud/**/toc.yml", "toc.yml", "*.md"] },
       { "files": ["api_plugins/**"] },
-      { "files": ["api_core/**"] }
+      { "files": ["api_core/**"] },
+      { "files": ["database/**"] }
     ],
     "resource": [{ "files": ["images/**"] }],
     "overwrite": [
