@@ -15,7 +15,9 @@ class Table:
         self.columns = []
         for row in raw_column_metadata:
             column = {'name': row[0], 'coltype': row[1], 'nulls': row[2], 'length': row[3], 'syslength': row[4],
-                     'in_primary_key': row[5], 'colno': row[6], 'default_value': row[7], 'column_kind': row[8]}
+                     'in_primary_key': row[5], 'colno': row[6], 'default_value': row[7], 'column_kind': row[8],
+                     'column_remarks': row[10], 'foreign_key_origin': row[11], 'foreign_key_origin_name': row[12],
+                      'foreign_key_origin_module': row[13]}
             self.columns.append(column)
 
 class View:
@@ -76,22 +78,24 @@ def generate_tables(cur):
     result = fetch_tables(cur)
     if result:
         table_name = result[0][0]
-        remarks = result[0][-1]
-        columns = [result[0][1:-1]]
+        remarks = result[0][10]
+        columns = [result[0][1:]]
 
         for i, row in enumerate(result[1:]):
             if row[0] == table_name:
-                columns.append(row[1:-1])
+                columns.append(row[1:])
             elif table_name:
                 table = Table(table_name, remarks, columns)
                 generate_table_markdown(table)
                 table_name = row[0]
-                remarks = row[-1]
-                columns = [row[1:-1]]
+                remarks = row[10]
+                columns = [row[1:]]
             print(f'Row {i+1} {row}')
         # Generate the last view
         table = Table(table_name, remarks, columns)
         generate_table_markdown(table)
+    else:
+        print("Resultset empty")
 
 def generate_toc_module():
     modules = [f'../database/{d}' for d in os.listdir('../database/') if os.path.isdir(f'../database/{d}')]
@@ -118,26 +122,25 @@ def generate_toc_module():
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--conn-string', help='The full database connection string - Including Driver, Server, Host, Port, Database, UID and PWD.')
+parser.add_argument('--conn1-string', help='The full database connection string - Including Driver, Server, Host, Port, Database, UID and PWD.')
+parser.add_argument('--conn2-string', help='The full database connection string - Including Driver, Server, Host, Port, Database, UID and PWD.')
 args = vars(parser.parse_args())
 
-connection_string = args['conn_string']
+connection1_string = args['conn1_string']
+connection2_string = args['conn2_string']
 
-if not connection_string:
+if not connection1_string or not connection2_string:
     print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build_database.py --help')
     exit()  
 
-conn = pyodbc.connect(connection_string)
-cur = conn.cursor()
+for conn_string in [connection1_string, connection2_string]:
+    conn = pyodbc.connect(conn_string)
+    cur = conn.cursor()
 
-generate_procedures(cur)
-generate_views(cur)
-generate_tables(cur)
+    generate_procedures(cur)
+    generate_views(cur)
+    generate_tables(cur)
+
+    cur.close()
+    conn.close()
 generate_toc_module()
-
-
-cur.close()
-conn.close()
-
-
-
