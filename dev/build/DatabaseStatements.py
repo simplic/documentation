@@ -3,7 +3,49 @@ import urllib
 import pyodbc
 
 def fetch_procedures(cursor):
-    cursor.execute("Select proc_name, remarks from sys.sysprocedure where creator = 101 and remarks like '<module>%' order by proc_name asc")
+    # cursor.execute("Select proc_name, remarks from sys.sysprocedure where creator = 101 and proc_defn like 'create procedure%' and remarks like '<module>%' order by proc_name asc")
+    cursor.execute("select proc_name,"
+                    + "p.remarks as proc_remarks,"
+                    + "parm_id,"
+                    + "parm_name,"
+                    + "parm_type,"
+                    + "parm_mode_in as mode_in,"
+                    + "parm_mode_out as mode_out,"
+                    + "base_type_str as parm_datatype,"
+                    + "width,"
+                    + "scale,"
+                    + '"default",'
+                    + "parm.remarks as param_remarks "
+                    + "from " 
+                    + "sys.sysprocedure as p " 
+                    + "join "
+                    + "sys.sysprocparm as parm "
+                    + "on p.proc_id = parm.proc_id "
+                    + "where p.creator = 101 and proc_defn like 'create procedure%' and p.remarks like '<module>%' " 
+                    + "order by proc_name asc, parm.parm_id asc")
+    return cursor.fetchall()
+
+def fetch_functions(cursor):
+    # cursor.execute("Select proc_name, remarks from sys.sysprocedure where creator = 101 and proc_defn like 'create function%' and remarks like '<module>%' order by proc_name asc")
+    cursor.execute("select proc_name,"
+                    + "p.remarks as proc_remarks,"
+                    + "parm_id,"
+                    + "parm_name,"
+                    + "parm_type,"
+                    + "parm_mode_in as mode_in,"
+                    + "parm_mode_out as mode_out,"
+                    + "base_type_str as parm_datatype,"
+                    + "width,"
+                    + "scale,"
+                    + '"default",'
+                    + "parm.remarks as param_remarks "
+                    + "from " 
+                    + "sys.sysprocedure as p " 
+                    + "join "
+                    + "sys.sysprocparm as parm "
+                    + "on p.proc_id = parm.proc_id "
+                    + "where p.creator = 101 and proc_defn like 'create function%' and p.remarks like '<module>%' " 
+                    + "order by proc_name asc, parm.parm_id asc")
     return cursor.fetchall()
 
 def fetch_tables(cursor):

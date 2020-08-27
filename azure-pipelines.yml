@@ -39,7 +39,8 @@ steps:
         choco install docfx -y
         cd D:/documentation/dev/build
         pip install -r requirements.txt
-        "DIE register.bat ausfuehren"
+        cd db_drivers
+        .\reg-sybase.cmd
     displayName: "Installing prequisites"
 
   - task: CmdLine@2
@@ -52,6 +53,13 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
+        cd D:/documentation/dev/build
+        python build_database.py --conn1-string $(database_connection1_string) --conn2-string $(database_connection2_string)
+    displayName: "Generating Database Documentation"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
         cd D:/documentation/dev
         docfx --serve
         cd D:/documentation/support
@@ -59,13 +67,6 @@ steps:
         cd D:/documentation/user
         docfx --serve
     displayName: "Compiling html files"
-
-  - task: CmdLine@2
-    inputs:
-      script: |
-        cd D:/documentation/dev/build
-        python build_database.py --conn-string $(database_connection_string)
-    displayName: "Generating Database Documentation"
 
   - task: DeleteFiles@1
     inputs:

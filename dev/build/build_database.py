@@ -3,8 +3,8 @@ import urllib
 import pyodbc
 import xml.etree.ElementTree as ET
 import argparse
-from DatabaseStatements import fetch_procedures, fetch_tables, fetch_views
-from GenerateMarkdown import generate_procedure_markdown, generate_view_markdown, generate_table_markdown
+from DatabaseStatements import fetch_procedures, fetch_tables, fetch_views, fetch_functions
+from GenerateMarkdown import generate_procedure_markdown, generate_view_markdown, generate_table_markdown, generate_function_markdown
 
 class Table:
     def __init__(self, name, remarks, raw_column_metadata):
@@ -12,12 +12,14 @@ class Table:
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
+        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
+            
         self.columns = []
         for row in raw_column_metadata:
             column = {'name': row[0], 'coltype': row[1], 'nulls': row[2], 'length': row[3], 'syslength': row[4],
                      'in_primary_key': row[5], 'colno': row[6], 'default_value': row[7], 'column_kind': row[8],
                      'column_remarks': row[10], 'foreign_key_origin': row[11], 'foreign_key_origin_name': row[12],
-                      'foreign_key_origin_module': row[13]}
+                      'foreign_key_origin_remarks': row[13]}
             self.columns.append(column)
 
 class View:
@@ -34,11 +36,33 @@ class View:
 
 # Filter what tables / views the procedure alters / uses later maybe
 class Procedure:
-    def __init__(self, name, remarks):
+    def __init__(self, name, remarks, raw_params):
         self.name = name
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
+
+        self.params = []
+        for row in raw_params:
+            param = {'id': row[0], 'name': row[1], 'type': row[2], 'mode_in': row[3], 'mode_out': row[4],'datatype': row[5],
+                     'length': row[6], 'scale': row[7], 'default': row[8], 'remarks': row[9]}
+            self.params.append(param)
+    
+    def __repr__(self):
+        return str({'name': self.name, 'module': self.module, 'comment': self.comment})
+
+class Function:
+    def __init__(self, name, remarks, raw_params):
+        self.name = name
+        root = ET.fromstring(f'<xml>{remarks}</xml>')
+        self.module = root.find('module').text
+        self.comment = root.find('description').text
+
+        self.params = []
+        for row in raw_params:
+            param = {'id': row[0], 'name': row[1], 'type': row[2], 'mode_in': row[3], 'mode_out': row[4],'datatype': row[5],
+                     'length': row[6], 'scale': row[7], 'default': row[8], 'remarks': row[9]}
+            self.params.append(param)
     
     def __repr__(self):
         return str({'name': self.name, 'module': self.module, 'comment': self.comment})
@@ -46,12 +70,42 @@ class Procedure:
 def generate_procedures(cur):
     result = fetch_procedures(cur)
     if result:
+        procedure_name = result[0][0]
+        remarks = result[0][1]
+        params = [result[0][2:]]
         for i, row in enumerate(result):
-            procedure_name = row[0]
-            remarks = row[1]
-            procedure = Procedure(procedure_name, remarks)
-            generate_procedure_markdown(procedure)
+            if row[0] == procedure_name:
+                params.append(row[2:])
+            else:
+                procedure = Procedure(procedure_name, remarks, params)
+                generate_procedure_markdown(procedure)
+                procedure_name = row[0]
+                remarks = row[1]
+                params = [row[2:]]
             print(f'Row {i+1} {row}')
+        # Generate last procedure
+        procedure = Procedure(procedure_name, remarks, params)
+        generate_procedure_markdown(procedure)
+
+def generate_functions(cur):
+    result = fetch_functions(cur)
+    if result:
+        function_name = result[0][0]
+        remarks = result[0][1]
+        params = [result[0][2:]]
+        for i, row in enumerate(result):
+            if row[0] == function_name:
+                params.append(row[2:])
+            else:
+                function = Function(function_name, remarks, params)
+                generate_function_markdown(function)
+                function_name = row[0]
+                remarks = row[1]
+                params = [row[2:]]
+            print(f'Row {i+1} {row}')
+        # Generate last procedure
+        function = Function(function_name, remarks, params)
+        generate_function_markdown(function)
 
 def generate_views(cur):
     result = fetch_views(cur)
@@ -63,7 +117,7 @@ def generate_views(cur):
         for i, row in enumerate(result[1:]):
             if row[0] == view_name:
                 columns.append(row[1:-1])
-            elif view_name:
+            else:
                 view = View(view_name, remarks, columns)
                 generate_view_markdown(view)
                 view_name = row[0]
@@ -84,7 +138,7 @@ def generate_tables(cur):
         for i, row in enumerate(result[1:]):
             if row[0] == table_name:
                 columns.append(row[1:])
-            elif table_name:
+            else:
                 table = Table(table_name, remarks, columns)
                 generate_table_markdown(table)
                 table_name = row[0]
@@ -138,6 +192,7 @@ for conn_string in [connection1_string, connection2_string]:
     cur = conn.cursor()
 
     generate_procedures(cur)
+    generate_functions(cur)
     generate_views(cur)
     generate_tables(cur)
 

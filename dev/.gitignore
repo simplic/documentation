@@ -21,3 +21,4 @@ _site
 
 **/database/**
 !database/index.md
+!database/table_not_added.md
