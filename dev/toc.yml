@@ -1,13 +1,11 @@
 - name: GUI
   href: gui/
 - name: Database
-  href: database_design/
+  href: database/
 - name: C#
   href: csharp/
 - name: IronPython
   href: ironpython_design/
-- name: Nuget Packages
-  href: nuget_packages/
 - name: Git
   href: git/
 - name: Cloud

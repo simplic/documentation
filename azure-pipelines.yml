@@ -39,6 +39,8 @@ steps:
         choco install docfx -y
         cd D:/documentation/dev/build
         pip install -r requirements.txt
+        cd db_drivers
+        .\reg-sybase.cmd
     displayName: "Installing prequisites"
 
   - task: CmdLine@2
@@ -47,6 +49,13 @@ steps:
         cd D:/documentation/dev/build
         python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
     displayName: "Generating API Documentation"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cd D:/documentation/dev/build
+        python build_database.py --conn1-string $(database_connection1_string) --conn2-string $(database_connection2_string)
+    displayName: "Generating Database Documentation"
 
   - task: CmdLine@2
     inputs:
