@@ -39,8 +39,8 @@ steps:
         choco install docfx -y
         cd D:/documentation/dev/build
         pip install -r requirements.txt
-        cd db_drivers
-        .\reg-sybase.cmd
+        cd D:/documentation/dev/build/db_drivers
+        regsvr32 dbodbc12simplic_azure.dll
     displayName: "Installing prequisites"
 
   - task: CmdLine@2
@@ -54,7 +54,7 @@ steps:
     inputs:
       script: |
         cd D:/documentation/dev/build
-        python build_database.py --conn1-string $(database_connection1_string) --conn2-string $(database_connection2_string)
+        python build_database.py -c $(connection_string_dev02)
     displayName: "Generating Database Documentation"
 
   - task: CmdLine@2
