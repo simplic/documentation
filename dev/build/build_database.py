@@ -194,6 +194,8 @@ def generate_toc_module():
     with open('../database/toc.yml', 'a+') as _f:
         _f.write(database_toc)
 
+import platform
+print(platform.architecture())
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--conn-strings', help='Pass a variable amount of connection strings, seperated by whitespaces.', nargs='+')
