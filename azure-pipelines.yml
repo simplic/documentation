@@ -19,11 +19,11 @@ steps:
         git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b withapi D:/documentation
     displayName: "Cloning documentation repository"
 
-  - task: CmdLine@2
-    inputs:
-      script: |
-        git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi D:/simplic.github.io
-    displayName: "Cloning simplic.github.io repository"
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: |
+  #       git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi D:/simplic.github.io
+  #   displayName: "Cloning simplic.github.io repository"
 
   - task: UsePythonVersion@0
     inputs:
@@ -43,12 +43,12 @@ steps:
         regsvr32 /s dbodbc12simplic_azure.dll
     displayName: "Installing prequisites"
 
-  - task: CmdLine@2
-    inputs:
-      script: |
-        cd D:/documentation/dev/build
-        python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
-    displayName: "Generating API Documentation"
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: |
+  #       cd D:/documentation/dev/build
+  #       python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
+  #   displayName: "Generating API Documentation"
 
   - task: CmdLine@2
     inputs:
@@ -57,55 +57,55 @@ steps:
         python build_database.py -c $(connection_string_dev02)
     displayName: "Generating Database Documentation"
 
-  - task: CmdLine@2
-    inputs:
-      script: |
-        cd D:/documentation/dev
-        docfx --serve
-        cd D:/documentation/support
-        docfx --serve
-        cd D:/documentation/user
-        docfx --serve
-    displayName: "Compiling html files"
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: |
+  #       cd D:/documentation/dev
+  #       docfx --serve
+  #       cd D:/documentation/support
+  #       docfx --serve
+  #       cd D:/documentation/user
+  #       docfx --serve
+  #   displayName: "Compiling html files"
 
-  - task: DeleteFiles@1
-    inputs:
-      SourceFolder: "D:/simplic.github.io"
-      Contents: |
-        "**"
-        "!.git/**/*"
-    displayName: "Cleaning out old simplic.github.io files"
+  # - task: DeleteFiles@1
+  #   inputs:
+  #     SourceFolder: "D:/simplic.github.io"
+  #     Contents: |
+  #       "**"
+  #       "!.git/**/*"
+  #   displayName: "Cleaning out old simplic.github.io files"
 
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: "D:/documentation/_site/dev/_site"
-      Contents: "**"
-      TargetFolder: "D:/simplic.github.io/dev"
-      OverWrite: true
-    displayName: "Copying dev html files to simplic.github.io (local folder)"
+  # - task: CopyFiles@2
+  #   inputs:
+  #     SourceFolder: "D:/documentation/_site/dev/_site"
+  #     Contents: "**"
+  #     TargetFolder: "D:/simplic.github.io/dev"
+  #     OverWrite: true
+  #   displayName: "Copying dev html files to simplic.github.io (local folder)"
 
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: "D:/documentation/_site/support/_site"
-      Contents: "**"
-      TargetFolder: "D:/simplic.github.io/support"
-      OverWrite: true
-    displayName: "Copying support html files to simplic.github.io (local folder)"
+  # - task: CopyFiles@2
+  #   inputs:
+  #     SourceFolder: "D:/documentation/_site/support/_site"
+  #     Contents: "**"
+  #     TargetFolder: "D:/simplic.github.io/support"
+  #     OverWrite: true
+  #   displayName: "Copying support html files to simplic.github.io (local folder)"
 
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: "D:/documentation/_site/user/_site"
-      Contents: "**"
-      TargetFolder: "D:/simplic.github.io/user"
-      OverWrite: true
-    displayName: "Copying user html files to simplic.github.io (local folder)"
+  # - task: CopyFiles@2
+  #   inputs:
+  #     SourceFolder: "D:/documentation/_site/user/_site"
+  #     Contents: "**"
+  #     TargetFolder: "D:/simplic.github.io/user"
+  #     OverWrite: true
+  #   displayName: "Copying user html files to simplic.github.io (local folder)"
 
-  - task: CmdLine@2
-    inputs:
-      script: |
-        cd D:/simplic.github.io
-        git add .
-        git status
-        git commit -m "Comitting compiled html files"
-        git push
-    displayName: "Test if files were copied and push"
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: |
+  #       cd D:/simplic.github.io
+  #       git add .
+  #       git status
+  #       git commit -m "Comitting compiled html files"
+  #       git push
+  #   displayName: "Test if files were copied and push"
