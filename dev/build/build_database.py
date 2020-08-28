@@ -196,18 +196,14 @@ def generate_toc_module():
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--conn1-string', help='The full database connection string - Including Driver, Server, Host, Port, Database, UID and PWD.')
-parser.add_argument('--conn2-string', help='The full database connection string - Including Driver, Server, Host, Port, Database, UID and PWD.')
+parser.add_argument('-c', '--conn-strings', help='Pass a variable amount of connection strings, seperated by whitespaces.', nargs='+')
 args = vars(parser.parse_args())
 
-connection1_string = args['conn1_string']
-connection2_string = args['conn2_string']
+if not args['conn_strings']:
+    print('Enter atleast one connection string. Get a list of the arguments by adding --help to the script call. e.g. python build_database.py --help')
+    exit()
 
-if not connection1_string or not connection2_string:
-    print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build_database.py --help')
-    exit()  
-
-for conn_string in [connection1_string, connection2_string]:
+for conn_string in args['conn_strings']:
     conn = pyodbc.connect(conn_string)
     cur = conn.cursor()
 

@@ -1,1 +1,0 @@
-regsvr32 dbodbc12simplic_azure.dll
