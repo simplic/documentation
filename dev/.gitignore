@@ -18,9 +18,3 @@ _site
 /**/__pycache__/
 /build/clones/
 /**/test.py
-
-**/database/**
-!database/index.md
-!database/toc.yml
-!database/table_not_added.md
-!database/database_design
