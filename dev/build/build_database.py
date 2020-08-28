@@ -15,11 +15,30 @@ class Table:
         self.deprecated = root.find('deprecated') if root.find('deprecated') else None
             
         self.columns = []
+
+        next_column_name = ''
+        next_foreign_key_origin = ''
+        next_foreign_key_origin_name = ''
         for row in raw_column_metadata:
-            column = {'name': row[0], 'coltype': row[1], 'nulls': row[2], 'length': row[3], 'syslength': row[4],
-                     'in_primary_key': row[5], 'colno': row[6], 'default_value': row[7], 'column_kind': row[8],
-                     'column_remarks': row[10], 'foreign_key_origin': row[11], 'foreign_key_origin_name': row[12],
-                      'foreign_key_origin_remarks': row[13]}
+            column = {'name': row[1], 'coltype': row[2], 'nulls': row[3], 'length': row[4], 'syslength': row[5],
+                     'in_primary_key': row[6], 'colno': row[7], 'default_value': row[8], 'column_kind': row[9],
+                     'column_remarks': row[11], 'foreign_key_origin': row[12],  'foreign_key_origin_name': row[13],
+                      'foreign_key_origin_remarks': row[14], 'referenced_by_table_names': row[15], 
+                      'referenced_by_column_names': row[16], 'referenced_by_remarks': row[17]}
+            # Multiple columns as a foreign key handeling TODO: untested!
+            if column['name'] == next_column_name:
+                column['foreign_key_origin'] = next_foreign_key_origin
+                column['foreign_key_origin_name'] = next_foreign_key_origin_name
+                next_column_name = ''
+                next_foreign_key_origin = ''
+                next_foreign_key_origin_name = ''
+            if column['foreign_key_origin_name']:
+                if ',' in column['foreign_key_origin_name']:
+                    column['foreign_key_origin_name'] = column['foreign_key_origin_name'].split(',')[0]
+                    next_foreign_key_origin = column['foreign_key_origin']
+                    next_column_name = column['foreign_key_origin_name'].split(',', 1)[1].split(' IS ')[0]
+                    next_foreign_key_origin_name = column['foreign_key_origin_name'].split(',', 1)[1].split(' IS ')[1]
+
             self.columns.append(column)
 
 class View:
@@ -82,7 +101,7 @@ def generate_procedures(cur):
                 procedure_name = row[0]
                 remarks = row[1]
                 params = [row[2:]]
-            print(f'Row {i+1} {row}')
+            # print(f'Row {i+1} {row}')
         # Generate last procedure
         procedure = Procedure(procedure_name, remarks, params)
         generate_procedure_markdown(procedure)
@@ -102,7 +121,7 @@ def generate_functions(cur):
                 function_name = row[0]
                 remarks = row[1]
                 params = [row[2:]]
-            print(f'Row {i+1} {row}')
+            # print(f'Row {i+1} {row}')
         # Generate last procedure
         function = Function(function_name, remarks, params)
         generate_function_markdown(function)
@@ -123,7 +142,7 @@ def generate_views(cur):
                 view_name = row[0]
                 remarks = row[-1]
                 columns = [row[1:-1]]
-            print(f'Row {i+1} {row}')
+           #  print(f'Row {i+1} {row}')
         # Generate the last view
         view = View(view_name, remarks, columns)
         generate_view_markdown(view)
@@ -133,18 +152,19 @@ def generate_tables(cur):
     if result:
         table_name = result[0][0]
         remarks = result[0][10]
-        columns = [result[0][1:]]
+        columns = [result[0]]
 
         for i, row in enumerate(result[1:]):
             if row[0] == table_name:
-                columns.append(row[1:])
+                print(len(row))
+                columns.append(row)
             else:
                 table = Table(table_name, remarks, columns)
                 generate_table_markdown(table)
                 table_name = row[0]
                 remarks = row[10]
-                columns = [row[1:]]
-            print(f'Row {i+1} {row}')
+                columns = [row]
+           #  print(f'Row {i+1} {row}')
         # Generate the last view
         table = Table(table_name, remarks, columns)
         generate_table_markdown(table)

@@ -1,18 +1,2 @@
 - name: Getting Started
   href: database_design/toc.yml
-- name: Article
-  href: Article/toc.yml
-- name: Core
-  href: Core/toc.yml
-- name: ERP
-  href: ERP/toc.yml
-- name: HR
-  href: HR/toc.yml
-- name: Logistics
-  href: Logistics/toc.yml
-- name: SAC
-  href: SAC/toc.yml
-- name: Simplic CSV
-  href: Simplic CSV/toc.yml
-- name: Soloplan
-  href: Soloplan/toc.yml

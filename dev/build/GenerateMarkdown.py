@@ -84,6 +84,23 @@ def generate_table_markdown(table):
         for column in table.columns:
             write_line(f, f'### {column["name"]}')
             write_line(f, column['column_remarks'])
+
+            if column['referenced_by_table_names'] and column['referenced_by_column_names'] and column['referenced_by_remarks']:
+                print(column['name'] + table.name)
+                write_line(f, "#### Referenced by")
+                tables_referencing_this = column['referenced_by_table_names'].split('|')
+                columns_referencing_this = column['referenced_by_column_names'].split('|')
+                referencing_this_remarks = column['referenced_by_remarks'].split('|')
+
+                for foreign_table, foreign_column_name, foreign_remarks in zip(tables_referencing_this, columns_referencing_this, referencing_this_remarks):
+                    root = ET.fromstring(f'<xml>{foreign_remarks}</xml>')
+                    if root:
+                        module = root.find('module').text
+                        if module == table.module:
+                            write_line(f,f'[{foreign_table}]({foreign_table}.md#{foreign_column_name.lower()}) as {foreign_column_name}  ')
+                        else:
+                            write_line(f,f'[{foreign_table}](../../{module}/Tables/{foreign_table}.md#{foreign_column_name.lower()})  as {foreign_column_name}  ')
+
             write_line(f, '| Nr | Datatype | Null allowed | Length | Decimal digits | In Primary Key | Default Value | Foreign Key Origin |')
             write_line(f, '| --- | --- | --- | --- | :---: | --- | --- | :---: |')
             
