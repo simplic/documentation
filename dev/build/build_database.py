@@ -208,6 +208,7 @@ if not args['conn_strings']:
 [print(d) for d in pyodbc.drivers()]
 
 for conn_string in args['conn_strings']:
+    print(conn_string)
     conn = pyodbc.connect(conn_string)
     cur = conn.cursor()
 
