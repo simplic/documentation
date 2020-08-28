@@ -21,4 +21,6 @@ _site
 
 **/database/**
 !database/index.md
+!database/toc.yml
 !database/table_not_added.md
+!database/database_design

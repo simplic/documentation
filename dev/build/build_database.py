@@ -152,7 +152,7 @@ def generate_tables(cur):
         print("Resultset empty")
 
 def generate_toc_module():
-    modules = [f'../database/{d}' for d in os.listdir('../database/') if os.path.isdir(f'../database/{d}')]
+    modules = [f'../database/{d}' for d in os.listdir('../database/') if os.path.isdir(f'../database/{d}') and d != 'database_design']
     database_toc = ''
     for module in modules:
         module_toc = ''
@@ -171,7 +171,7 @@ def generate_toc_module():
                     + f'  href: {module.split("../database/")[1]}/toc.yml\n')
         with open(f'{module}/toc.yml', 'w+') as _f:
             _f.write(module_toc)
-    with open('../database/toc.yml', 'w+') as _f:
+    with open('../database/toc.yml', 'a+') as _f:
         _f.write(database_toc)
 
 
