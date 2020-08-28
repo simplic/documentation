@@ -9,6 +9,7 @@ from GenerateMarkdown import generate_procedure_markdown, generate_view_markdown
 class Table:
     def __init__(self, name, remarks, raw_column_metadata):
         self.name = name
+        print(f'<xml>{remarks}</xml>')
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
@@ -44,6 +45,7 @@ class Table:
 class View:
     def __init__(self, name, remarks, raw_column_metadata):
         self.name = name
+        print(f'<xml>{remarks}</xml>')
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
@@ -57,6 +59,7 @@ class View:
 class Procedure:
     def __init__(self, name, remarks, raw_params):
         self.name = name
+        print(f'<xml>{remarks}</xml>')
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
@@ -73,6 +76,7 @@ class Procedure:
 class Function:
     def __init__(self, name, remarks, raw_params):
         self.name = name
+        print(f'<xml>{remarks}</xml>')
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
