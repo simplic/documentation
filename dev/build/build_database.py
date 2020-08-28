@@ -194,8 +194,6 @@ def generate_toc_module():
     with open('../database/toc.yml', 'a+') as _f:
         _f.write(database_toc)
 
-import platform
-print(platform.architecture())
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--conn-strings', help='Pass a variable amount of connection strings, seperated by whitespaces.', nargs='+')
@@ -205,10 +203,7 @@ if not args['conn_strings']:
     print('Enter atleast one connection string. Get a list of the arguments by adding --help to the script call. e.g. python build_database.py --help')
     exit()
 
-[print(d) for d in pyodbc.drivers()]
-
 for conn_string in args['conn_strings']:
-    print(conn_string)
     conn = pyodbc.connect(conn_string)
     cur = conn.cursor()
 
