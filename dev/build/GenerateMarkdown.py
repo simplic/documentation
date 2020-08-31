@@ -9,6 +9,18 @@ def generate_procedure_markdown(procedure):
     with open(f'../database/{procedure.module}/Procedures/{procedure.name}.md', 'w+') as f:
         write_line(f, f'# {procedure.name}')
         write_line(f, procedure.comment)
+
+        if procedure.deprecated:
+            write_line(f, '## Deprecated')
+            root = ET.fromstring(f'<xml>{procedure.deprecated}</xml>')
+            use_instead_module = root.find('module').text
+            use_instead_name = root.find('name').text
+
+            if use_instead_module == procedure.module:
+                write_line(f, f'This procedure is deprecated. It is advised to use [{use_instead_name}]({use_instead_name}.md) instead.')
+            else:
+                write_line(f, f'This procedure is deprecated. It is advised to use [{use_instead_name}](../../{use_instead_module}/Procedures/{use_instead_name}.md) instead.')
+       
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
         write_line(f, '| --- | --- | --- | --- | --- | --- | :---: | --- | --- |')
@@ -36,12 +48,24 @@ def generate_function_markdown(function):
     with open(f'../database/{function.module}/Functions/{function.name}.md', 'w+') as f:
         write_line(f, f'# {function.name}')
         write_line(f, function.comment)
+    
+        if function.deprecated:
+            write_line(f, '## Deprecated')
+            root = ET.fromstring(f'<xml>{function.deprecated}</xml>')
+            use_instead_module = root.find('module').text
+            use_instead_name = root.find('name').text
+
+            if use_instead_module == function.module:
+                write_line(f, f'This function is deprecated. It is advised to use [{use_instead_name}]({use_instead_name}.md) instead.')
+            else:
+                write_line(f, f'This function is deprecated. It is advised to use [{use_instead_name}](../../{use_instead_module}/Function/{use_instead_name}.md) instead.')
+
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
         write_line(f, '| --- | --- | --- | --- | --- | --- | :---: | --- | --- |')
         for param in function.params:
             row_string = f'| {param["id"]} | {param["name"]} | {param["type"]} |'
-           
+            
             if param["mode_in"] == 'Y' and param["mode_out"] == 'Y':
                 row_string += ' IN & OUT |'
             elif param["mode_in"] == 'Y':
@@ -62,11 +86,19 @@ def generate_table_markdown(table):
         os.mkdir(f'../database/{table.module}/Tables/')
     with open(f'../database/{table.module}/Tables/{table.name}.md', 'w+') as f:
         write_line(f, f'# {table.name}')
+        write_line(f, table.comment)
+
         if table.deprecated:
             write_line(f, '## Deprecated')
-            # write_line(f, f'This table is deprecated. It is advised to use [{table.deprecated}]({table.deprecated}.md) instead.') # has to be in same module
-            write_line(f, table.deprecated)
-        write_line(f, table.comment)
+            root = ET.fromstring(f'<xml>{table.deprecated}</xml>')
+            use_instead_module = root.find('module').text
+            use_instead_name = root.find('name').text
+
+            if use_instead_module == table.module:
+                write_line(f, f'This table is deprecated. It is advised to use [{use_instead_name}]({use_instead_name}.md) instead.')
+            else:
+                write_line(f, f'This table is deprecated. It is advised to use [{use_instead_name}](../../{use_instead_module}/Tables/{use_instead_name}.md) instead.')
+        
         write_line(f,'## Overview')
         write_line(f, 'This is an overview of the column metadata')
         write_line(f, '| Nr | Name | Datatype | Null Allowed | Length | Decimal Digits | In Primary Key | Default Value | Is Foreign Key |')
@@ -139,6 +171,18 @@ def generate_view_markdown(view):
     with open(f'../database/{view.module}/Views/{view.name}.md', 'w+') as f:
         write_line(f, f'# {view.name}')
         write_line(f, view.comment)
+
+        if view.deprecated:
+            write_line(f, '## Deprecated')
+            root = ET.fromstring(f'<xml>{view.deprecated}</xml>')
+            use_instead_module = root.find('module').text
+            use_instead_name = root.find('name').text
+
+            if use_instead_module == view.module:
+                write_line(f, f'This view is deprecated. It is advised to use [{use_instead_name}]({use_instead_name}.md) instead.')
+            else:
+                write_line(f, f'This view is deprecated. It is advised to use [{use_instead_name}](../../{use_instead_module}/Views/{use_instead_name}.md) instead.')
+
         write_line(f,'## Columns')
         write_line(f, '| Nr | Name | Datatype | Null possible | Length | Decimal digits |')
         write_line(f, '| --- | --- | --- | --- | --- | :---: |')

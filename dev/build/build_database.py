@@ -47,6 +47,8 @@ class View:
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
+        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
+
         self.columns = []
         for row in raw_column_metadata:
             column = {'name': row[0], 'coltype': row[1], 'nulls': row[2], 'length': row[3], 'syslength': row[4],
@@ -60,6 +62,7 @@ class Procedure:
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
+        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
 
         self.params = []
         for row in raw_params:
@@ -76,6 +79,7 @@ class Function:
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
+        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
 
         self.params = []
         for row in raw_params:
