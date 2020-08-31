@@ -6,14 +6,24 @@ import argparse
 from DatabaseStatements import fetch_procedures, fetch_tables, fetch_views, fetch_functions
 from GenerateMarkdown import generate_procedure_markdown, generate_view_markdown, generate_table_markdown, generate_function_markdown
 
-class Table:
-    def __init__(self, name, remarks, raw_column_metadata):
+class SQLObject:
+    def __init__(self, name, remarks):
         self.name = name
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
-        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
-            
+        
+        if root.find('deprecated'):
+            self.deprecated = True
+            self.use_instead_module = root.find('deprecated').find('module').text
+            self.use_instead_name = root.find('deprecated').find('name').text
+        else:
+            self.deprecated = False
+
+class Table(SQLObject):
+    def __init__(self, name, remarks, raw_column_metadata):
+        super().__init__(name, remarks)
+        
         self.columns = []
 
         next_column_name = ''
@@ -41,13 +51,9 @@ class Table:
 
             self.columns.append(column)
 
-class View:
+class View(SQLObject):
     def __init__(self, name, remarks, raw_column_metadata):
-        self.name = name
-        root = ET.fromstring(f'<xml>{remarks}</xml>')
-        self.module = root.find('module').text
-        self.comment = root.find('description').text
-        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
+        super().__init__(name, remarks)
 
         self.columns = []
         for row in raw_column_metadata:
@@ -56,13 +62,9 @@ class View:
             self.columns.append(column)
 
 # Filter what tables / views the procedure alters / uses later maybe
-class Procedure:
+class Procedure(SQLObject):
     def __init__(self, name, remarks, raw_params):
-        self.name = name
-        root = ET.fromstring(f'<xml>{remarks}</xml>')
-        self.module = root.find('module').text
-        self.comment = root.find('description').text
-        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
+        super().__init__(name, remarks)
 
         self.params = []
         for row in raw_params:
@@ -73,13 +75,9 @@ class Procedure:
     def __repr__(self):
         return str({'name': self.name, 'module': self.module, 'comment': self.comment})
 
-class Function:
+class Function(SQLObject):
     def __init__(self, name, remarks, raw_params):
-        self.name = name
-        root = ET.fromstring(f'<xml>{remarks}</xml>')
-        self.module = root.find('module').text
-        self.comment = root.find('description').text
-        self.deprecated = root.find('deprecated') if root.find('deprecated') else None
+        super().__init__(name, remarks)
 
         self.params = []
         for row in raw_params:
@@ -160,7 +158,6 @@ def generate_tables(cur):
 
         for i, row in enumerate(result[1:]):
             if row[0] == table_name:
-                print(len(row))
                 columns.append(row)
             else:
                 table = Table(table_name, remarks, columns)
