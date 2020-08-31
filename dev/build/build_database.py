@@ -9,6 +9,7 @@ from GenerateMarkdown import generate_procedure_markdown, generate_view_markdown
 class SQLObject:
     def __init__(self, name, remarks):
         self.name = name
+        print(f'<xml>{remarks}</xml>')
         root = ET.fromstring(f'<xml>{remarks}</xml>')
         self.module = root.find('module').text
         self.comment = root.find('description').text
