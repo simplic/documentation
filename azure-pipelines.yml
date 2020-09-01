@@ -61,11 +61,11 @@ steps:
     inputs:
       script: |
         cd D:/documentation/dev
-        docfx --serve
+        docfx build
         cd D:/documentation/support
-        docfx --serve
+        docfx build
         cd D:/documentation/user
-        docfx --serve
+        docfx build
     displayName: "Compiling html files"
 
   - task: DeleteFiles@1

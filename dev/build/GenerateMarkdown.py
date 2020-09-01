@@ -92,7 +92,7 @@ def generate_table_markdown(table):
         write_line(f, '| Nr | Name | Datatype | Null Allowed | Length | Decimal Digits | In Primary Key | Default Value | Is Foreign Key |')
         write_line(f, '| --- | --- | --- | --- | --- | :---: | --- | --- | --- |')
         for column in table.columns:
-            column_string = f'| {column["colno"]} | [{column["name"]}](#{column["name"].lower()}) | {column["coltype"]} |'
+            column_string = f'| {column["colno"]} | [{column["name"]}](#{column["name"].lower().replace("_","")}) | {column["coltype"]} |'
             column_string += ' true |' if column['nulls'] == 'Y' else ' false |'
             column_string += f' {column["length"]} |'
             column_string += ' - |' if not any(x in column['coltype'] for x in ('decimal', 'numeric')) else f'{column["syslength"]} |'
@@ -117,9 +117,9 @@ def generate_table_markdown(table):
                     if root:
                         module = root.find('module').text
                         if module == table.module:
-                            write_line(f,f'[{foreign_table}]({foreign_table}.md#{foreign_column_name.lower()}) as {foreign_column_name}  ')
+                            write_line(f,f'[{foreign_table}]({foreign_table}.md#{foreign_column_name.lower().replace("_","")}) as {foreign_column_name}  ')
                         else:
-                            write_line(f,f'[{foreign_table}](../../{module}/Tables/{foreign_table}.md#{foreign_column_name.lower()})  as {foreign_column_name}  ')
+                            write_line(f,f'[{foreign_table}](../../{module}/Tables/{foreign_table}.md#{foreign_column_name.lower().replace("_","")})  as {foreign_column_name}  ')
 
             write_line(f, '| Nr | Datatype | Null allowed | Length | Decimal digits | In Primary Key | Default Value | Foreign Key Origin |')
             write_line(f, '| --- | --- | --- | --- | :---: | --- | --- | :---: |')
@@ -140,9 +140,9 @@ def generate_table_markdown(table):
                     if root:
                         foreign_module = root.find('module').text
                         if foreign_module == table.module:
-                            row_string += f'({column["foreign_key_origin"]}.md#{column["foreign_key_origin_name"].lower()}) |'
+                            row_string += f'({column["foreign_key_origin"]}.md#{column["foreign_key_origin_name"].lower().replace("_","")}) |'
                         else:
-                            row_string += f'(../../{foreign_module}/Tables/{column["foreign_key_origin"]}.md#{column["foreign_key_origin_name"].lower()}) |'
+                            row_string += f'(../../{foreign_module}/Tables/{column["foreign_key_origin"]}.md#{column["foreign_key_origin_name"].lower().replace("_","")}) |'
                     else:
                         row_string += '(../../table_not_added.md) |' 
                         print('Foreign key has wrong remarks syntax!')
