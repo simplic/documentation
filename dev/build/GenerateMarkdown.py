@@ -12,10 +12,12 @@ def generate_procedure_markdown(procedure):
 
         if procedure.deprecated:
             write_line(f, '## Deprecated')
-            if procedure.use_instead_module == procedure.module:
-                write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}]({procedure.use_instead_name}.md) instead.')
-            else:
-                write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}](../../{procedure.use_instead_module}/Procedures/{procedure.use_instead_name}.md) instead.')
+            write_line(f, procedure.deprecated_description)
+            if procedure.has_use_instead:
+                if procedure.use_instead_module == procedure.module:
+                    write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}]({procedure.use_instead_name}.md) instead.')
+                else:
+                    write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}](../../{procedure.use_instead_module}/Procedures/{procedure.use_instead_name}.md) instead.')
        
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
@@ -47,10 +49,12 @@ def generate_function_markdown(function):
     
         if function.deprecated:
             write_line(f, '## Deprecated')
-            if function.use_instead_module == function.module:
-                write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}]({function.use_instead_name}.md) instead.')
-            else:
-                write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}](../../{function.use_instead_module}/Functions/{function.use_instead_name}.md) instead.')
+            write_line(f, function.deprecated_description)
+            if function.has_use_instead:
+                if function.use_instead_module == function.module:
+                    write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}]({function.use_instead_name}.md) instead.')
+                else:
+                    write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}](../../{function.use_instead_module}/Functions/{function.use_instead_name}.md) instead.')
 
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
@@ -82,10 +86,12 @@ def generate_table_markdown(table):
 
         if table.deprecated:
             write_line(f, '## Deprecated')
-            if table.use_instead_module == table.module:
-                write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}]({table.use_instead_name}.md) instead.')
-            else:
-                write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}](../../{table.use_instead_module}/Tables/{table.use_instead_name}.md) instead.')
+            write_line(f, table.deprecated_description)
+            if table.has_use_instead:
+                if table.use_instead_module == table.module:
+                    write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}]({table.use_instead_name}.md) instead.')
+                else:
+                    write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}](../../{table.use_instead_module}/Tables/{table.use_instead_name}.md) instead.')
         
         write_line(f,'## Overview')
         write_line(f, 'This is an overview of the column metadata')
@@ -162,10 +168,12 @@ def generate_view_markdown(view):
 
         if view.deprecated:
             write_line(f, '## Deprecated')
-            if view.use_instead_module == view.module:
-                write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}]({view.use_instead_name}.md) instead.')
-            else:
-                write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}](../../{view.use_instead_module}/Views/{view.use_instead_name}.md) instead.')
+            write_line(f, view.deprecated_description)
+            if view.has_use_instead:
+                if view.use_instead_module == view.module:
+                    write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}]({view.use_instead_name}.md) instead.')
+                else:
+                    write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}](../../{view.use_instead_module}/Views/{view.use_instead_name}.md) instead.')
 
         write_line(f,'## Columns')
         write_line(f, '| Nr | Name | Datatype | Null possible | Length | Decimal digits |')

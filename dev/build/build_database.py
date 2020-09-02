@@ -16,8 +16,14 @@ class SQLObject:
         
         if root.find('deprecated'):
             self.deprecated = True
-            self.use_instead_module = root.find('deprecated').find('module').text
-            self.use_instead_name = root.find('deprecated').find('name').text
+            self.deprecated_description = root.find('deprecated').find('description').text
+            
+            if root.find('deprecated').find('module'):
+                self.has_use_instead = True
+                self.use_instead_module = root.find('deprecated').find('module').text
+                self.use_instead_name = root.find('deprecated').find('name').text
+            else:
+                self.has_use_instead = False
         else:
             self.deprecated = False
 
