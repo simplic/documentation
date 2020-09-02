@@ -24,7 +24,7 @@ class Repo:
 
             if self.contains_py_api:
                 self.py_api_xml_name = config['py_api_xml_name']
-            self.exclude = config['exclude'] #["**/*Test*.csproj", "**/*Test*/**/*"]
+            self.exclude = config['exclude']
 
 
 def add_dir(path):
@@ -38,11 +38,7 @@ def generate_py_api(repo, ftp_user, ftp_pass):
     ftp.cwd('/.net-xml-doc')
     print(ftp.nlst())
 
-    try:
-        ftp.retrbinary(f'RETR {repo.py_api_xml_name}',
-                       open(f'xml/{repo.py_api_xml_name}', 'wb').write)
-    except Exception as e:
-        print(str(e))
+    ftp.retrbinary(f'RETR {repo.py_api_xml_name}', open(f'xml/{repo.py_api_xml_name}', 'wb').write)
     ftp.quit()
 
     if repo.part_of == 'core':
@@ -78,6 +74,30 @@ def write_py_api_toc():
                 f.write(toc)
     
             print(f'Generated Python API toc for {_dir}')
+
+
+# TODO: generate py_api and code_samples toc in one function
+def write_code_samples_toc():
+    if os.path.exists('../api_core/code_samples'):
+        with open('../api_core/code_samples/toc.yml') as f:
+            toc = ''
+            for _f in os.listdir('../api_core/code_samples'):
+                if _f != 'toc.yml':
+                    toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
+            f.write(toc)
+    
+    dirs = [f for f in os.listdir('../api_plugins') if os.path.isdir(f'../api_plugins/{f}')]
+    for _dir in dirs:
+        if os.path.exists(f'../api_plugins/{_dir}/code_samples'):
+            with open(f'../api_plugins/{_dir}/code_samples/toc.yml', 'w+') as f:
+                toc = ''
+                for _f in os.listdir(f'../api_plugins/{_dir}/code_samples'):
+                    if _f != 'toc.yml':
+                        toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
+                f.write(toc)
+    
+            print(f'Generated Code Sample toc for {_dir}')    
+
 
 class Progress(git.remote.RemoteProgress):
     def update(self, op_code, cur_count, max_count=None, message=''):
@@ -141,7 +161,10 @@ for i, link in enumerate(repo_links):
         docfx['metadata'].append(metadata)
     
     if repo.contains_py_api:
-        generate_py_api(repo, ftp_user, ftp_pass)
+        try:
+            generate_py_api(repo, ftp_user, ftp_pass)
+        except Exception as e:
+            print(f'Exception when generating py_api for {repo.name}:\n{str(e)}')
 
     # Save Introduction
     if repo.is_main_repo and repo.part_of == 'core':
@@ -169,6 +192,8 @@ api_plugins_toc = ''
 plugins = [f for f in os.listdir('../api_plugins') if os.path.isdir(f'../api_plugins/{f}')]
 for plugin in plugins:
     plugin_toc = '- name: Introduction\n  href: introduction.md\n'
+    if os.path.exists(f'../api_plugins/{plugin}/code_samples'):
+        plugin_toc += '- name: Code Samples\n  href: code_samples/toc.yml\n'
     if os.path.exists(f'../api_plugins/{plugin}/api'):
         plugin_toc += '- name: Reference\n  href: api/toc.yml\n'
     if os.path.exists(f'../api_plugins/{plugin}/api_python'):

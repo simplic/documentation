@@ -12,7 +12,11 @@ _site
 /api_core/api_python/
 /api_core/getting_started/introduction.md
 
-/api_plugins/**
+/api_plugins/**/api_python/
+/api_plugins/**/api/
+/api_plugins/**/toc.yml
+/api_plugins/toc.yml
+
 !/api_plugins/index.md
 
 /**/__pycache__/

@@ -1,5 +1,7 @@
 - name: Getting Started
   href: getting_started/toc.yml
+- name: Code Samples
+  href: code_samples/toc.yml
 - name: Reference
   href: api/toc.yml
 - name: Python Reference
