@@ -15,9 +15,9 @@ def generate_procedure_markdown(procedure):
             write_line(f, procedure.deprecated_description)
             if procedure.has_use_instead:
                 if procedure.use_instead_module == procedure.module:
-                    write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}]({procedure.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{procedure.use_instead_name}]({procedure.use_instead_name}.md) instead.')
                 else:
-                    write_line(f, f'This procedure is deprecated. It is advised to use [{procedure.use_instead_name}](../../{procedure.use_instead_module}/Procedures/{procedure.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{procedure.use_instead_name}](../../{procedure.use_instead_module}/Procedures/{procedure.use_instead_name}.md) instead.')
        
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
@@ -52,9 +52,9 @@ def generate_function_markdown(function):
             write_line(f, function.deprecated_description)
             if function.has_use_instead:
                 if function.use_instead_module == function.module:
-                    write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}]({function.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{function.use_instead_name}]({function.use_instead_name}.md) instead.')
                 else:
-                    write_line(f, f'This function is deprecated. It is advised to use [{function.use_instead_name}](../../{function.use_instead_module}/Functions/{function.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{function.use_instead_name}](../../{function.use_instead_module}/Functions/{function.use_instead_name}.md) instead.')
 
         write_line(f, '## Params')
         write_line(f, '| Nr | Name | Type | Mode | Datatype | Length | Decimal Digits | Default Value | Description |')
@@ -89,9 +89,9 @@ def generate_table_markdown(table):
             write_line(f, table.deprecated_description)
             if table.has_use_instead:
                 if table.use_instead_module == table.module:
-                    write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}]({table.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{table.use_instead_name}]({table.use_instead_name}.md) instead.')
                 else:
-                    write_line(f, f'This table is deprecated. It is advised to use [{table.use_instead_name}](../../{table.use_instead_module}/Tables/{table.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{table.use_instead_name}](../../{table.use_instead_module}/Tables/{table.use_instead_name}.md) instead.')
         
         write_line(f,'## Overview')
         write_line(f, 'This is an overview of the column metadata')
@@ -112,7 +112,7 @@ def generate_table_markdown(table):
             write_line(f, column['column_remarks'])
 
             if column['referenced_by_table_names'] and column['referenced_by_column_names'] and column['referenced_by_remarks']:
-                print(column['name'] + table.name)
+                # print(column['name'] + table.name)
                 write_line(f, "#### Referenced by")
                 tables_referencing_this = column['referenced_by_table_names'].split('|')
                 columns_referencing_this = column['referenced_by_column_names'].split('|')
@@ -140,7 +140,7 @@ def generate_table_markdown(table):
 
             # This needs some heavy testing first
             if column["foreign_key_origin"]:
-                print(column["foreign_key_origin_remarks"])
+                # print(column["foreign_key_origin_remarks"])
                 if column["foreign_key_origin_remarks"]:
                     root = ET.fromstring(f'<xml>{column["foreign_key_origin_remarks"]}</xml>')
                     if root:
@@ -171,9 +171,9 @@ def generate_view_markdown(view):
             write_line(f, view.deprecated_description)
             if view.has_use_instead:
                 if view.use_instead_module == view.module:
-                    write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}]({view.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{view.use_instead_name}]({view.use_instead_name}.md) instead.')
                 else:
-                    write_line(f, f'This view is deprecated. It is advised to use [{view.use_instead_name}](../../{view.use_instead_module}/Views/{view.use_instead_name}.md) instead.')
+                    write_line(f, f'It is advised to use [{view.use_instead_name}](../../{view.use_instead_module}/Views/{view.use_instead_name}.md) instead.')
 
         write_line(f,'## Columns')
         write_line(f, '| Nr | Name | Datatype | Null possible | Length | Decimal digits |')
