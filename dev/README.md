@@ -56,4 +56,4 @@ Required
 Optional
 * **deprecated**: Only use this tag if the SQLObject is deprecated.
   * **deprecated** > *description*: This is required if the SQLObject is deprecated. Use it to say since when the Object is deprecated or why etc.
-  * deprecated > name & deprecated > module: This is optional and should be used to refer to a use instead alternative to the deprecated Object, incase it exists. Put the Name of the alternative Object in *name* and the module in *module*.
+  * **deprecated** > name & **deprecated** > module: This is optional and should be used to refer to a use instead alternative to the deprecated Object, incase it exists. Put the Name of the alternative Object in *name* and the module in *module*.
