@@ -180,6 +180,10 @@ def generate_documentation_from_xml(xml_file_path, dest_dir):
             print(value.summary)
             print('')
 
+            write_line(file, '---')
+            write_line(file, f'uid: PythonAPI.{value.type_name}')
+            write_line(file, '---')
+
             write_line(file, value.type_name)
             write_line(file, '===')
             write_line(file, '')
