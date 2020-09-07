@@ -79,7 +79,7 @@ def write_py_api_toc():
 # TODO: generate py_api and code_samples toc in one function
 def write_code_samples_toc():
     if os.path.exists('../api_core/code_samples'):
-        with open('../api_core/code_samples/toc.yml') as f:
+        with open('../api_core/code_samples/toc.yml', 'w+') as f:
             toc = ''
             for _f in os.listdir('../api_core/code_samples'):
                 if _f != 'toc.yml':
@@ -178,6 +178,7 @@ for i, link in enumerate(repo_links):
     print(f'Just added {repo.name} to metadata. {i+1} out of {len(repo_links)} done.')
 
 write_py_api_toc()
+write_code_samples_toc()
 
 with open('../docfx.json', 'w+') as f:
     json.dump(docfx, f)
