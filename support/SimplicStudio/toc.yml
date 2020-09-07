@@ -11,7 +11,7 @@
   href: Best practice/intro.md
   items:
   - name: Move to a new windows server
-    href: Best practice/ini.md
+    href: Best practice/move_simplic_appserver.md
 - name: Grids
   href: Grid/intro.md
   items:
