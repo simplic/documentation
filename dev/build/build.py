@@ -1,3 +1,4 @@
+#TODO: Comments and refactor
 import json
 import os
 import git
@@ -5,6 +6,7 @@ from py3_api_doc import generate_documentation_from_xml
 import ftplib
 import subprocess
 import argparse
+from pathlib import Path
 
 
 class Repo:
@@ -36,7 +38,6 @@ def generate_py_api(repo, ftp_user, ftp_pass):
     ftp.connect('simplic.biz', 22)
     ftp.login(user=ftp_user, passwd=ftp_pass)
     ftp.cwd('/.net-xml-doc')
-    print(ftp.nlst())
 
     ftp.retrbinary(f'RETR {repo.py_api_xml_name}', open(f'xml/{repo.py_api_xml_name}', 'wb').write)
     ftp.quit()
@@ -55,48 +56,16 @@ def generate_py_api(repo, ftp_user, ftp_pass):
     os.remove(f'xml/{repo.py_api_xml_name}')
 
 def write_py_api_toc():
-    if os.path.exists('../api_core/api_python'):
-        with open('../api_core/api_python/toc.yml', 'w+') as f:
-            toc = ''
-            for _f in os.listdir('../api_core/api_python'):
-                if _f != 'toc.yml':
-                    toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
-            f.write(toc)
-    
-    dirs = [f for f in os.listdir('../api_plugins') if os.path.isdir(f'../api_plugins/{f}')]
-    for _dir in dirs:
-        if os.path.exists(f'../api_plugins/{_dir}/api_python'):
-            with open(f'../api_plugins/{_dir}/api_python/toc.yml', 'w+') as f:
-                toc = ''
-                for _f in os.listdir(f'../api_plugins/{_dir}/api_python'):
-                    if _f != 'toc.yml':
-                        toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
-                f.write(toc)
-    
-            print(f'Generated Python API toc for {_dir}')
+    pass
 
 
 # TODO: generate py_api and code_samples toc in one function
 def write_code_samples_toc():
-    if os.path.exists('../api_core/code_samples'):
-        with open('../api_core/code_samples/toc.yml', 'w+') as f:
-            toc = ''
-            for _f in os.listdir('../api_core/code_samples'):
-                if _f != 'toc.yml':
-                    toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
-            f.write(toc)
-    
-    dirs = [f for f in os.listdir('../api_plugins') if os.path.isdir(f'../api_plugins/{f}')]
+    dirs = [_dir for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python'))]
     for _dir in dirs:
-        if os.path.exists(f'../api_plugins/{_dir}/code_samples'):
-            with open(f'../api_plugins/{_dir}/code_samples/toc.yml', 'w+') as f:
-                toc = ''
-                for _f in os.listdir(f'../api_plugins/{_dir}/code_samples'):
-                    if _f != 'toc.yml':
-                        toc += f'- name: {_f.split(".md")[0]}\n  href: {_f}\n'
-                f.write(toc)
-    
-            print(f'Generated Code Sample toc for {_dir}')    
+        with open(Path(f'{_dir}/toc.yml'), 'w+') as f:
+            toc = ''.join([f'- name: {_f[:-3]}\n  href: {_f}\n' for _f in os.listdir(_dir) if _f.endswith('.md')])
+            f.write(toc)
 
 
 class Progress(git.remote.RemoteProgress):
@@ -187,6 +156,7 @@ p.wait()
 with open('../docfx.json', 'w+') as f:
     docfx['metadata'] = []
     json.dump(docfx, f)
+
 
 # write api_plugin and api_plugin/* toc
 api_plugins_toc = ''
