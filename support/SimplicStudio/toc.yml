@@ -73,6 +73,11 @@
   items:
   - name: Frontend localization
     href: Localization/frontendlocalization.md
+- name: E-Mail configuration
+  href: EMail/intro.md
+  items:
+  - name: E-Mail template guidelines
+    href: EMail/mail_template_guideline.md
 - name: Troubleshooting
   href: Troubleshooting/intro.md
   items:
