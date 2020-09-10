@@ -55,15 +55,12 @@ def generate_py_api(repo, ftp_user, ftp_pass):
     print(f'Generated Python API files for {repo.name}')
     os.remove(f'xml/{repo.py_api_xml_name}')
 
-def write_py_api_toc():
-    pass
-
-
-# TODO: generate py_api and code_samples toc in one function
-def write_code_samples_toc():
-    dirs = [_dir for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python'))]
-    for _dir in dirs:
+# Writes the toc for code_samples and api_python dirs
+def write_subdirectories_toc():
+    markdown_dirs = [_dir for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python'))]
+    for _dir in markdown_dirs:
         with open(Path(f'{_dir}/toc.yml'), 'w+') as f:
+            # Generate toc based of markdown files in directory
             toc = ''.join([f'- name: {_f[:-3]}\n  href: {_f}\n' for _f in os.listdir(_dir) if _f.endswith('.md')])
             f.write(toc)
 
@@ -146,8 +143,7 @@ for i, link in enumerate(repo_links):
     
     print(f'Just added {repo.name} to metadata. {i+1} out of {len(repo_links)} done.')
 
-write_py_api_toc()
-write_code_samples_toc()
+write_subdirectories_toc()
 
 with open('../docfx.json', 'w+') as f:
     json.dump(docfx, f)
