@@ -34,8 +34,8 @@ steps:
     inputs:
       script: |
         git config --system core.longpaths true
-        git config --global user.email "simplic_pipeline@example.com"
-        git config --global user.name "Simplic Azure Pipeline"
+        git config --global user.email "git@simplic.biz"
+        git config --global user.name "simplic-bot @pipeline"
         choco install docfx -y
         cd D:/documentation/dev/build
         pip install -r requirements.txt

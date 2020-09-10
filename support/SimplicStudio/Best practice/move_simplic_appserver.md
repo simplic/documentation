@@ -10,3 +10,4 @@ The following steps have to be considered when copying or migrating a Simplic St
 6. Start application server and assign modules. After module assignment, the application servers must be restarted
 7. The server name must be adjusted in the flow and schedule configuration
 8. File paths used in flows must be adjusted
+9. Ensure that the database backup is up and running
