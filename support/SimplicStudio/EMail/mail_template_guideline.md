@@ -4,6 +4,7 @@ An e-mail template in Simplic should follow certain rules to avoid being marked 
 
 ```html
 <!DOCTYPE html lang="[language]">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="[author-name]">
