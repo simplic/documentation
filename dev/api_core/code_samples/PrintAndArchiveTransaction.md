@@ -6,8 +6,8 @@ In this code sample we will show how to print and archive a transaction.
 - [Simplic.ERP.Core](xref:Simplic.ERP.Core) 
   - [Archive.TransactionArchiveManager](xref:Simplic.ERP.Core.Archive.TransactionArchiveManager)
   - [TransactionManager](xref:Simplic.ERP.Core.TransactionManager)
-- [simplic](PythonAPI.simplic)
-    - [Sql](PythonAPI.Sql)
+- simplic
+    - [Sql](xref:PythonAPI.Sql)
   
 
 ## Samples
@@ -26,6 +26,7 @@ for row in Sql.execute("select guid from IT_Transaction where TransactionDate = 
 	t = m.Get(row.Guid)
 	t.LoadItems()
 	
+  # Renderes the transaction as PDF, creates a simplic document and connect both entries. Furthermore, the DocumentId column in IT_Transaction will be set with the given document id. If a transaction is printed multiple times, by default a new version of the document will be created.
 	a.Archive(t)
 ```
 ***

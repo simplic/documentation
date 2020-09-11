@@ -5,7 +5,6 @@ In this code sample we will show how to change document meta data in flow node.
 
 - [System.IO](xref:System.IO) 
   - [Path](xref:System.IO.Path)
-  
 
 ## Samples
 
@@ -20,14 +19,15 @@ class DocumentTitleNode:
         self.node = node
 
     def execute(self, runtime, scope):
-        # Pfad aus dem InPin Data01 einlesen
+        # Getting the path of the InPin Data01 out of the scope (a pin always belongs to a node).
+        # Setting the expected type [str]
         file_path = scope.GetValue[str](self.node.InPinData01)
 
-        # Aufbereitung Dateiname, C:\dev\demo\test.txt --> test.txt
+        # Rehashing the filename without the extension, C:\dev\demo\test.txt --> test.txt 
         file_name = Path.GetFileNameWithoutExtension(file_path)
         extension = Path.GetExtension(file_path)
 
-        # Ausgabe der Daten über den Scope
+        # Changing the PinData with the Scope
         scope.SetValue(self.node.OutPinData01, file_name)
         scope.SetValue(self.node.OutPinData02, extension)
 ```
@@ -35,9 +35,10 @@ class DocumentTitleNode:
 
 ## Required Methods and Parameters
 ```python
-# Konstruktor mit dem Parameter "node"
+# Constructor with the parameter"node"
 def __init__(self, node):
-# Execute mit den Parametern "runtime" und "scope"
+# Execute with the parameters "runtime" und "scope"
+# runtime: execution of the flow system
+# scope: the data is transferred within the scope
 def execute(self, runtime, scope):
-
 ```
