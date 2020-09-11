@@ -1,0 +1,48 @@
+{
+  "metadata": [
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "dev/**/*",
+          "user/**/*",
+          "toc.yml",
+          "*.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "dest": "../_site/user/_site",
+    "globalMetadataFiles": 
+    [
+      "globalMetadata.json"
+    ],
+    "fileMetadataFiles": [],
+    "template": [
+      "../template/user"
+    ],
+    "postProcessors": [],
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}
