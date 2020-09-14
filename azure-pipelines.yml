@@ -60,11 +60,20 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
+        cd D:/documentation/relese_notes/build
+        python build.py --git-user $(git_user) --git-pass $(git_pass)
+    displayName: "Generating Release Notes"
+
+  - task: CmdLine@2
+    inputs:
+      script: |
         cd D:/documentation/dev
         docfx build
         cd D:/documentation/support
         docfx build
         cd D:/documentation/user
+        docfx build
+        cd D:/documentation/release_notes
         docfx build
     displayName: "Compiling html files"
 
@@ -99,6 +108,14 @@ steps:
       TargetFolder: "D:/simplic.github.io/user"
       OverWrite: true
     displayName: "Copying user html files to simplic.github.io (local folder)"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "D:/documentation/_site/release_notes/_site"
+      Contents: "**"
+      TargetFolder: "D:/simplic.github.io/release_notes"
+      OverWrite: true
+    displayName: "Copying release notes html files to simplic.github.io (local folder)"
 
   - task: CmdLine@2
     inputs:

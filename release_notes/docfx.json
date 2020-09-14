@@ -1,44 +1,26 @@
 {
-  "metadata": [
-  ],
+  "metadata": [],
   "build": {
     "content": [
       {
-        "files": [
-          "dev/**/*",
-          "user/**/*",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["dev/**/*", "user/**/*", "toc.yml", "*.md"]
       }
     ],
     "resource": [
       {
-        "files": [
-          "images/**"
-        ]
+        "files": ["images/**"]
       }
     ],
     "overwrite": [
       {
-        "files": [
-          
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**"
-        ]
+        "files": [],
+        "exclude": ["obj/**", "_site/**"]
       }
     ],
-    "dest": "../_site/user/_site",
-    "globalMetadataFiles": 
-    [
-      "globalMetadata.json"
-    ],
+    "dest": "../_site/release_notes/_site",
+    "globalMetadataFiles": ["globalMetadata.json"],
     "fileMetadataFiles": [],
-    "template": [
-      "../template/user"
-    ],
+    "template": ["default", "../template/dev"],
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,

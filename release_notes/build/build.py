@@ -57,6 +57,8 @@ class ChangeSet:
         self.date = _change_set.get('date')
         self.guid = _change_set.get('guid')
 
+        assert self.guid is not None
+        
         self.changes = [Change(_change) for _change in _change_set]
 
     def to_markdown(self, release_note_type): # potentially add dev parameter
