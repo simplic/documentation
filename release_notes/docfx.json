@@ -20,7 +20,7 @@
     "dest": "../_site/release_notes/_site",
     "globalMetadataFiles": ["globalMetadata.json"],
     "fileMetadataFiles": [],
-    "template": ["default", "../template/dev"],
+    "template": ["default", "../template/support"],
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,

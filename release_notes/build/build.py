@@ -57,7 +57,7 @@ class ChangeSet:
         self.date = _change_set.get('date')
         self.guid = _change_set.get('guid')
 
-        assert self.guid is not None
+        # assert self.guid is not None
         
         self.changes = [Change(_change) for _change in _change_set]
 
@@ -143,7 +143,7 @@ def write_release_notes(main_module, release_note_type):
         if not dir_path.exists():
             os.mkdir(dir_path)
 
-        with open(f'{dir_path}/_main.md', 'a+') as f:
+        with open(f'{dir_path}/1main.md', 'a+') as f:
             write_line(f, '# Release Notes')
 
             change_sets = main_module.master_release_notes.change_sets
@@ -255,7 +255,7 @@ def write_toc(release_note_type):
                 toc = ''
                 for _f in os.listdir(dir):
                     if _f.endswith('.md'):
-                        if _f == '_main.md':
+                        if _f == '1main.md':
                             toc += f'- name: Main Module\n  href: {_f}\n'
                         else:
                             toc += f'- name: {_f[:-3]}\n  href: {_f}\n'
@@ -267,7 +267,7 @@ def write_toc(release_note_type):
                 if _f == 'index.md':
                     toc += f'- name: Latest Changes\n  href: {_f}\n'
                 elif _f != 'toc.yml':
-                    toc += f'- name: {_f}\n  href: {_f}/toc.yml\n  homepage: {_f}/_main.md\n'
+                    toc += f'- name: {_f}\n  href: {_f}/toc.yml\n  homepage: {_f}/1main.md\n'
             f.write(toc)
 
 # parser = argparse.ArgumentParser()
@@ -331,9 +331,3 @@ if __name__ == '__main__':
 
     write_toc(ReleaseNoteType.User)
     write_toc(ReleaseNoteType.Dev)
-
-
-
-
-
-

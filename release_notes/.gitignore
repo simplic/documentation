@@ -10,3 +10,7 @@ _site
 build/*.xml
 build/test.py
 build/Test
+
+**/__pycache__/
+dev/
+user/

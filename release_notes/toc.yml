@@ -1,4 +1,4 @@
-- name: Developer Release Notes
-  href: dev/
 - name: User Release Notes
   href: user/
+- name: Developer Release Notes
+  href: dev/
