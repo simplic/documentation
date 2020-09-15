@@ -60,7 +60,7 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        cd D:/documentation/relese_notes/build
+        cd D:/documentation/release_notes/build
         python build.py --git-user $(git_user) --git-pass $(git_pass)
     displayName: "Generating Release Notes"
 

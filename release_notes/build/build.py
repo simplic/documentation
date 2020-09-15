@@ -3,8 +3,9 @@ from github import Github
 from itertools import groupby
 import os
 from pathlib import Path
-import xml.etree.ElementTree as ET
+import lxml.etree as ET
 from enum import Enum
+import argparse
 
 # variables with underscores contain xml elements
 class MainModule:
@@ -32,11 +33,17 @@ class MasterReleaseNotes:
         self.change_sets.sort(key=lambda x: (x.version.split('.')[0], x.version.split('.')[1], x.version.split('.')[2][:-2]), reverse=True)
 
     def get_latest_version_number(self):
-        return self.change_sets[0].version
+        if self.change_sets:
+            return self.change_sets[0]
+        else:
+            return None
 
     def get_latest_change_sets(self):
         latest_version_number = self.get_latest_version_number()
-        latest_change_sets = [change_set for change_set in self.change_sets if change_set.version == latest_version_number]
+        
+        latest_change_sets = []
+        if latest_version_number:
+            latest_change_sets = [change_set for change_set in self.change_sets if change_set.version == latest_version_number]
 
         return latest_change_sets
 
@@ -58,7 +65,7 @@ class ChangeSet:
         self.guid = _change_set.get('guid')
 
         # assert self.guid is not None
-        
+
         self.changes = [Change(_change) for _change in _change_set]
 
     def to_markdown(self, release_note_type): # potentially add dev parameter
@@ -92,7 +99,7 @@ class ChangeSet:
         elif release_note_type == ReleaseNoteType.User:
             return self.to_markdown(ReleaseNoteType.Dev) # TODO
 
-    # Aggregate multiple xml _change_sets in to one with this
+    # Aggregate multiple ChangeSet's as one with this
     # Careful! This removes the guid of the added change set completely. Only use for writing change_sets to file!
     def __add__(self, other):
         if self.version == other.version:
@@ -168,23 +175,27 @@ def write_latest_release_notes(main_modules, release_note_type):
                 write_line(f, '# Latest Changes')
 
                 latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
-                latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                write_line(f, f'## {main_module.name}')
+                if latest_change_sets:
+                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
-                write_line(f, '---')
+                    write_line(f, f'## {main_module.name}')
+
+                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
+                    write_line(f, '---')
 
             for main_module in main_modules:
                 write_line(f, '# Upcoming Changes')
 
                 upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
-                upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                write_line(f, f'## {main_module.name}')
+                if upcoming_change_sets:
+                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
-                write_line(f, '---')
+                    write_line(f, f'## {main_module.name}')
+
+                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
+                    write_line(f, '---')
 
     elif release_note_type == ReleaseNoteType.Dev:
         with open('../dev/index.md', 'a+') as f:
@@ -192,19 +203,23 @@ def write_latest_release_notes(main_modules, release_note_type):
                 write_line(f, '# Latest Changes')
 
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
-                latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                write_line(f, f'## {main_module.name}')
+                if latest_change_sets:
+                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
+                    write_line(f, f'## {main_module.name}')
+
+                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
 
                 for submodule in main_module.submodules:
                     write_line(f, f'#### {submodule.name}')
                     latest_change_sets = submodule.master_release_notes.get_latest_change_sets()
-                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
-                    write_line(f, '---')
+                    if latest_change_sets:
+                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
+
+                        write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
+                        write_line(f, '---')
 
                 write_line(f, '---')
 
@@ -212,20 +227,24 @@ def write_latest_release_notes(main_modules, release_note_type):
                 write_line(f, '# Upcoming Changes')
 
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
-                upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                write_line(f, f'## {main_module.name}')
+                if upcoming_change_sets:
+                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
+                    write_line(f, f'## {main_module.name}')
+
+                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
 
                 for submodule in main_module.submodules:
                     write_line(f, f'#### {submodule.name}')
 
                     upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
-                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
-                    write_line(f, '---')
+                    if upcoming_change_sets:
+                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
+
+                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
+                        write_line(f, '---')
 
                 write_line(f, '---')
 
@@ -270,24 +289,30 @@ def write_toc(release_note_type):
                     toc += f'- name: {_f}\n  href: {_f}/toc.yml\n  homepage: {_f}/1main.md\n'
             f.write(toc)
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--git-user', help='Your GitHub username')
-# parser.add_argument('--git-pass', help='Your GitHub password')
-# args = vars(parser.parse_args())
-#
-# git_user = args['git_user']
-# git_pass = args['git_pass']
-#
-# if not git_user or not git_pass:
-#     print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
-#     exit()
-
-#g = Github(git_user, git_pass)
-# org = g.get_organization('simplic')
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--git-user', help='Your GitHub username')
+    parser.add_argument('--git-pass', help='Your GitHub password')
+    args = vars(parser.parse_args())
+
+    git_user = args['git_user']
+    git_pass = args['git_pass']
+
+    if not git_user or not git_pass:
+        print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
+        exit()
+
+    g = Github(git_user, git_pass)
+    org = g.get_organization('simplic')
+    
     main_modules = []
 
+    include = json.loads(Path('repositories.json').read_text())
+
     for dir in Path('../../dev/build/clones/').iterdir():
+        if dir.name not in [link.replace('https://github.com/simplic/', '') for link in include['links']]:
+            continue
+
         submodules = []
         documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
 
@@ -301,11 +326,13 @@ if __name__ == '__main__':
                 dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
                 if documentation_config['is_main_repo']:
-                    user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
-                    user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', 'heads/dev').decoded_content
-
-                    user_master_release_notes = MasterReleaseNotes(user_master_release_notes_xml)
-                    user_dev_release_notes = DevReleaseNotes(user_dev_release_notes_xml, user_master_release_notes)
+                    try:
+                        user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
+                        user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', 'heads/dev').decoded_content
+                    except:
+                        user_master_release_notes = MasterReleaseNotes('<ReleaseNotes></ReleaseNotes>')
+                        user_dev_release_notes = DevReleaseNotes('<ReleaseNotes></ReleaseNotes>', user_master_release_notes)
+                    
 
                     module_name = documentation_config['part_of'] if documentation_config['part_of'] != 'core' else 'Simplic Studio'
                     main_module = MainModule(documentation_config['part_of'], module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
@@ -319,8 +346,8 @@ if __name__ == '__main__':
         [mm.submodules.append(sm) for sm in submodules for mm in main_modules if sm.part_of == mm.part_of]
 
     # Full markdown generation
-    # os.mkdir('../dev/')
-    # os.mkdir('../user/')
+    os.mkdir('../dev/')
+    os.mkdir('../user/')
 
     for module in main_modules:
         write_release_notes(main_module, ReleaseNoteType.Dev)
