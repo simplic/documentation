@@ -29,7 +29,7 @@ class SubModule:
 class MasterReleaseNotes:
     def __init__(self, xml):
         root = ET.fromstring(xml)
-        self.change_sets = [ChangeSet(_change_set) for _change_set in root]
+        self.change_sets = [ChangeSet(_change_set) for _change_set in root if _change_set.get('version')]
         self.change_sets.sort(key=lambda x: (x.version.split('.')[0], x.version.split('.')[1], x.version.split('.')[2][:-2]), reverse=True)
 
     def get_latest_version_number(self):
