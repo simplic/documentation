@@ -8,7 +8,7 @@
     ],
     "resource": [
       {
-        "files": ["images/**"]
+        "files": ["images/**", "logo.png"]
       }
     ],
     "overwrite": [

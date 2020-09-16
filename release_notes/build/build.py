@@ -86,11 +86,15 @@ class ChangeSet:
                     markdown += f'* {feature.text}\n'
 
             if enhancements:
+                if features:
+                    markdown += '\n'
                 markdown += '**Enhancements**\n'
                 for enhancement in enhancements:
                     markdown += f'* {enhancement.text}\n'
 
             if bug_fixes:
+                if features or enhancements:
+                    markdown += '\n'
                 markdown += '**Bug fixes**\n'
                 for bug_fix in bug_fixes:
                     markdown += f'* {bug_fix.text}\n'
@@ -127,7 +131,7 @@ class ChangeSet:
 class Change:
     def __init__(self, _change):
         self.type = _change.get('type')
-        self.text = _change.text
+        self.text = _change.text.strip()
 
 class ReleaseNoteType(Enum):
     User = 1
