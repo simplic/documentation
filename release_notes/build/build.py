@@ -34,7 +34,7 @@ class MasterReleaseNotes:
 
     def get_latest_version_number(self):
         if self.change_sets:
-            return self.change_sets[0]
+            return self.change_sets[0].version
         else:
             return None
 
