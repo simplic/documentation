@@ -1,3 +1,7 @@
 {
-  "links": ["https://github.com/simplic/simplic-erp.git"]
+  "links": [
+    "https://github.com/simplic/simplic-erp.git",
+    "https://github.com/simplic/simplic-logistics.git",
+    "https://github.com/simplic/simplic-appcollection.git"
+  ]
 }
