@@ -333,6 +333,8 @@ if __name__ == '__main__':
                     try:
                         user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
                         user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', 'heads/dev').decoded_content
+                        user_master_release_notes = MasterReleaseNotes(user_master_release_notes_xml)
+                        user_dev_release_notes = DevReleaseNotes(user_dev_release_notes_xml, user_master_release_notes)
                     except:
                         user_master_release_notes = MasterReleaseNotes('<ReleaseNotes></ReleaseNotes>')
                         user_dev_release_notes = DevReleaseNotes('<ReleaseNotes></ReleaseNotes>', user_master_release_notes)
