@@ -15,7 +15,7 @@ pool:
 stages:
   - stage: GenerateApiDocumentation
     jobs:
-      - job: A
+      - job: GenerateApiDocumentation
       - steps:
           - task: CmdLine@2
             inputs:
@@ -68,11 +68,6 @@ stages:
                 python build.py --git-user $(git_user) --git-pass $(git_pass)
             displayName: "Generating Release Notes"
 
-  - stage: UpdateToDos
-    dependsOn: GenerateApiDocumentation
-    jobs:
-      - job: A
-      - steps:
           - task: CmdLine@2
             inputs:
               script: |
@@ -80,11 +75,6 @@ stages:
                 python ../update_todos.py -t $(devops_token)
             displayName: "Generating ToDo's"
 
-  - stage: CompileAndPublishApiDocumentation
-    dependsOn: GenerateApiDocumentation
-    jobs:
-      - job: A
-      - steps:
           - task: CmdLine@2
             inputs:
               script: |
