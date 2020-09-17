@@ -19,12 +19,18 @@ class MainModule:
 
         self.submodules = []
 
+    def __repr__(self):
+        return f'(Name: {self.name}, Submodules: {self.submodules})'
+
 class SubModule:
     def __init__(self, part_of, name, master_release_notes, dev_release_notes):
         self.part_of = part_of
         self.name = name
         self.master_release_notes = master_release_notes
         self.dev_release_notes = dev_release_notes
+    
+    def __repr__(self):
+        return f'(Name: {self.name}, Part of: {self.part_of})'
 
 class MasterReleaseNotes:
     def __init__(self, xml):
@@ -175,48 +181,46 @@ def write_release_notes(main_module, release_note_type):
 def write_latest_release_notes(main_modules, release_note_type):
     if release_note_type == ReleaseNoteType.User:
         with open('../user/index.md', 'a+') as f:
+            write_line(f, '# Latest Changes')
             for main_module in main_modules:
-                write_line(f, '# Latest Changes')
-
                 latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
 
                 if latest_change_sets:
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                    write_line(f, f'## {main_module.name}')
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
 
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
                     write_line(f, '---')
 
+            write_line(f, '# Upcoming Changes')
             for main_module in main_modules:
-                write_line(f, '# Upcoming Changes')
-
                 upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
 
                 if upcoming_change_sets:
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                    write_line(f, f'## {main_module.name}')
+                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
 
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
                     write_line(f, '---')
 
     elif release_note_type == ReleaseNoteType.Dev:
         with open('../dev/index.md', 'a+') as f:
+            write_line(f, '# Latest Changes')
             for main_module in main_modules:
-                write_line(f, '# Latest Changes')
-
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
 
                 if latest_change_sets:
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
 
-                    write_line(f, f'## {main_module.name}')
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
 
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
+                    write_line(f, '---')
 
                 for submodule in main_module.submodules:
-                    write_line(f, f'#### {submodule.name}')
+                    write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
                     latest_change_sets = submodule.master_release_notes.get_latest_change_sets()
 
                     if latest_change_sets:
@@ -224,23 +228,20 @@ def write_latest_release_notes(main_modules, release_note_type):
 
                         write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
                         write_line(f, '---')
-
-                write_line(f, '---')
-
+            
+            write_line(f, '# Upcoming Changes')
             for main_module in main_modules:
-                write_line(f, '# Upcoming Changes')
-
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
 
                 if upcoming_change_sets:
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
-                    write_line(f, f'## {main_module.name}')
-
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
+                    write_line(f, '---')
 
                 for submodule in main_module.submodules:
-                    write_line(f, f'#### {submodule.name}')
+                    write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
 
                     upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
 
@@ -249,8 +250,6 @@ def write_latest_release_notes(main_modules, release_note_type):
 
                         write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
                         write_line(f, '---')
-
-                write_line(f, '---')
 
 def write_line(file, string):
     file.write(f'{string}\n')
@@ -316,6 +315,8 @@ if __name__ == '__main__':
     for dir in Path('../../dev/build/clones/').iterdir():
         if dir.name not in [link.replace('https://github.com/simplic/', '') for link in include['links']]:
             continue
+        
+        print(f'Added {dir} to Release Notes generation.')
 
         submodules = []
         documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
@@ -356,8 +357,9 @@ if __name__ == '__main__':
     os.mkdir('../user/')
 
     for module in main_modules:
-        write_release_notes(main_module, ReleaseNoteType.Dev)
-        write_release_notes(main_module, ReleaseNoteType.User)
+        print(f'Writing Release Notes for module {module}')
+        write_release_notes(module, ReleaseNoteType.Dev)
+        write_release_notes(module, ReleaseNoteType.User)
 
     write_latest_release_notes(main_modules, ReleaseNoteType.User)
     write_latest_release_notes(main_modules, ReleaseNoteType.Dev)
