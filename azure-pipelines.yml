@@ -16,7 +16,7 @@ stages:
   - stage: GenerateApiDocumentation
     jobs:
       - job: GenerateApiDocumentation
-      - steps:
+        steps:
           - task: CmdLine@2
             inputs:
               script: |
