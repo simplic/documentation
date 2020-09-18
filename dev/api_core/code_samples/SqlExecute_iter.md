@@ -9,8 +9,7 @@ In this code sample we will show how to execute sql commands.
 
 ## Samples
 
-# [Python](#tab/tabpython)
-
+# Python
 ```python
 from System import Console
 from simplic import Sql
