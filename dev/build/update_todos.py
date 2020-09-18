@@ -231,7 +231,7 @@ if __name__ == '__main__':
             continue
 
 
-        repository_name = dir.name.strip('.git')
+        repository_name = dir.name.replace('.git', '')
 
         if [issue.code_todos for issue in existing_issues if issue.title == repository_name]:
             existing_code_todos = [issue.code_todos for issue in existing_issues if issue.title == repository_name][0]
