@@ -220,8 +220,12 @@ if __name__ == '__main__':
     new_code_todos_all_dirs = [] # The new code todos for all dirs
 
     for dir in Path('.').iterdir(): # Execute from clones folder
-        repo = git.Repo(dir)
-        repo.git.checkout('dev')
+        try:
+            repo = git.Repo(dir)
+            repo.git.checkout('dev')
+        except git.exc.InvalidGitRepositoryError:
+            print('Directory {dir} is not a Git repository => Skipping it.')
+            continue
         
         repository_name = dir.name.strip('.git')
 
