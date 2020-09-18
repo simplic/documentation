@@ -224,9 +224,13 @@ if __name__ == '__main__':
             repo = git.Repo(dir)
             repo.git.checkout('dev')
         except git.exc.InvalidGitRepositoryError:
-            print('Directory {dir} is not a Git repository => Skipping it.')
+            print(f'Directory {dir} is not a Git repository => Skipping it.')
             continue
-        
+        except git.exc.GitCommandError:
+            print(f'Couldent checkout dev branch of {dir} => Using active branch {repo.active_branch} (for now!)')
+            continue
+
+
         repository_name = dir.name.strip('.git')
 
         if [issue.code_todos for issue in existing_issues if issue.title == repository_name]:
