@@ -158,7 +158,7 @@ def get_new_code_todos(clone_dir, repository_name, existing_code_todos):
     new_code_todos = []
 
     for f in clone_dir.rglob('*.cs'):
-        file_content = f.read_text()
+        file_content = f.read_text(errors='ignore')
 
         found_todos = re.finditer(todo_regex, file_content)
 
