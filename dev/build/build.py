@@ -108,7 +108,7 @@ for i, link in enumerate(repo_links):
 
     repo = Repo(dest, repo_name)
     files = [f'build/{dest}/src/**.csproj']
-    if repo.name in ['simplic-service.git', 'Simplic-Import-Tyre24.git', 'simplic-change-tracking.git']:
+    if repo.name == 'Simplic-Import-Tyre24.git':
         files = [f'build/{dest}/**.csproj']
     
     # If associated plugin is already in metadata, append to it

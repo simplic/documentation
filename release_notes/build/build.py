@@ -147,9 +147,9 @@ class ReleaseNoteType(Enum):
 def write_release_notes(main_module, release_note_type):
     if release_note_type == ReleaseNoteType.User:
         with open(f'../user/{main_module.name}.md', 'a+') as f:
-            write_line(f, '# Release Notes')
-
             change_sets = main_module.user_master_release_notes.change_sets
+            
+            write_line(f, '# Release Notes')
 
             for change_set in aggregated_change_sets(change_sets):
                 write_line(f, change_set.to_markdown(ReleaseNoteType.User))
@@ -161,9 +161,9 @@ def write_release_notes(main_module, release_note_type):
             os.mkdir(dir_path)
 
         with open(f'{dir_path}/1main.md', 'a+') as f:
-            write_line(f, '# Release Notes')
-
             change_sets = main_module.master_release_notes.change_sets
+            
+            write_line(f, '# Release Notes')
 
             for change_set in aggregated_change_sets(change_sets):
                 write_line(f, change_set.to_markdown(ReleaseNoteType.Dev))
@@ -171,6 +171,7 @@ def write_release_notes(main_module, release_note_type):
 
         for submodule in main_module.submodules:
             with open(f'{dir_path}/{submodule.name}.md', 'a+') as _f:
+                write_line(f, '# Release Notes')
 
                 change_sets = submodule.master_release_notes.change_sets
 
@@ -355,14 +356,19 @@ if __name__ == '__main__':
     # Full markdown generation
     os.mkdir('../dev/')
     os.mkdir('../user/')
-
+    
     for module in main_modules:
-        print(f'Writing Release Notes for module {module}')
-        write_release_notes(module, ReleaseNoteType.Dev)
-        write_release_notes(module, ReleaseNoteType.User)
-
-    write_latest_release_notes(main_modules, ReleaseNoteType.User)
-    write_latest_release_notes(main_modules, ReleaseNoteType.Dev)
+        try:
+            print(f'Writing Release Notes for module {module}')
+            write_release_notes(module, ReleaseNoteType.Dev)
+            write_release_notes(module, ReleaseNoteType.User)
+        except Exception as e:
+            print(str(e))
+    try:
+        write_latest_release_notes(main_modules, ReleaseNoteType.User)
+        write_latest_release_notes(main_modules, ReleaseNoteType.Dev)
+    except Exception as e:
+        print(str(e))
 
     write_toc(ReleaseNoteType.User)
     write_toc(ReleaseNoteType.Dev)
