@@ -1,5 +1,5 @@
 import json
-from github import Github
+from github import Github, GithubException
 from itertools import groupby
 import os
 from pathlib import Path
@@ -326,8 +326,11 @@ if __name__ == '__main__':
             with open(f'{dir}/release-notes.xml', 'r') as f:
                 remote_repo = org.get_repo(dir.name.replace(".git", ""))
 
-                dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', 'heads/dev').decoded_content
-
+                try:
+                    dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', 'heads/dev').decoded_content
+                except GithubException as ghe:
+                    dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
+                
                 master_release_notes = MasterReleaseNotes(f.read())
                 dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
