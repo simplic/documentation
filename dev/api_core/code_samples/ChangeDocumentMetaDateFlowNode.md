@@ -5,6 +5,10 @@ In this code sample we will show how to change document meta data in flow node.
 
 - [System.IO](xref:System.IO) 
   - [Path](xref:System.IO.Path)
+- [Simplic.Flow](xref:Simplic.Flow)
+  - [DataPinScope](xref:Simplic.Flow.DataPinScope)
+  - [IFlowRuntimeService](xref:Simplic.Flow.IFlowRuntimeService)
+  - [ActionNode](xref:Simplic.Flow.ActionNode)
 
 ## Samples
 
@@ -35,7 +39,8 @@ class DocumentTitleNode:
 
 ## Required Methods and Parameters
 ```python
-# Constructor with the parameter"node"
+# Constructor with the parameter "node"
+# node: to have access to attributes from nodes in the core
 def __init__(self, node):
 # Execute with the parameters "runtime" und "scope"
 # runtime: execution of the flow system
