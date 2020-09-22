@@ -1,4 +1,4 @@
-# Working with the logging system
+# Working with the log system
 
 In this code sample we will show how to write into the logging system. The system will automatically write the output to the database (`ESS_MS_Intern_Exception`) and the file-system `%localappdata%\Simplic\<section>\Log`. The default section is named `default`.
 ## Required Modules

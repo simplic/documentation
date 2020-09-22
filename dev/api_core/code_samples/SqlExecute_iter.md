@@ -13,7 +13,7 @@ In this code sample we will show how to execute sql commands.
 ```python
 from System import Console
 from simplic import Sql
-# creates a dynamic list with all the selected columns and rows
+# Creates a dynamic list with all the selected columns and rows
 res = Sql.execute("select FriendlyName from it_contacts where CompanyName='B. Kaufmann'")
 Console.WriteLine(len(res))
 for contact in res:

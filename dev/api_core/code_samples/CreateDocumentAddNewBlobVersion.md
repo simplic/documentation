@@ -4,9 +4,9 @@ In this code sample we will show how to create a document, add a new blob versio
 ## Required Modules
 
 - simplic
-    - [ArchiveManager](xref:ArchiveManager)
-    - [DependencyInjection](xref:DependencyInjection)
-    - [StackRegisterHelper](xref:StackRegisterHelper)
+    - [ArchiveManager](xref:PythonAPI.ArchiveManager)
+    - [DependencyInjection](xref:PythonAPI.DependencyInjection)
+    - [StackRegisterHelper](xref:PythonAPI.StackRegisterHelper)
 - [Simplic.Document](xref:Simplic.Document)
   - [Document](xref:Simplic.Document.Document)
   - [DocumentVersion](xref:Simplic.Document.DocumentVersion)
@@ -24,43 +24,43 @@ from simplic import ArchiveManager, DependencyInjection, StackRegisterHelper
 from Simplic.Document import Document, DocumentVersion, IDocumentService
 from System.IO import File
 
-# read/import a sample file
+# Read/Import a sample file
 blob = File.ReadAllBytes('C:\\Users\\petersen\\Documents\\beispielDatei.txt')
-# saves a blob in the archive system
+# Save a blob in the archive system
 id = ArchiveManager.set_blob(blob)
-# create a sample document, give it a name and an extension
+# Create a sample document, give it a name and an extension
 SampleDocument = Document()
 SampleDocument.FileName = 'SampleDocument'
 SampleDocument.FileExtension = '.txt'
 
-# create new document version 
+# Create new document version 
 versionDoc = DocumentVersion()
-# set the BlobGuid to id
+# Set the BlobGuid to id
 versionDoc.BlobGuid = id
-# add a version comment
+# Add a version comment
 versionDoc.VersionComment = 'V1'
-# add version to document
+# Add version to document
 SampleDocument.AddVersion(versionDoc)
-# get a document service
+# Get a document service
 service = DependencyInjection.resolve(IDocumentService)
-# save the document
+# Save the document
 service.Save(SampleDocument)
-# refresh the register
+# Refresh the register
 StackRegisterHelper.refresh_register('STACK_Document', SampleDocument.Guid)
 
-# load document
+# Load document
 existing_Sampledoc = service.GetById(SampleDocument.Guid)
-# create new document version 
+# Create new document version 
 versionDoc = DocumentVersion()
-# set the BlobGuid to id
+# Set the BlobGuid to id
 versionDoc.BlobGuid = id
-# add a version comment
+# Add a version comment
 versionDoc.VersionComment = 'V2'
-# add version to document
+# Add version to document
 existing_Sampledoc.AddVersion(versionDoc)
-# release the version
+# Release the version
 existing_Sampledoc.ReleaseVersion(versionDoc)
-# save the document
+# Save the document
 service.Save(existing_Sampledoc)
 ```
 ***
