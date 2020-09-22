@@ -171,7 +171,7 @@ def write_release_notes(main_module, release_note_type):
 
         for submodule in main_module.submodules:
             with open(f'{dir_path}/{submodule.name}.md', 'a+') as _f:
-                write_line(f, '# Release Notes')
+                write_line(_f, '# Release Notes')
 
                 change_sets = submodule.master_release_notes.change_sets
 
@@ -183,28 +183,28 @@ def write_latest_release_notes(main_modules, release_note_type):
     if release_note_type == ReleaseNoteType.User:
         with open('../user/index.md', 'a+') as f:
             write_line(f, '# Latest Changes')
+
             for main_module in main_modules:
                 latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
+                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
 
                 if latest_change_sets:
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
-
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
-                    write_line(f, '---')
+                
+                write_line(f, '---')
 
             write_line(f, '# Upcoming Changes')
+            
             for main_module in main_modules:
                 upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
+                write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
 
                 if upcoming_change_sets:
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-
-                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
-
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
-                    write_line(f, '---')
+                
+                write_line(f, '---')
 
     elif release_note_type == ReleaseNoteType.Dev:
         with open('../dev/index.md', 'a+') as f:
@@ -212,21 +212,21 @@ def write_latest_release_notes(main_modules, release_note_type):
             for main_module in main_modules:
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
 
+                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+
                 if latest_change_sets:
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
-
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
-                    write_line(f, '---')
+                
+                write_line(f, '---')
 
                 for submodule in main_module.submodules:
-                    write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
                     latest_change_sets = submodule.master_release_notes.get_latest_change_sets()
 
                     if latest_change_sets:
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
                         latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-
+                        
                         write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
                         write_line(f, '---')
             
@@ -234,19 +234,19 @@ def write_latest_release_notes(main_modules, release_note_type):
             for main_module in main_modules:
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
 
+                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+
                 if upcoming_change_sets:
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
-                    write_line(f, '---')
+               
+                write_line(f, '---')
 
                 for submodule in main_module.submodules:
-                    write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
-
                     upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
 
                     if upcoming_change_sets:
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
                         upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
                         write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
@@ -349,8 +349,8 @@ if __name__ == '__main__':
                     main_module = MainModule(documentation_config['part_of'], module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
                     main_modules.append(main_module)
                 else:
-                    solution_file_name = list(Path(dir).rglob('*.sln'))[0].name
-                    module_name = solution_file_name.replace('simplic', '').replace('-', ' ').capitalize() # TODO
+                    solution_file_name = next(Path(dir).rglob('*.sln')).name
+                    module_name = solution_file_name.replace('-', ' ').replace('.sln', '').strip().capitalize() # TODO
                     module = SubModule(documentation_config['part_of'], module_name, master_release_notes, dev_release_notes)
                     submodules.append(module)
         # Add submodules to corresponding MainModules
