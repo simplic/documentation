@@ -228,7 +228,6 @@ if __name__ == '__main__':
             continue
         except git.exc.GitCommandError:
             print(f'Couldent checkout dev branch of {dir} => Using active branch {repo.active_branch} (for now!)')
-            continue
 
 
         repository_name = dir.name.replace('.git', '')
