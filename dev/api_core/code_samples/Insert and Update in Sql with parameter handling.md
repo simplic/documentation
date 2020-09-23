@@ -19,13 +19,13 @@ name = "Lutz"
 # NameId as a dynamic parameter
 NameId = "3"
 
-# inserting a constant parameter ("Igor") to a table (testInsertUpdate) in the column "Name"
+# Inserting a constant parameter ("Igor") to a table (testInsertUpdate) in the column "Name"
 res = Sql.execute_none_query("insert into testInsertUpdate (Name) values (?)", "default", ["Igor"])
-# inserting the dynamic parameter name to a table in the column "Name"
+# Inserting the dynamic parameter name to a table in the column "Name"
 res = Sql.execute_none_query("insert into testInsertUpdate (Name) values (?)", "default", [name])
-# replacing a name in the given row (constant parameter = 2) with the parameter name.
+# Replacing a name in the given row (constant parameter = 2) with the parameter name.
 res = Sql.execute_none_query("update testInsertUpdate set Name = ? where ID = ?", "default", [name, 2])
-# replacing a name in a specific row (dynamic parameter NameId) with the parameter name.
+# Replacing a name in a specific row (dynamic parameter NameId) with the parameter name.
 res = Sql.execute_none_query("update testInsertUpdate set Name = ? where ID = ?", "default", [name, NameID])
 ```
 ***
