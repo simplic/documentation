@@ -356,6 +356,8 @@ if __name__ == '__main__':
         # Add submodules to corresponding MainModules
         [mm.submodules.append(sm) for sm in submodules for mm in main_modules if sm.part_of == mm.part_of]
 
+    main_modules.sort(key=lambda x: x.name)
+
     # Full markdown generation
     os.mkdir('../dev/')
     os.mkdir('../user/')
