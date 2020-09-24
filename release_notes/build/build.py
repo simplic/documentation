@@ -186,39 +186,39 @@ def write_latest_release_notes(main_modules, release_note_type):
 
             for main_module in main_modules:
                 latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
-                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
 
                 if latest_change_sets:
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
-                
-                write_line(f, '---')
+                    write_line(f, '---')
 
             write_line(f, '# Upcoming Changes')
             
             for main_module in main_modules:
                 upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
-                write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
 
                 if upcoming_change_sets:
+                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
-                
-                write_line(f, '---')
+                    write_line(f, '---')
 
     elif release_note_type == ReleaseNoteType.Dev:
         with open('../dev/index.md', 'a+') as f:
             write_line(f, '# Latest Changes')
+
             for main_module in main_modules:
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
 
-                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+                if latest_change_sets or any([submodule.get_latests_change_sets() for submodule in main_module.submodules]):
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
 
-                if latest_change_sets:
-                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
+                    if latest_change_sets:
+                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
+                        write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
                 
-                write_line(f, '---')
+                    write_line(f, '---')
 
                 for submodule in main_module.submodules:
                     latest_change_sets = submodule.master_release_notes.get_latest_change_sets()
@@ -234,13 +234,14 @@ def write_latest_release_notes(main_modules, release_note_type):
             for main_module in main_modules:
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
 
-                write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+                if latest_change_sets or any([submodule.get_latests_change_sets() for submodule in main_module.submodules]):
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
 
-                if upcoming_change_sets:
-                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
-               
-                write_line(f, '---')
+                    if upcoming_change_sets:
+                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
+                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
+                
+                    write_line(f, '---')
 
                 for submodule in main_module.submodules:
                     upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
