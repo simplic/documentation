@@ -234,7 +234,7 @@ def write_latest_release_notes(main_modules, release_note_type):
             for main_module in main_modules:
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
 
-                if latest_change_sets or any([submodule.get_latests_change_sets() for submodule in main_module.submodules]):
+                if upcoming_change_sets or any([submodule.upcoming_change_set for submodule in main_module.submodules]):
                     write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
 
                     if upcoming_change_sets:
