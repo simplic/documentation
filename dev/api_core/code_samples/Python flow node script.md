@@ -24,19 +24,21 @@ class PythonFlowNodeScript:
         self.node = node
 
     def execute(self, runtime, scope):
-      
+
         names = []
         res = Sql.execute("select UserName from ESS_MS_Intern_User")
 
         for ESS_MS_Intern_User in res:
             names.append(ESS_MS_Intern_User.UserName)
-            
+
         scope.SetValue(self.node.OutPinData01, names)
         scope.SetValue(self.node.OutPinData02, res[0].UserName)
 ```
-***
+
+---
 
 ## Output
+
 ```
 In this sample the output is a list of all usernames (OutPinData01) and after that the first object in the previous list (OutPinData02).
 ```

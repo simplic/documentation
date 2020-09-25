@@ -1,10 +1,11 @@
 # Working with reading a blob from the archive
 
 In this code sample we will show how to read a blob from the archive.
+
 ## Required Modules
 
 - simplic
-    - [ArchiveManager](xref:ArchiveManager)
+  - [ArchiveManager](xref:PythonAPI.ArchiveManager)
 
 ## Samples
 
@@ -22,8 +23,11 @@ id = ArchiveManager.set_blob(blob)
 sample = ArchiveManager.get_blob(id)
 
 ```
-***
 
-## Expected Output 
+---
+
+## Expected Output
+
 ```
+
 ```
