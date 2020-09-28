@@ -16,3 +16,5 @@
 - name: API - Plugins
   href: api_plugins/
   homepage: api_plugins/index.md
+- name: Documentation
+  href: documentation/
