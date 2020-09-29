@@ -18,3 +18,4 @@
   homepage: api_plugins/index.md
 - name: Documentation
   href: documentation/
+  homepage: documentation/adding_repositories.md
