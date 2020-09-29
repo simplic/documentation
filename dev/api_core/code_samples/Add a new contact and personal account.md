@@ -24,30 +24,22 @@ from System import Guid
 
 # Create an instance of Contact
 contact = Contact()
-# Add a ContactTypeKeyId: 1 is a firm contact, 2 is a personal contact
+# Add a ContactTypeKeyId: 1 is a company contact, 2 is a personal contact
 contact.ContactTypeKeyId = 1
-# Add some attributes like Company name, first name, last name, salutation, ...
-contact.CompanyName = "Simplic GmbH"
-contact.FirstName = "Max"
-contact.LastName = "Mustermann"
-contact.Salutation = "Herr"
-
-# Create an instance of PhysicalAddress
-physical_address = PhysicalAddress()
-# Add some attributes like the City, Street, Zipcode, ...
-physical_address.City = "Hildesheim"
-physical_address.Street = "Hauptstraße 2"
-physical_address.Zipcode = "31139"
-physical_address.Country = "Deutschland"
-physical_address.Country_Iso = "DE"
-physical_address.District = "Stadt"
-physical_address.PhysicalAddressKeyId = 0
-# Add the address to the new contact
-contact.PrimaryPhysicalAddress = address
-
+# Add some attributes like the Comapny name, first and last name, salutation, City, Street, Zipcode, ...
+contact.PrimaryPhysicalAddress.CompanyName = "Simplic GmbH"
+contact.PrimaryPhysicalAddress.FirstName = "Max"
+contact.PrimaryPhysicalAddress.LastName = "Mustermann"
+contact.PrimaryPhysicalAddress.Salutation = "Herr"
+contact.PrimaryPhysicalAddress.City = "Hildesheim"
+contact.PrimaryPhysicalAddress.Street = "Hauptstraße 2"
+contact.PrimaryPhysicalAddress.Zipcode = "31139"
+contact.PrimaryPhysicalAddress.Country = "Deutschland"
+contact.PrimaryPhysicalAddress.Country_Iso = "DE"
+contact.PrimaryPhysicalAddress.District = "Stadt"
 # Create an instance of PersonalAccountManager
 personal_account_manager = PersonalAccountManager()
-# Get a sample personal account 
+# Get a sample personal account out of the database
 sample_personal_account = personal_account_manager.Get(Guid.Parse("764E2808-1243-45EC-B510-3E9F588A8817"))
 # Create a new personal account from the sample account
 personal_account = sample_personal_account.CreateFromSample()

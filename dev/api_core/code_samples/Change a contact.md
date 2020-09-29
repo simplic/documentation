@@ -18,13 +18,12 @@ In this code sample we will show how to change a contact in Simplic.
 ```python
 from Simplic.PlugIn.SAC.Contact import Contact, ContactManager
 from System import Guid
-# Create an instance of Contact and ContactManager
-contact = Contact()
+# Create an instance of ContactManager
 contact_manager = ContactManager()
 # Get/Import a contact with the Guid
 contact = contact_manager.Get(Guid.Parse("a1ba332c-8c8f-4e9f-9f5a-f5642ad6cfe5"))
 # Change p.ex. the first name
-contact.FirstName = "Fred"
+contact.PrimaryPhysicalAddress.FirstName = "Fred"
 # Save the changed contact
 contact_manager.Save(contact)
 ```
