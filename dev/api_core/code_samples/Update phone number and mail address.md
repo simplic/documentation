@@ -19,7 +19,7 @@ In this code sample we will show how to change a mail address and a phone number
 
 ```python
 from Simplic.PlugIn.SAC.Contact import Contact, ContactManager, PhoneNumber, EMailAddress
-from System import Guid, Console
+from System import Guid
 
 # Create an instance of ContactManager
 contact_manager = ContactManager()
