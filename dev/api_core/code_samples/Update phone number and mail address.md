@@ -1,6 +1,6 @@
 # Working with updating a mail address and a phone number of a contact
 
-In this code sample we will show how to change a mail address and a phone number of a contact.
+In this code sample we will show how to update a mail address and a phone number of a contact.
 
 ## Required Modules
 
@@ -25,32 +25,19 @@ from System import Guid
 contact_manager = ContactManager()
 # Get/Import a contact with the Guid
 contact = contact_manager.Get(Guid.Parse("a1ba332c-8c8f-4e9f-9f5a-f5642ad6cfe5"))
-# Create an instance of PhoneNumber
-phone_number = PhoneNumber()
-# Add a PhoneNumberKeyId
-phone_number.PhoneNumberKeyId = 1
-# Set a phone number
-phone_number.Number = "05121344567" 
-# Add a phone number to the contact
-contact.PrimaryPhysicalAddress.PhoneNumbers.Add(phone_number)
 
 # Update the phone number with the Id = 1
-for phoneNumber in contact.PrimaryPhysicalAddress.PhoneNumbers.GetNewItems():
+for phoneNumber in contact.PrimaryPhysicalAddress.LoadPhoneNumbers().GetItems():
 	if phoneNumber.PhoneNumberKeyId == 1:
-		phone_number.Number = "051213888887" 
-# Create an instance of EMailAddress	
-mail_address = EMailAddress()
-# Add a EMailAddressKeyId
-mail_address.EMailAddressKeyId = 0
-# Set an E-Mail-Address
-mail_address.MailAddress = "mustermann@test.de"
-# Add an E-Mail-Address to the contact
-contact.PrimaryPhysicalAddress.EMailAddresses.Add(mail_address)
-
+		phoneNumber.Number = "051213888887" 
+		
 # Update the E-Mail-Address with the Id = 0
-for mailaddress in contact.PrimaryPhysicalAddress.EMailAddresses.GetNewItems():
+for mailaddress in contact.PrimaryPhysicalAddress.LoadEMailAddresses().GetItems():
 	if mailaddress.EMailAddressKeyId== 0:
-		mail_address.MailAddress= "maxmustermann@test.com" 	
+		mailaddress.MailAddress= "maxmustermann@test.com" 	
+		
+# Save the changed contact
+contact_manager.Save(contact)
 ```
 ***
 

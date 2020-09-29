@@ -25,17 +25,24 @@ from System import Guid
 contact_manager = ContactManager()
 # Get/Import a contact with the Guid
 contact = contact_manager.Get(Guid.Parse("a1ba332c-8c8f-4e9f-9f5a-f5642ad6cfe5"))
+# Create an instance of PhoneNumber
+phone_number = PhoneNumber()
+# Add a PhoneNumberKeyId
+phone_number.PhoneNumberKeyId = 1
+# Set a phone number
+phone_number.Number = "05121344567" 
+# Add a phone number to the contact
+contact.PrimaryPhysicalAddress.PhoneNumbers.Add(phone_number)
 
-# Update the phone number with the Id = 1
-for phoneNumber in contact.PrimaryPhysicalAddress.LoadPhoneNumbers().GetItems():
-	if phoneNumber.PhoneNumberKeyId == 1:
-		phoneNumber.Number = "051213888887" 
-		
-# Update the E-Mail-Address with the Id = 0
-for mailaddress in contact.PrimaryPhysicalAddress.LoadEMailAddresses().GetItems():
-	if mailaddress.EMailAddressKeyId== 0:
-		mailaddress.MailAddress= "maxmustermann@test.com" 	
-		
+# Create an instance of EMailAddress	
+mail_address = EMailAddress()
+# Add an EMailAddressKeyId
+mail_address.EMailAddressKeyId = 0
+# Set an E-Mail-Address
+mail_address.MailAddress = "mustermann@test.de"
+# Add an E-Mail-Address to the contact
+contact.PrimaryPhysicalAddress.EMailAddresses.Add(mail_address)
+
 # Save the changed contact
 contact_manager.Save(contact)
 ```
