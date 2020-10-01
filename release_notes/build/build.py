@@ -330,8 +330,8 @@ if __name__ == '__main__':
                     dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
                     print(f'{dir.name.replace(".git", "")} has no release-notes.xml in dev') 
                 
-                    master_release_notes = MasterReleaseNotes(master_release_notes_xml)
-                    dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
+                master_release_notes = MasterReleaseNotes(master_release_notes_xml)
+                dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
                 try:
                     user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
@@ -364,8 +364,8 @@ if __name__ == '__main__':
                                 dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
                                 print(f'Submodule {_dir.name.replace(".git", "")} has no release-notes.xml in dev') 
                             
-                                master_release_notes = MasterReleaseNotes(master_release_notes_xml)
-                                dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
+                            master_release_notes = MasterReleaseNotes(master_release_notes_xml)
+                            dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
                             
                             solution_name = next(Path(_dir).rglob('*.sln')).name
                             module_name = solution_name.strip('.sln').replace('-', ' ').capitalize()
