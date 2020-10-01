@@ -1,0 +1,20 @@
+{
+  "links": [
+    "https://github.com/simplic/simplic-framework.git",
+    "https://github.com/simplic/simplic-logistics.git",
+    "https://github.com/simplic/simplic-appcollection.git",
+    "https://github.com/simplic/simplic-ftp.git",
+    "https://github.com/simplic/simplic-csv.git",
+    "https://github.com/simplic/simplic-hr.git",
+    "https://github.com/simplic/simplic-soloplan.git",
+    "https://github.com/simplic/simplic-bi.git",
+    "https://github.com/simplic/simplic-projectmanagement.git",
+    "https://github.com/simplic/simplic-articlemaster.git",
+    "https://github.com/simplic/simplic-qm.git",
+    "https://github.com/simplic/simplic-crystalreports.git",
+    "https://github.com/simplic/simplic-genesisworld.git",
+    "https://github.com/simplic/Simplic-Import-Tyre24.git",
+    "https://github.com/simplic/simplic-erp.git",
+    "https://github.com/simplic/simplic-dbtools.git"
+  ]
+}

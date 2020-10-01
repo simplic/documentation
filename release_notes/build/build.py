@@ -9,8 +9,7 @@ import argparse
 
 # variables with underscores contain xml elements
 class MainModule:
-    def __init__(self, part_of, name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes):
-        self.part_of = part_of
+    def __init__(self, name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes):
         self.name = name
         self.master_release_notes = master_release_notes
         self.dev_release_notes = dev_release_notes
@@ -23,14 +22,13 @@ class MainModule:
         return f'(Name: {self.name}, Submodules: {self.submodules})'
 
 class SubModule:
-    def __init__(self, part_of, name, master_release_notes, dev_release_notes):
-        self.part_of = part_of
+    def __init__(self, name, master_release_notes, dev_release_notes):
         self.name = name
         self.master_release_notes = master_release_notes
         self.dev_release_notes = dev_release_notes
     
     def __repr__(self):
-        return f'(Name: {self.name}, Part of: {self.part_of})'
+        return f'(Name: {self.name})'
 
 class MasterReleaseNotes:
     def __init__(self, xml):
@@ -45,13 +43,10 @@ class MasterReleaseNotes:
             return None
 
     def get_latest_change_sets(self):
-        latest_version_number = self.get_latest_version_number()
-        
-        latest_change_sets = []
-        if latest_version_number:
-            latest_change_sets = [change_set for change_set in self.change_sets if change_set.version == latest_version_number]
+        return self.get_change_sets_with_version(self.get_latest_version_number())
 
-        return latest_change_sets
+    def get_change_sets_with_version(self, version):
+        return [change_set for change_set in self.change_sets if change_set.version == version]
 
 class DevReleaseNotes:
     def __init__(self, xml, master_release_notes):
@@ -74,10 +69,10 @@ class ChangeSet:
 
         self.changes = [Change(_change) for _change in _change_set]
 
-    def to_markdown(self, release_note_type): # potentially add dev parameter
+    def to_markdown(self, release_note_type, show_version):
         if release_note_type == ReleaseNoteType.Dev:
             markdown = ''
-            if (self.version and self.date):
+            if show_version and self.version and self.date:
                 markdown += f'`Version: {self.version}, '
                 markdown += f'Date: {self.date}`\n'
                 markdown += '---\n'
@@ -107,7 +102,7 @@ class ChangeSet:
 
             return markdown
         elif release_note_type == ReleaseNoteType.User:
-            return self.to_markdown(ReleaseNoteType.Dev) # TODO
+            return self.to_markdown(ReleaseNoteType.Dev, True) # TODO
 
     # Aggregate multiple ChangeSet's as one with this
     # Careful! This removes the guid of the added change set completely. Only use for writing change_sets to file!
@@ -144,6 +139,82 @@ class ReleaseNoteType(Enum):
     Support = 2
     Dev = 3
 
+def write_latest_release_notes(main_modules, release_note_type):
+    if release_note_type == ReleaseNoteType.User:
+        with open('../user/index.md', 'a+') as f:
+            write_line(f, '# Latest Changes')
+
+            for main_module in main_modules:
+                latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
+
+                if latest_change_sets:
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
+                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
+                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User, True))
+                    write_line(f, '---')
+
+            write_line(f, '# Upcoming Changes')
+            
+            for main_module in main_modules:
+                upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
+
+                if upcoming_change_sets:
+                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
+                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
+                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User, False))
+                    write_line(f, '---')
+
+    elif release_note_type == ReleaseNoteType.Dev:
+        with open('../dev/index.md', 'a+') as f:
+            write_line(f, '# Latest Changes')
+
+            for main_module in main_modules:
+                latest_version_number = main_module.master_release_notes.get_latest_version_number()
+                latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
+
+                if latest_change_sets or any([submodule.master_release_notes.get_change_sets_with_version(latest_version_number) for submodule in main_module.submodules]):
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+
+                    if latest_change_sets:
+                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
+                        write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev, True))
+                
+                    write_line(f, '---')
+
+                for submodule in main_module.submodules:
+                    change_sets_with_version = submodule.master_release_notes.get_change_sets_with_version(latest_version_number)
+
+                    if change_sets_with_version:
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
+                        change_set = aggregated_change_sets(change_sets_with_version)[0]
+                        
+                        write_line(f, change_set.to_markdown(ReleaseNoteType.Dev, False))
+                        write_line(f, '---')
+            
+            write_line(f, '# Upcoming Changes')
+            for main_module in main_modules:
+                upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
+
+                if upcoming_change_sets or any([submodule.dev_release_notes.upcoming_change_sets for submodule in main_module.submodules]):
+                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+
+                    if upcoming_change_sets:
+                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
+                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev, False))
+                
+                    write_line(f, '---')
+
+                for submodule in main_module.submodules:
+                    upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
+
+                    if upcoming_change_sets:
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
+                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
+
+                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev, False))
+                        write_line(f, '---')
+
+
 def write_release_notes(main_module, release_note_type):
     if release_note_type == ReleaseNoteType.User:
         with open(f'../user/{main_module.name}.md', 'a+') as f:
@@ -152,7 +223,7 @@ def write_release_notes(main_module, release_note_type):
             write_line(f, '# Release Notes')
 
             for change_set in aggregated_change_sets(change_sets):
-                write_line(f, change_set.to_markdown(ReleaseNoteType.User))
+                write_line(f, change_set.to_markdown(ReleaseNoteType.User, True))
                 write_line(f, '---')
 
     elif release_note_type == ReleaseNoteType.Dev:
@@ -166,7 +237,7 @@ def write_release_notes(main_module, release_note_type):
             write_line(f, '# Release Notes')
 
             for change_set in aggregated_change_sets(change_sets):
-                write_line(f, change_set.to_markdown(ReleaseNoteType.Dev))
+                write_line(f, change_set.to_markdown(ReleaseNoteType.Dev, True))
                 write_line(f, '---')
 
         for submodule in main_module.submodules:
@@ -176,82 +247,8 @@ def write_release_notes(main_module, release_note_type):
                 change_sets = submodule.master_release_notes.change_sets
 
                 for change_set in aggregated_change_sets(change_sets):
-                    write_line(_f, change_set.to_markdown(ReleaseNoteType.Dev))
+                    write_line(_f, change_set.to_markdown(ReleaseNoteType.Dev, True))
                     write_line(_f, '---')
-
-def write_latest_release_notes(main_modules, release_note_type):
-    if release_note_type == ReleaseNoteType.User:
-        with open('../user/index.md', 'a+') as f:
-            write_line(f, '# Latest Changes')
-
-            for main_module in main_modules:
-                latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
-
-                if latest_change_sets:
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
-                    latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-                    write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User))
-                    write_line(f, '---')
-
-            write_line(f, '# Upcoming Changes')
-            
-            for main_module in main_modules:
-                upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
-
-                if upcoming_change_sets:
-                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
-                    upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-                    write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User))
-                    write_line(f, '---')
-
-    elif release_note_type == ReleaseNoteType.Dev:
-        with open('../dev/index.md', 'a+') as f:
-            write_line(f, '# Latest Changes')
-
-            for main_module in main_modules:
-                latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
-
-                if latest_change_sets or any([submodule.master_release_notes.get_latest_change_sets() for submodule in main_module.submodules]):
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
-
-                    if latest_change_sets:
-                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-                        write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
-                
-                    write_line(f, '---')
-
-                for submodule in main_module.submodules:
-                    latest_change_sets = submodule.master_release_notes.get_latest_change_sets()
-
-                    if latest_change_sets:
-                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
-                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
-                        
-                        write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev))
-                        write_line(f, '---')
-            
-            write_line(f, '# Upcoming Changes')
-            for main_module in main_modules:
-                upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
-
-                if upcoming_change_sets or any([submodule.dev_release_notes.upcoming_change_sets for submodule in main_module.submodules]):
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
-
-                    if upcoming_change_sets:
-                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
-                
-                    write_line(f, '---')
-
-                for submodule in main_module.submodules:
-                    upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
-
-                    if upcoming_change_sets:
-                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
-                        upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
-
-                        write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev))
-                        write_line(f, '---')
 
 def write_line(file, string):
     file.write(f'{string}\n')
@@ -312,54 +309,78 @@ if __name__ == '__main__':
     
     main_modules = []
 
-    include = json.loads(Path('repositories.json').read_text())
+    main_repositories = json.loads(Path('main_repositories.json').read_text())
 
-    for dir in Path('../../dev/build/clones/').iterdir():
-        if dir.name not in [link.replace('https://github.com/simplic/', '') for link in include['links']]:
-            continue
-        
-        print(f'Added {dir} to Release Notes generation.')
+    for link in main_repositories['links']:
+        repo_name = link.split('/simplic/')[1]
+        dir = Path(f'../../dev/build/clones/{repo_name}')
+        if dir.exists():
+            documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
+            infrastructure = json.loads(Path(f'{dir}/infrastructure.json').read_text())
 
-        submodules = []
-        documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
+            module_name = documentation_config['part_of'] if documentation_config['part_of'] != 'core' else 'Simplic Studio'
 
-        if Path(f'{dir}/release-notes.xml').exists():
-            with open(f'{dir}/release-notes.xml', 'r') as f:
-                remote_repo = org.get_repo(dir.name.replace(".git", ""))
+            if Path(f'{dir}/release-notes.xml').exists():
+                master_release_notes_xml = Path(f'{dir}/release-notes.xml').read_text()
+
+                remote_repo = org.get_repo(dir.name.replace('.git', ''))
+                try:
+                    dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', ref='dev').decoded_content
+                except GithubException:
+                    dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
+                    print(f'{dir.name.replace(".git", "")} has no release-notes.xml in dev') 
+                
+                    master_release_notes = MasterReleaseNotes(master_release_notes_xml)
+                    dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
                 try:
-                    dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', 'heads/dev').decoded_content
-                except GithubException as ghe:
-                    dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
-                
-                master_release_notes = MasterReleaseNotes(f.read())
-                dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
+                    user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
+                    user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', ref='dev').decoded_content
+                    user_master_release_notes = MasterReleaseNotes(user_master_release_notes_xml)
+                    user_dev_release_notes = DevReleaseNotes(user_dev_release_notes_xml, user_master_release_notes)
+                except:
+                    user_master_release_notes = MasterReleaseNotes('<ReleaseNotes></ReleaseNotes>')
+                    user_dev_release_notes = DevReleaseNotes('<ReleaseNotes></ReleaseNotes>', user_master_release_notes)
+                    print(f'{dir.name.replace(".git", "")} has no user-release-notes.xml in master or dev') 
 
-                if documentation_config['is_main_repo']:
-                    try:
-                        user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
-                        user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', 'heads/dev').decoded_content
-                        user_master_release_notes = MasterReleaseNotes(user_master_release_notes_xml)
-                        user_dev_release_notes = DevReleaseNotes(user_dev_release_notes_xml, user_master_release_notes)
-                    except:
-                        user_master_release_notes = MasterReleaseNotes('<ReleaseNotes></ReleaseNotes>')
-                        user_dev_release_notes = DevReleaseNotes('<ReleaseNotes></ReleaseNotes>', user_master_release_notes)
+                main_module = MainModule(module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
+
+                """
+                Get the submodules for the Mainmodule
+                """
+                infrastructure = json.loads(Path('infrastructure.json').read_text())
+                for repo_clone_link in infrastructure['subrepositories']:
+                    _repo_name = repo_clone_link.split('/simplic/')[1]
+                    _dir = Path(f'../../dev/build/clones/{_repo_name}')
                     
+                    if _dir.exists():
+                        if Path(f'{dir}/release-notes.xml').exists():
+                            master_release_notes_xml = Path(f'{_dir}/release-notes.xml').read_text()
 
-                    module_name = documentation_config['part_of'] if documentation_config['part_of'] != 'core' else 'Simplic Studio'
-                    main_module = MainModule(documentation_config['part_of'], module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
-                    main_modules.append(main_module)
-                else:
-                    solution_file_name = next(Path(dir).rglob('*.sln')).name
-                    module_name = solution_file_name.replace('-', ' ').replace('.sln', '').strip().capitalize() # TODO
-                    module = SubModule(documentation_config['part_of'], module_name, master_release_notes, dev_release_notes)
-                    submodules.append(module)
-        # Add submodules to corresponding MainModules
-        [mm.submodules.append(sm) for sm in submodules for mm in main_modules if sm.part_of == mm.part_of]
+                            remote_repo = org.get_repo(_dir.name.replace('.git', ''))
+                            try:
+                                dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', ref='dev').decoded_content
+                            except GithubException:
+                                dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
+                                print(f'Submodule {_dir.name.replace(".git", "")} has no release-notes.xml in dev') 
+                            
+                                master_release_notes = MasterReleaseNotes(master_release_notes_xml)
+                                dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
+                            
+                            solution_name = next(Path(_dir).rglob('*.sln')).name
+                            module_name = solution_name.strip('.sln').replace('-', ' ').capitalize()
+                            sub_module = SubModule(module_name, master_release_notes, dev_release_notes)
+                            main_module.submodules.append(sub_module)
+                    else:
+                        print(f'{repo_name} was not yet added to the api documentation clone list and thus wont appear in release notes')
 
+                main_modules.append(main_module)
+    
     main_modules.sort(key=lambda x: x.name)
 
-    # Full markdown generation
+    """
+    Generate Markdown
+    """
     os.mkdir('../dev/')
     os.mkdir('../user/')
     
