@@ -6,6 +6,7 @@ from pathlib import Path
 import lxml.etree as ET
 from enum import Enum
 import argparse
+import string
 
 # variables with underscores contain xml elements
 class MainModule:
@@ -314,9 +315,13 @@ if __name__ == '__main__':
     for link in main_repositories['links']:
         repo_name = link.split('/simplic/')[1]
         dir = Path(f'../../dev/build/clones/{repo_name}')
+
+        print(dir, dir.exists())
         if dir.exists():
             documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
             infrastructure = json.loads(Path(f'{dir}/infrastructure.json').read_text())
+
+            print(infrastructure)
 
             module_name = documentation_config['part_of'] if documentation_config['part_of'] != 'core' else 'Simplic Studio'
 
@@ -334,50 +339,48 @@ if __name__ == '__main__':
                 dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
                 try:
-                    user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml')
+                    user_master_release_notes_xml = Path(f'{dir}/user-release-notes.xml').read_text()
                     user_dev_release_notes_xml = remote_repo.get_contents('user-release-notes.xml', ref='dev').decoded_content
                     user_master_release_notes = MasterReleaseNotes(user_master_release_notes_xml)
                     user_dev_release_notes = DevReleaseNotes(user_dev_release_notes_xml, user_master_release_notes)
-                except:
+                except Exception as e:
+                    print(str(e))
                     user_master_release_notes = MasterReleaseNotes('<ReleaseNotes></ReleaseNotes>')
                     user_dev_release_notes = DevReleaseNotes('<ReleaseNotes></ReleaseNotes>', user_master_release_notes)
                     print(f'{dir.name.replace(".git", "")} has no user-release-notes.xml in master or dev') 
 
                 main_module = MainModule(module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
-
+                main_modules.append(main_module)
                 """
                 Get the submodules for the Mainmodule
                 """
-                infrastructure = json.loads(Path('infrastructure.json').read_text())
-                for repo_clone_link in infrastructure['subrepositories']:
-                    _repo_name = repo_clone_link.split('/simplic/')[1]
-                    _dir = Path(f'../../dev/build/clones/{_repo_name}')
-                    
-                    if _dir.exists():
-                        if Path(f'{dir}/release-notes.xml').exists():
-                            master_release_notes_xml = Path(f'{_dir}/release-notes.xml').read_text()
+            for repo_clone_link in infrastructure['subrepositories']:
+                _repo_name = repo_clone_link.split('/simplic/')[1]
+                _dir = Path(f'../../dev/build/clones/{_repo_name}')
+                
+                if _dir.exists():
+                    if Path(f'{_dir}/release-notes.xml').exists():
+                        master_release_notes_xml = Path(f'{_dir}/release-notes.xml').read_text()
 
-                            remote_repo = org.get_repo(_dir.name.replace('.git', ''))
-                            try:
-                                dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', ref='dev').decoded_content
-                            except GithubException:
-                                dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
-                                print(f'Submodule {_dir.name.replace(".git", "")} has no release-notes.xml in dev') 
-                            
-                            master_release_notes = MasterReleaseNotes(master_release_notes_xml)
-                            dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
-                            
-                            solution_name = next(Path(_dir).rglob('*.sln')).name
-                            module_name = solution_name.strip('.sln').replace('-', ' ').capitalize()
-                            sub_module = SubModule(module_name, master_release_notes, dev_release_notes)
-                            main_module.submodules.append(sub_module)
-                    else:
-                        print(f'{repo_name} was not yet added to the api documentation clone list and thus wont appear in release notes')
-
-                main_modules.append(main_module)
+                        remote_repo = org.get_repo(_dir.name.replace('.git', ''))
+                        try:
+                            dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', ref='dev').decoded_content
+                        except GithubException:
+                            dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
+                            print(f'Submodule {_dir.name.replace(".git", "")} has no release-notes.xml in dev') 
+                        
+                        master_release_notes = MasterReleaseNotes(master_release_notes_xml)
+                        dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
+                        
+                        solution_name = next(Path(_dir).rglob('*.sln')).name
+                        module_name = string.capwords(solution_name.replace('.sln', ' ').replace('-', ' ').replace('.', ' '))
+                        sub_module = SubModule(module_name, master_release_notes, dev_release_notes)
+                        main_module.submodules.append(sub_module)
+                else:
+                    print(f'{repo_name} was not yet added to the api documentation clone list and thus wont appear in release notes')
     
     main_modules.sort(key=lambda x: x.name)
-
+    print(main_modules)
     """
     Generate Markdown
     """
