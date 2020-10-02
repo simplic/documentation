@@ -18,7 +18,7 @@ In this code sample we will show how to change a personal account in Simplic.
 from Simplic.PlugIn.SAC.Contact import PersonalAccountManager 
 from System import Guid
 
-# Create an instance and PersonalAccountManager
+# Create an instance of PersonalAccountManager
 personal_account_manager = PersonalAccountManager()
 
 # Get/Import a personal account with the Guid
