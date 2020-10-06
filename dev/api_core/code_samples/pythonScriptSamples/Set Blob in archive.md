@@ -1,10 +1,11 @@
 # Working with setting a blob from the archive
 
 In this code sample we will show how to set a blob from the archive.
+
 ## Required Modules
 
 - simplic
-    - [ArchiveManager](xref:ArchiveManager)
+  - [ArchiveManager](xref:PythonAPI.ArchiveManager)
 
 ## Samples
 
@@ -19,8 +20,11 @@ blob = File.ReadAllBytes('C:\\Users\\petersen\\Documents\\beispielDatei.txt')
 # Save a blob in the archive system
 id = ArchiveManager.set_blob(blob)
 ```
-***
 
-## Expected Output 
+---
+
+## Expected Output
+
 ```
+
 ```

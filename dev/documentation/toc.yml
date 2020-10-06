@@ -1,0 +1,8 @@
+- name: Adding repositories to the API Documentation
+  href: adding_repositories.md
+- name: Adding sqlobjects to the Database API Documentation
+  href: adding_sqlobject.md
+- name: Adding repositories to the version number update
+  href: adding_version_numbers.md
+- name: Adding repositories to the release notes
+  href: adding_release_notes.md
