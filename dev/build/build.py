@@ -57,7 +57,7 @@ def generate_py_api(repo, ftp_user, ftp_pass):
 
 # Writes the toc for code_samples and api_python dirs
 def write_subdirectories_toc():
-markdown_dirs = [str(_dir) for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python')) and not str(_dir).endswith('api_core\\code_samples')]
+    markdown_dirs = [str(_dir) for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python')) and not str(_dir).endswith('api_core\\code_samples')]
     for _dir in markdown_dirs:
         with open(Path(f'{_dir}/toc.yml'), 'w+') as f:
             # Generate toc based of markdown files in directory
