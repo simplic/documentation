@@ -57,12 +57,30 @@ def generate_py_api(repo, ftp_user, ftp_pass):
 
 # Writes the toc for code_samples and api_python dirs
 def write_subdirectories_toc():
-    markdown_dirs = [_dir for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python'))]
+    markdown_dirs = [_dir for _dir in Path('../').rglob('') if str(_dir).endswith(('code_samples', 'api_python')) and not str(_dir).endswith('api_core/code_samples')]
     for _dir in markdown_dirs:
         with open(Path(f'{_dir}/toc.yml'), 'w+') as f:
             # Generate toc based of markdown files in directory
             toc = ''.join([f'- name: {_f[:-3]}\n  href: {_f}\n' for _f in os.listdir(_dir) if _f.endswith('.md')])
             f.write(toc)
+
+def write_code_samples_toc_core():
+    toc = ''
+    for dir in Path('../api_core/code_samples').iterdir():
+        toc += f'- name: {dir.name}\n  href: {dir.name}/toc.yml\n'
+        
+        _toc = ''
+        for _file in os.listdir(dir):
+            if Path(f'{dir}/{_file}').is_dir():
+                _toc += ''.join([f'- name: {_f[:-3]}\n  href: {_file}/{_f}\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
+            else:
+                _toc += f'- name: {_file[:-3]}\n  href: {_file}\n'
+        
+        with open(f'{dir}/toc.yml', 'w+') as f:
+            f.write(_toc)
+
+    with open(f'../api_core/code_samples/toc.yml', 'w+') as f:
+        f.write(toc)
 
 
 class Progress(git.remote.RemoteProgress):
@@ -142,6 +160,7 @@ for i, link in enumerate(repo_links):
     print(f'Just added {repo.name} to metadata. {i+1} out of {len(repo_links)} done.')
 
 write_subdirectories_toc()
+write_code_samples_toc_core()
 
 with open('../docfx.json', 'w+') as f:
     json.dump(docfx, f)

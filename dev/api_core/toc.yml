@@ -2,22 +2,7 @@
   href: getting_started/toc.yml
 - name: Code Samples
   href: code_samples/toc.yml
-  items:
-  - name: Python Script Samples
-  - href: code_samples/toc.yml
-  - items: 
-    - name: Flow System (Python)
-    - href: code_samples/toc.yml
-  - name: C# Code Samples
-  - href: code_samples/toc.yml
-  - items: code_samples/toc.yml
-    - name: Flow System (C#)
-    - href: code_samples/toc.yml 
-  - name: Telematic
-  - href: code_sample/toc.yml         
 - name: Reference
   href: api/toc.yml
 - name: Python Reference
   href: api_python/toc.yml
-  
-
