@@ -1,9 +1,13 @@
 # Addings Repositories to the Version number update
 
 The version number update script automatically sets new release/assembly versions for you in your code aswell as the database.
-To add a repository to the auto version update, include the template as a step, add a `infrastructure.json` file to the repository and (if not done already) add the simplic-bot logins and the sc-dev02 connection string to the pipelines variables. This should be done before the MSBuild task.
+To add a repository to the auto version update and include the template as a step within the pipeline.
+You will also have to add the credentials of the simplic-bot aswell as the database-connection-string to the pipelines variables.
 
-Commits in which version numbers should be updated, have to specify the "size" of the update in their Commit message like this `Type: major|minor|patch`. If no Type is specified, it will default to patch.
+If you're adding a new main repository (we define a main repository as one, that is an individual product), make sure to add a `infrastructure.json` file to the repository.
+
+Commits in which version numbers should be updated, have to specify the "size" of the update in their Commit message like this `Type: major|minor|patch|ignore`. If you're working with Pullrequests, you can also use labels.
+If no Type is specified, it will default to patch.
 
 Include example:
 
@@ -29,10 +33,12 @@ infrastructure.json example:
 
 ```json
 {
-  "productname": "SimplicApplicationCollection",
-  "is_main_repo": false,
-  "main_repo_name": "simplic-logistics",
-  "main_repo_init_path": "src/Simplic.PlugIn.Logistics/Init.cs"
+  "productname": "ProductNameInDatabase",
+  "init_path": "src/Init.cs",
+  "subrepositories": [
+    "https://github.com/simplic/simplic-change-tracking.git",
+    "https://github.com/simplic/simplic-commandshell.git"
+  ]
 }
 ```
 
@@ -41,9 +47,5 @@ infrastructure.json example:
 Required
 
 - **product_name**: A String value, indicating the productname of the repository or the repositories main repository.
-- **is_main_repo**: A boolean value, indicating whether the repository is the main repository of a module or not.
-
-Optional:
-
-- **main_repo_name**: Set this if the repository isnt the main repository.
-- **main_repo_init_path**: Set this to the relative path to the Init.cs file, if the main repository contains more than one Init.cs file.
+- **init_path**: The path to the Init.cs file of the repository.
+- **subrepositories**: A list of https clone links of all the subrepositories of the repository.
