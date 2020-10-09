@@ -144,6 +144,8 @@ def verify_existing_code_todos(clone_path, existing_code_todos):
     """
     if clone_path.exists():
         for code_todo in existing_code_todos:
+            if code_todo.state in (CodeToDoState.Doing, CodeToDoState.Done):
+                continue
             # if a code todo isnt found and its state is not already set to 'Not found' on azure
             if not code_todo.still_exists() and not code_todo.state == CodeToDoState.Not_found:
                 code_todo.set_state_on_azure(CodeToDoState.Not_found, work_item_tracking_client)
