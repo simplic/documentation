@@ -149,7 +149,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                 latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
 
                 if latest_change_sets:
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}.md)')
+                    write_line(f, f'## [{main_module.name.title()}]({main_module.name.title().replace(" ", "%20")}.md)')
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User, True))
                     write_line(f, '---')
@@ -160,7 +160,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                 upcoming_change_sets = main_module.user_dev_release_notes.upcoming_change_sets
 
                 if upcoming_change_sets:
-                    write_line(f, f'## [{main_module.name.replace}]({main_module.name.replace(" ", "%20")}.md)')
+                    write_line(f, f'## [{main_module.name.title().replace}]({main_module.name.title().replace(" ", "%20")}.md)')
                     upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User, False))
                     write_line(f, '---')
@@ -174,7 +174,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
 
                 if latest_change_sets or any([submodule.master_release_notes.get_change_sets_with_version(latest_version_number) for submodule in main_module.submodules]):
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+                    write_line(f, f'## [{main_module.name.title()}]({main_module.name.title().replace(" ", "%20")}/1main.md)')
 
                     if latest_change_sets:
                         latest_change_set = aggregated_change_sets(latest_change_sets)[0]
@@ -186,7 +186,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                     change_sets_with_version = submodule.master_release_notes.get_change_sets_with_version(latest_version_number)
 
                     if change_sets_with_version:
-                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.title().replace(" ", "%20")}/{submodule.name.title().replace(" ", "%20")}.md)')
                         change_set = aggregated_change_sets(change_sets_with_version)[0]
                         
                         write_line(f, change_set.to_markdown(ReleaseNoteType.Dev, False))
@@ -197,7 +197,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                 upcoming_change_sets = main_module.dev_release_notes.upcoming_change_sets
 
                 if upcoming_change_sets or any([submodule.dev_release_notes.upcoming_change_sets for submodule in main_module.submodules]):
-                    write_line(f, f'## [{main_module.name}]({main_module.name.replace(" ", "%20")}/1main.md)')
+                    write_line(f, f'## [{main_module.name.title()}]({main_module.name.title().replace(" ", "%20")}/1main.md)')
 
                     if upcoming_change_sets:
                         upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
@@ -209,7 +209,7 @@ def write_latest_release_notes(main_modules, release_note_type):
                     upcoming_change_sets = submodule.dev_release_notes.upcoming_change_sets
 
                     if upcoming_change_sets:
-                        write_line(f, f'#### [{submodule.name}]({main_module.name.replace(" ", "%20")}/{submodule.name.replace(" ", "%20")}.md)')
+                        write_line(f, f'#### [{submodule.name}]({main_module.name.title().replace(" ", "%20")}/{submodule.name.title().replace(" ", "%20")}.md)')
                         upcoming_change_set = aggregated_change_sets(upcoming_change_sets)[0]
 
                         write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.Dev, False))
@@ -218,7 +218,7 @@ def write_latest_release_notes(main_modules, release_note_type):
 
 def write_release_notes(main_module, release_note_type):
     if release_note_type == ReleaseNoteType.User:
-        with open(f'../user/{main_module.name}.md', 'a+') as f:
+        with open(f'../user/{main_module.name.title()}.md', 'a+') as f:
             change_sets = main_module.user_master_release_notes.change_sets
             
             write_line(f, '# Release Notes')
@@ -242,7 +242,7 @@ def write_release_notes(main_module, release_note_type):
                 write_line(f, '---')
 
         for submodule in main_module.submodules:
-            with open(f'{dir_path}/{submodule.name}.md', 'a+') as _f:
+            with open(f'{dir_path}/{submodule.name.title()}.md', 'a+') as _f:
                 write_line(_f, '# Release Notes')
 
                 change_sets = submodule.master_release_notes.change_sets
