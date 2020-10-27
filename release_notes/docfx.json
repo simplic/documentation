@@ -1,0 +1,30 @@
+{
+  "metadata": [],
+  "build": {
+    "content": [
+      {
+        "files": ["dev/**/*", "user/**/*", "toc.yml", "*.md"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**", "logo.png"]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [],
+        "exclude": ["obj/**", "_site/**"]
+      }
+    ],
+    "dest": "../_site/release_notes/_site",
+    "globalMetadataFiles": ["globalMetadata.json"],
+    "fileMetadataFiles": [],
+    "template": ["default", "../template/support"],
+    "postProcessors": [],
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}

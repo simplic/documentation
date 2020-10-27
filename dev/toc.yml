@@ -1,14 +1,21 @@
 - name: GUI
   href: gui/
 - name: Database
-  href: database_design/
+  href: database/
 - name: C#
   href: csharp/
 - name: IronPython
   href: ironpython_design/
-- name: Nuget Packages
-  href: nuget_packages/
 - name: Git
   href: git/
 - name: Cloud
   href: cloud/
+- name: API - Core
+  href: api_core/
+  homepage: api_core/getting_started/reading_the_api_documentation.md
+- name: API - Plugins
+  href: api_plugins/
+  homepage: api_plugins/index.md
+- name: Documentation
+  href: documentation/
+  homepage: documentation/adding_repositories.md

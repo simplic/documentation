@@ -7,6 +7,11 @@
     href: general/ini.md
   - name: Application arguments
     href: general/args.md
+- name: Best practice
+  href: Best practice/intro.md
+  items:
+  - name: Move to a new windows server
+    href: Best practice/move_simplic_appserver.md
 - name: Grids
   href: Grid/intro.md
   items:
@@ -73,6 +78,11 @@
   items:
   - name: Frontend localization
     href: Localization/frontendlocalization.md
+- name: E-Mail configuration
+  href: EMail/intro.md
+  items:
+  - name: E-Mail template guidelines
+    href: EMail/mail_template_guideline.md
 - name: Troubleshooting
   href: Troubleshooting/intro.md
   items:

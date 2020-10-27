@@ -1,24 +1,9 @@
 {
-  "metadata": [
-  ],
+  "metadata": [],
   "build": {
     "content": [
-      {
-        "files": [
-          "gui/**.md",
-          "gui/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
-      },
-      {
-        "files": [
-          "csharp/**.md",
-          "csharp/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
-      },
+      { "files": ["gui/**.md", "gui/**/toc.yml", "toc.yml", "*.md"] },
+      { "files": ["csharp/**.md", "csharp/**/toc.yml", "toc.yml", "*.md"] },
       {
         "files": [
           "database_design/**.md",
@@ -43,54 +28,26 @@
           "*.md"
         ]
       },
-      {
-        "files": [
-          "git/**.md",
-          "git/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
-      },
-      {
-        "files": [
-          "cloud/**.md",
-          "cloud/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
-      }
+      { "files": ["git/**.md", "git/**/toc.yml", "toc.yml", "*.md"] },
+      { "files": ["cloud/**.md", "cloud/**/toc.yml", "toc.yml", "*.md"] },
+      { "files": ["api_plugins/**"] },
+      { "files": ["api_core/**"] },
+      { "files": ["database/**"] },
+      { "files": ["documentation/**"] }
     ],
-    "resource": [
-      {
-        "files": [
-          "images/**"
-        ]
-      }
-    ],
+    "resource": [{ "files": ["images/**"] }],
     "overwrite": [
-      {
-        "files": [
-          "apidoc/**.md"
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**"
-        ]
-      }
+      { "files": ["apidoc/**.md"], "exclude": ["obj/**", "_site/**"] }
     ],
     "dest": "../_site/dev/_site",
-    "globalMetadataFiles": 
-    [
-      "globalMetadata.json"
-    ],
+    "globalMetadataFiles": ["globalMetadata.json"],
     "fileMetadataFiles": [],
-    "template": [
-      "../template/dev"
-    ],
+    "template": ["default", "../template/dev"],
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,
     "cleanupCacheHistory": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"]
   }
 }
