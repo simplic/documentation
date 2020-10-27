@@ -8,7 +8,7 @@ schedules:
     displayName: "Nightly documentation build"
     branches:
       include:
-        - withapi
+        - master
 pool:
   vmImage: "windows-latest"
 
@@ -20,13 +20,13 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b withapi D:/documentation
+                git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b master D:/documentation
             displayName: "Cloning documentation repository"
 
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b withapi D:/simplic.github.io
+                git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b master D:/simplic.github.io
             displayName: "Cloning simplic.github.io repository"
 
           - task: UsePythonVersion@0
