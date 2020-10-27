@@ -1,2 +1,6 @@
-- name: Welcome
-  href: welcome/
+- name: Simplic Studio
+  href: Simplic Studio/
+- name: DMS
+  href: DMS/
+- name: CRM
+  href: CRM/

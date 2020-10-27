@@ -5,8 +5,24 @@
     "content": [
       {
         "files": [
-          "welcome/**.md",
-          "welcome/**/toc.yml",
+          "Simplic Studio/**.md",
+          "Simplic Studio/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      },
+      {
+        "files": [
+          "DMS/**.md",
+          "DMS/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      },
+      {
+        "files": [
+          "CRM/**.md",
+          "CRM/**/toc.yml",
           "toc.yml",
           "*.md"
         ]

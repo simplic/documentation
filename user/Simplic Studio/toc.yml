@@ -1,0 +1,9 @@
+- name: Einleitung
+  href: index.md
+- name: Archivierung
+  href: Archive/index.md
+  items:
+    - name: Drag & Drop
+      href: Archive/drag_drop.md
+    - name: Scannen und Verknüpfen
+      href: Archive/scan.md
