@@ -1,0 +1,50 @@
+- name: C# Samples
+  items: 
+    - name: C# Flow System Samples
+      items:
+        - name: Adding new nodes
+          href: csharpSamples/csharpflow/Adding new nodes.md
+- name: Python Script Samples
+  items:
+    - name: Python flow system
+      items:
+        - name: Change of document meta data in flow node
+          href: pythonScriptSamples/pythonFlow/Change of document meta data in flow node.md
+        - name: Python flow node script
+          href: pythonScriptSamples/pythonFlow/Python flow node script.md    
+    - name: Add a new blob version to a document
+      href: pythonScriptSamples/Add a new blob version to a document.md
+    - name: Add a new contact and personal account
+      href: pythonScriptSamples/Add a new contact and personal account.md
+    - name: Add a phone number and mail address
+      href: pythonScriptSamples/Add a phone number and mail address.md
+    - name: Change a contact
+      href: pythonScriptSamples/Change a contact.md
+    - name: Change a personal account
+      href: pythonScriptSamples/Change a personal account.md
+    - name: Dependency Injection
+      href: pythonScriptSamples/Dependency Injection.md
+    - name: FleetBoard Python Script
+      href: pythonScriptSamples/FleetBoard Python Script.md
+    - name: Get the printer name with the Printermanager
+      href: pythonScriptSamples/Get the printer name with the Printermanager.md
+    - name: Insert and Update in Sql with parameter handling
+      href: pythonScriptSamples/Insert and Update in Sql with parameter handling.md
+    - name: Iron Python Entrypoint
+      href: pythonScriptSamples/Iron Python Entrypoint.md
+    - name: Log
+      href: pythonScriptSamples/Log.md
+    - name: Print and archive a transaction
+      href: pythonScriptSamples/Print and archive a transaction.md
+    - name: Read Blob from archive
+      href: pythonScriptSamples/Read Blob from archive.md
+    - name: Set Blob in archive
+      href: pythonScriptSamples/Set Blob in archive.md
+    - name: SqlExecute_iter
+      href: pythonScriptSamples/SqlExecute_iter.md
+    - name: Update phone number and mail address
+      href: pythonScriptSamples/Update phone number and mail address.md
+- name: Telematic
+  items:
+    - name: Telematic
+      href: Telematic/telematic.md
