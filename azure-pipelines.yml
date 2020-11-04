@@ -69,7 +69,7 @@ stages:
             inputs:
               script: |
                 cd D:/documentation/release_notes/build
-                python build.py --git-user $(git_user) --git-token $(git_token)
+                python build.py --git-token $(git_token)
             displayName: "Generating Release Notes"
 
           - task: CmdLine@2
