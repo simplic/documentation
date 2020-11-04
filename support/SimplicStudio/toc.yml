@@ -12,6 +12,13 @@
   items:
   - name: Move to a new windows server
     href: Best practice/move_simplic_appserver.md
+- name: Database
+  href: Database/intro.md
+  items:
+  - name: "Addon system"
+    href: Database/addon_systm.md
+  - name: "Archive connection"
+    href: Database/archive_connection.md
 - name: Grids
   href: Grid/intro.md
   items:
@@ -92,3 +99,5 @@
     href: Troubleshooting/Application crash auto login.md
   - name: Licenses are not updated
     href: Troubleshooting/license.md
+  - name: Log sql queries
+    href: Troubleshooting/Sql-Log.md
