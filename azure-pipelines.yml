@@ -20,13 +20,13 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_pass)@github.com/simplic/documentation -b master D:/documentation
+                git clone https://$(git_user):$(git_token)@github.com/simplic/documentation -b master D:/documentation
             displayName: "Cloning documentation repository"
 
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_pass)@github.com/simplic/simplic.github.io -b master D:/simplic.github.io
+                git clone https://$(git_user):$(git_token)@github.com/simplic/simplic.github.io -b master D:/simplic.github.io
             displayName: "Cloning simplic.github.io repository"
 
           - task: UsePythonVersion@0
@@ -51,7 +51,7 @@ stages:
             inputs:
               script: |
                 cd D:/documentation/dev/build
-                python build.py --git-user $(git_user) --git-pass $(git_pass) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
+                python build.py --git-user $(git_user) --git-token $(git_token) --ftp-user $(ftp_user) --ftp-pass $(ftp_pass)
             displayName: "Generating API Documentation"
 
           - task: CmdLine@2
@@ -65,7 +65,7 @@ stages:
             inputs:
               script: |
                 cd D:/documentation/release_notes/build
-                python build.py --git-user $(git_user) --git-pass $(git_pass)
+                python build.py --git-user $(git_user) --git-token $(git_token)
             displayName: "Generating Release Notes"
 
           - task: CmdLine@2
