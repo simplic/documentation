@@ -11,7 +11,9 @@
         - name: Change of document meta data in flow node
           href: pythonScriptSamples/pythonFlow/Change of document meta data in flow node.md
         - name: Python flow node script
-          href: pythonScriptSamples/pythonFlow/Python flow node script.md    
+          href: pythonScriptSamples/pythonFlow/Python flow node script.md   
+        - name: Setting user rights
+          href: pythonScriptSamples/pythonFlow/Setting user rights.md
     - name: Add a new blob version to a document
       href: pythonScriptSamples/Add a new blob version to a document.md
     - name: Add a new contact and personal account
