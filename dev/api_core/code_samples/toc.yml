@@ -20,6 +20,8 @@
       href: pythonScriptSamples/Add a new contact and personal account.md
     - name: Add a phone number and mail address
       href: pythonScriptSamples/Add a phone number and mail address.md
+    - name: Barcode validation
+      href: pythonScriptSamples/Barcode validation.md
     - name: Change a contact
       href: pythonScriptSamples/Change a contact.md
     - name: Change a personal account
