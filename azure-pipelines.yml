@@ -17,6 +17,10 @@ stages:
     jobs:
       - job: GenerateApiDocumentation
         steps:
+          - checkout: self
+            submodules: true
+            persistCredentials: true
+    
           - task: CmdLine@2
             inputs:
               script: |
