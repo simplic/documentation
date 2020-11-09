@@ -1,9 +1,20 @@
-Bei der Bearbeitung von Dokumenten ist darauf zu achten, dass nach jeder Bearbeitung neue VErsionen erzeugt werden. 
+# Dokumentenbearbeitung im Simplic
 
-Daher muss bei der Bearbeitung stets darauf geachtet werden, in welcher Version gerade gearbeitet wird.
+Das Dokumentenmanagementsystem im Simplic bietet nicht nur die Möglichkeit Dokumente zu speichern, sondern diese auch zu bearbeiten.
 
-Wenn Sie bei den Dokumenten auf "Bearbeiten" gehen, wird immer die zuletzt freigegebene Version geöffnet. Daher muss am Besten zunächst unter dem Reuter Versionierung geprüft werden, welche Datei zuletzt freigegeben wurde. 
+Dies hilft dabei, alle Dokumente und die daran vorgenommenen Änderungen an einem zentralen Ort zu speichern.
+Somit haben alle berechtigten Personen Zugriff auf die jeweils neusten Versionen eines Dokumentes und es ist jederzeit nachvollziehbar, wer welche Veränderungen daran vorgenommen hat.
 
-Möchten Sie die neuste Version bearbeiten, so müssen Sie über die rechte Maustaste die gewünschte Datei markieren und Dateiversion Bearbeiten auswählen.
+Zur Bearbeitung eines Dokumentes gehen Sie über den Reiter "Dokumente" und klicken anschließend wieder auf "Dokumente".
 
-Soll eine zuvor extern gespeicherte Datei als neue VErion gespeichert werden. So müssen Sie über die rechte Maustaste "Datei uas Explorer laden" auswählen.
+![Dokumente bearbeiten](~/images/document.png)
+
+Anschließend wählen Sie das gewünschet Dokument durch einen Doppelick oder die Funktionstaste F5 aus.
+
+![Dokumente bearbeiten](~/images/bearbeiten.png)
+
+Es öffnet sich Fenster zum Bearbeiten des Dokumentes. 
+
+Es gibt vielfältige Möglichkeiten ein Dokument im Simplic zu bearbeiten.
+Dabei muss immer beachtet werden, dass das ursprünglich hinterlegte Dokument niemals verändert wird, sondern nur eine neue Version erzeugt wird.
+Im folgenden werden die unterschiedlichen Funktionen der Dokumentenbearbeitung beschrieben.

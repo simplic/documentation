@@ -2,3 +2,10 @@
   href: index.md
 - name: Versionierung
   href: Version/index.md
+  items:
+    - name: In Bearbeitung
+      href: Version/inprocess.md
+    - name: Archivieren
+      href: Version/Archive.md
+    - name: Verwerfen
+      href: Version/reject.md
