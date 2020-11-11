@@ -1,5 +1,11 @@
 - name: Einleitung
   href: index.md
+- name: Login
+  href: Login.md
+- name: Startseite
+  href: Startpage.md
+- name: App starten
+  href: Start_App.md
 - name: Archivierung
   href: Archive/index.md
   items:
@@ -7,7 +13,9 @@
       href: Archive/drag_drop.md
     - name: Scannen und Verknüpfen
       href: Archive/scan.md
-    - name: Dokument kopieren
+    - name: Aus Zwischenablage einfügen
       href: Archive/copy_document.md     
     - name: Drop here-Symbol
       href: Archive/drop_here.md  
+
+

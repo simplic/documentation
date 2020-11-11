@@ -1,7 +1,6 @@
 # Archivierung im Simplic Studio
 
-Es gibt mehrere Möglichkeiten im Simplic eine Datei zu hinterlegen bzw. zu speichern. 
+Das Simplic Studio bietet Ihnen die Möglichkeit Dokumente sicher und einfach an einem zentralen Ort zu speichern und zu verwalten.
+Die Dokumente können in vielen Modulen direkt hinterlegt werden, wodurch eine automatische Verknüpfung entsteht. Dies erleichtert die Zuordnung und die anschließende Suche nach einzelenen Dokumenten. 
 
-Das Hinterlegen von Dateien ist in jeder Ansicht im Simplic möglich. So können z.B. Dokumente direkt unter Dokumente oder in Akten archviert, mit Kontakten verknüpft oder sogar beim Furpark zu einer Sendung hinterlegt werden.
-
-Im folgenden werden die vier Möglichkeiten am Beispiel "Kontakte" beschrieben.
+Im Folgenden werden die unterschiedlichen Möglichkeiten beschrieben, wie Dokumente im Simplic hinterlegt werden können am Beispiel der Kontakte.

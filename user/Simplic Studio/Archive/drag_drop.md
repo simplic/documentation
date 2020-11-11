@@ -4,7 +4,7 @@ Liegt das Dokument in digitaler Form vor (z.B als PDF Datei), so kann dieses mit
 
 ![Draganddrop](~/images/draganddrop.png)
 
-Wenn Sie die Datei nun loslassen, erscheint das Fenster in dem der Titel eingetragen werden kann. Nachdem Sie einen Titel bestimmt haben, drücken Sie auf "speichern und schließen" und die Datei ist archiviert. 
+Wenn Sie die Datei nun loslassen, erscheint ein Fenster in dem der Titel eingetragen werden kann. Nachdem Sie einen Titel bestimmt haben, drücken Sie auf "speichern und schließen" und die Datei ist archiviert. 
 
 ![Titel](~/images/Titel.png)
 
