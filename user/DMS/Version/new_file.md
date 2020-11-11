@@ -1,0 +1,2 @@
+Sie haben auch die Möglichkeit eine Datei, die Sie nicht im Simplic gespeichert und archiviert haben, als neue Version eines Dokumentes zu hinterlegen.
+Dazu müssen Sie das gewünsche Dokumente über den Reiter "Versionierung" markieren und über die rechte Maustaste "Datei aus Explorer laden" auswählen.
