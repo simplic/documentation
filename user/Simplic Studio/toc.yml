@@ -6,6 +6,15 @@
   href: Startpage.md
 - name: App starten
   href: Start_App.md
+- name: Auswahliste
+  href: Selection_list/index.md
+  items: 
+    - name: Suchbereich
+      href: Selection_list/Search.md  
+    - name: Grid
+      href: Selection_list/Grid.md  
+    - name: Funktionen
+      href: Selection_list/Functions.md  
 - name: Archivierung
   href: Archive/index.md
   items:
