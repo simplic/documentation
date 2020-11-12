@@ -12,4 +12,4 @@ Die Domain wird von Systemadministrator festgelegt und ist die Standarddomain, i
 
 Bei "Datenbank" können, wenn gewünscht, unterschiedliche Datenbanken ausgewählt werden. 
 
-Abschließend haben Sie die Möglichkeit bei "Automatisch anmelden" einen  Hacken zu setzten, damit beim zuküftigen Starten von Simplic die Anmeldung automatisch erfolgt und Sie die Daten nicht erneut eingeben müssen.
+Abschließend haben Sie die Möglichkeit bei "Automatisch anmelden" einen Haken zu setzten, damit beim zuküftigen Starten von Simplic die Anmeldung automatisch erfolgt und Sie die Daten nicht erneut eingeben müssen.
