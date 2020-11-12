@@ -16,7 +16,7 @@
   href: Database/intro.md
   items:
   - name: "Addon system"
-    href: Database/addon_systm.md
+    href: Database/addon_system.md
   - name: "Archive connection"
     href: Database/archive_connection.md
 - name: Grids
