@@ -1,4 +1,4 @@
-# Barcode Validation WIP
+# Barcode Validation
 
 ## What is Barcode Validation? 
 Barcode Validation filters out from all scanned barcodes the barcodes that are decisevely for the user. Under which conditions the barcodes are filtered, 
@@ -36,6 +36,7 @@ Writing a python script for the Barcode validation can be very simple. You need 
 ```py
 class BarcodeValidationSample: 
 
+    # The name of the method has to be "validate" and the parameters are always "self" and "barcode"
     def validate(self, barcode): 
 
         if '12345' in barcode: 
@@ -49,7 +50,7 @@ If **12345** is in the barcode the script returns *true* if not *false*.
 
 ## Barcode Validation Node
 
-You can use the configurated Barcode Validation in the Simplic FLow Node System. 
+You can use the configurated Barcode Validation in the Simplic Flow Node System. 
 There are nodes called **Validate Barcode** and **Read Barcode** which you can find in **Barcode**.   
 
 The important node we need is the **Validate Barcode**-Node. 
@@ -58,4 +59,6 @@ If you open the settings of this node it should look like this:
 ![~/images/barcode-validation-node.png](~/images/barcode-validation-node.png)
 
 If the field **Sources** is empty all the configurated sources are used for the validation.
-If you only want to use one or more of the sources you have to enter the name in the **Sources**-Field with a comma between the names. 
+If you only want to use one or more of the sources you have to enter the name in the **Sources**-Field with a comma between the names:
+
+![~/images/barcode-validation-node-sources.png](~/images/barcode-validation-node-sources.png)
