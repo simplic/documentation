@@ -30,6 +30,8 @@
       href: pythonScriptSamples/Dependency Injection.md
     - name: FleetBoard Python Script
       href: pythonScriptSamples/FleetBoard Python Script.md
+    - name: Forwarding documents with a workflow
+      href: pythonScriptSamples/Forwarding documents with a workflow.md
     - name: Get the printer name with the Printermanager
       href: pythonScriptSamples/Get the printer name with the Printermanager.md
     - name: Insert and Update in Sql with parameter handling
