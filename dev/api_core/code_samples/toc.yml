@@ -1,10 +1,10 @@
 - name: C# Samples
   items: 
-    - name: C# Flow System Samples
+    - name: C# samples
       items:
         - name: Adding new nodes
           href: csharpSamples/csharpflow/Adding new nodes.md
-- name: Python Script Samples
+- name: Python samples
   items:
     - name: Python flow system
       items:
