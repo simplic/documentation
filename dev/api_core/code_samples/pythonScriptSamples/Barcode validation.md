@@ -20,6 +20,6 @@ class BarcodeValidationSample: 
 
 # SQL-Statement
 ```sql
-Select 1 from dummy where ? like 'A%' 
+Select 1 from dummy where ? like '12345%' 
 ```
 ***
