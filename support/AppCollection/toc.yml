@@ -5,6 +5,11 @@
   items:
   - name: Geocoding
     href: Contact/geocoding.md
+- name: Document processing
+  href: Document processing/intro.md
+  items:
+  - name: Barcode Validation
+    href: Document processing/Barcode validation.md
 - name: File structure
   href: File structure/intro.md
   items:
