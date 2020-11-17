@@ -7,12 +7,12 @@ Im Folgenden werden Ihnen die Symbole und deren Funktionen der unteren Funktions
 ![Datensätze](~/images/Datensätze.png)
 
 Die Zahl, die hinter dem Wort "Datensätze" angezeigt wird, entspricht der Anzahl an geladenen Daten. 
-Ist die Zalh grün markiert, so wurden alle Daten vollständig geladen. 
+Ist die Zahl grün markiert, so wurden alle Daten vollständig geladen. 
 Ist die Zahl rot markiert, so wurden die Daten noch nicht vollständig geladen.
 
 ![Vollständig Laden](~/images/Vollständig_Laden.png)
 
-Über den Button "vollständig Laden", können Sie das vollständige Laden aller Daten auslösen.
+Über den Button "vollständig laden", können Sie das vollständige Laden aller Daten auslösen.
 
 Die Zahl hinter "Ausgewählt" gibt an, welche Datensätze Sie aktuell ausgewählt haben.
 
@@ -20,7 +20,7 @@ Die Zahl hinter "Ausgewählt" gibt an, welche Datensätze Sie aktuell ausgewähl
 
 Unter "Aktive Filter" können Sie sich anzeigen lassen, wie viele und welche Filter aktuell hinterlegt sind.
 Bitte beachten Sie, dass die Filter nur über die bereits geladenen Daten gelegt werden. Bitte prüfen Sie daher immer, ob die Daten in Ihrer Ansicht vollständig geladen sind.
-Im Gegensatz zu der Suche. Diese Erfolgt immer über alle Daten.
+Dies ist bei der Suche anders. Diese erfolgt immer über alle Daten.
 
 ![Aktive Filter](~/images/Aktive_Filter.png)
 
@@ -32,13 +32,13 @@ Mit der Funktion "Spalten auswählen" können Sie die Spalten auswählen, die in
 
 ### Suchprofile
 
-Im Bereich Profil werden die aktuell eigestellten Suchprofile angezeigt. Je nachdem welche Suchprofile bei Ihnen hinterlegt wurden, können Sie an doeser Stalle auch aus unterschiedlichen Suchprofilen wählen.
+Im Bereich Profil werden die aktuell eingestellten Suchprofile angezeigt. Je nachdem welche Suchprofile bei Ihnen hinterlegt wurden, können Sie an dieser Stelle auch aus unterschiedlichen Suchprofilen wählen.
 
 ![Suchprofil](~/images/Standardprofil.png)
 
 ### Sucheinstellungen
 
-An dieser Stelle können Sie sich Ihre eigene Suchkonfiguration zusammenstellen. Wie genau dies funtioniert wird Ihnen auswührlich im Kapitel "Suche" beschrieben.
+An dieser Stelle können Sie sich Ihre eigene Suchkonfiguration zusammenstellen. Wie dies genau funtioniert wird ausführlich im Kapitel "Suche" beschrieben.
 
 ![Einstellungen](~/images/Einstellungen.png)
 
@@ -86,6 +86,6 @@ Mit dieser Funktion können Sie die Daten aus der Auswahlliste in eine Excel Tab
 
 ### Administration
 
-Die letzen beiden Icons werden lediglich von den Systemadministratoren verwendet und für Ihre tägliche Arbeit mit Simplic nicht relevant.
+Die letzen beiden Icons werden lediglich von den Systemadministratoren verwendet und sind für Ihre tägliche Arbeit mit Simplic nicht relevant.
 
 ![Administartion](~/images/Administration.png)
