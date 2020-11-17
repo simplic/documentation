@@ -7,8 +7,9 @@ Die im Folgenden aufgeführten Tasten bzw. Tastenkombinationen sind in der Regel
 
 Wenn Sie sich die Funktionen über die rechte Maustaste anzeigen lassen, werden Ihnen hinter den jeweils möglichen Funktionen auch die entsprechenden Tastenkombinationen angezeigt.
 So können Sie beim nächsten Arbeiten in dem Menü direkt die Tastenkombination verwenden, ohne die rechte Maustaste verwenden zu müssen.
-(im Folgenden ein Beispiel aus dem Menü: Kontakte.
-)
+(im Folgenden ein Beispiel aus dem Menü: Kontakte)
+
+
 ![Rechte Maustaste](~/images/Tastenkombination.png)
 
 ### Übersicht Tastenkombination
