@@ -1,5 +1,5 @@
 ## Kurzbefehle
-
+<br />
 Im Simplic gibt es eine Reihe von Kurzbefehlen ("Shortcuts") mit deren Hilfe Sie schneller in den einzelnen Menüs navigieren können.
 So können Sie z.B einige Funktionen ausführen, ohne die Datei auf die Funktionsauswahl der rechten Maustaste zurückgreifen zu müssen.
 
@@ -8,12 +8,13 @@ Die im Folgenden aufgeführten Tasten bzw. Tastenkombinationen sind in der Regel
 Wenn Sie sich die Funktionen über die rechte Maustaste anzeigen lassen, werden Ihnen hinter den jeweils möglichen Funktionen auch die entsprechenden Tastenkombinationen angezeigt.
 So können Sie beim nächsten Arbeiten in dem Menü direkt die Tastenkombination verwenden, ohne die rechte Maustaste verwenden zu müssen.
 (im Folgenden ein Beispiel aus dem Menü: Kontakte)
-
-
+<br />
+<br />
 ![Rechte Maustaste](~/images/Tastenkombination.png)
-
+<br />
+<br />
 ### Übersicht Tastenkombination
-
+<br />
 
 
 | Tastenkombination  | Funktion                                                                                                                                                                                                     | Kontextmenü                                                                                                      |

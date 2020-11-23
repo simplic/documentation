@@ -1,9 +1,9 @@
 ## Funktionsmenü
-
+<br />
 Im Folgenden werden Ihnen die Symbole und deren Funktionen der unteren Funktionsleiste beschrieben.
 
 ### Datensätze
-
+<br />
 ![Datensätze](~/images/Datensätze.png)
 
 Die Zahl, die hinter dem Wort "Datensätze" angezeigt wird, entspricht der Anzahl an geladenen Daten. 

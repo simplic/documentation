@@ -17,6 +17,11 @@
       href: Selection_list/Grid.md  
     - name: Funktionen
       href: Selection_list/Function.md  
+    - name: Suchen
+      href: Selection_list/Searching/index.md  
+      items: 
+        - name: Sucheinstellungen 
+          href: Selection_list/Searching/Configurate_Search.md  
 - name: Archivierung
   href: Archive/index.md
   items:

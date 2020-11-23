@@ -1,5 +1,5 @@
 ## Auswahlliste
-
+<br />
 In diesem Kapitel werden Ihnen die Eigenschaften der Auswahlliste im Simplic am Beispiel der Kontaktverwaltung aufgezeigt.
 
 Die Auswahliste setzt sich im Groben aus drei Bereichen zusammen:
