@@ -1,0 +1,46 @@
+- name: Python samples
+  items:
+    - name: Python flow system
+      items:
+        - name: Change of document meta data in flow node
+          href: pythonFlow/Change of document meta data in flow node.md
+        - name: Python flow node script
+          href: pythonFlow/Python flow node script.md   
+        - name: Setting user rights
+          href: pythonFlow/Setting user rights.md
+    - name: Add a new blob version to a document
+      href: Add a new blob version to a document.md
+    - name: Add a new contact and personal account
+      href: Add a new contact and personal account.md
+    - name: Add a phone number and mail address
+      href: Add a phone number and mail address.md
+    - name: Barcode validation
+      href: Barcode validation.md
+    - name: Change a contact
+      href: Change a contact.md
+    - name: Change a personal account
+      href: Change a personal account.md
+    - name: Dependency Injection
+      href: Dependency Injection.md
+    - name: FleetBoard Python Script
+      href: FleetBoard Python Script.md
+    - name: Forwarding documents with a workflow
+      href: Forwarding documents with a workflow.md
+    - name: Get the printer name with the Printermanager
+      href: Get the printer name with the Printermanager.md
+    - name: Insert and Update in Sql with parameter handling
+      href: Insert and Update in Sql with parameter handling.md
+    - name: Iron Python Entrypoint
+      href: Iron Python Entrypoint.md
+    - name: Log
+      href: Log.md
+    - name: Print and archive a transaction
+      href: Print and archive a transaction.md
+    - name: Read Blob from archive
+      href: Read Blob from archive.md
+    - name: Set Blob in archive
+      href: Set Blob in archive.md
+    - name: SqlExecute_iter
+      href: SqlExecute_iter.md
+    - name: Update phone number and mail address
+      href: Update phone number and mail address.md
