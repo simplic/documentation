@@ -27,7 +27,7 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_token)@github.com/simplic/documentation -b master D:/documentation
+                git clone https://$(git_token)@github.com/simplic/documentation -b master D:/documentation
             displayName: "Cloning documentation repository"
 
           - task: CmdLine@2
