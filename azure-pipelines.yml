@@ -12,6 +12,9 @@ schedules:
 pool:
   vmImage: "windows-latest"
 
+variables:
+- group: simplic-deployment
+
 stages:
   - stage: GenerateApiDocumentation
     jobs:
