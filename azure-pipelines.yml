@@ -33,7 +33,7 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                git clone https://$(git_user):$(git_token)@github.com/simplic/simplic.github.io -b master D:/simplic.github.io
+                git clone https://$(git_token)@github.com/simplic/simplic.github.io -b master D:/simplic.github.io
             displayName: "Cloning simplic.github.io repository"
 
           - task: UsePythonVersion@0
