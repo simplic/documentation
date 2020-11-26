@@ -65,6 +65,7 @@
     "https://github.com/simplic/simplic-tracking.git",
     "https://github.com/simplic/simplic-user.git",
     "https://github.com/simplic/simplic-viewer.git",
-    "https://github.com/simplic/simplic-message-broker.git"
+    "https://github.com/simplic/simplic-message-broker.git",
+    "https://github.com/simplic/simplic-pricing"
   ]
 }
