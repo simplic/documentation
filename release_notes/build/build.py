@@ -294,18 +294,16 @@ def write_toc(release_note_type):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--git-user', help='Your GitHub username')
-    parser.add_argument('--git-pass', help='Your GitHub password')
+    parser.add_argument('--git-token', help='Your GitHub password')
     args = vars(parser.parse_args())
 
-    git_user = args['git_user']
-    git_pass = args['git_pass']
+    git_token = args['git_token']
 
-    if not git_user or not git_pass:
+    if not git_token:
         print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
         exit()
 
-    g = Github(git_user, git_pass)
+    g = Github(git_token)
     org = g.get_organization('simplic')
     
     main_modules = []

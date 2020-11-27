@@ -25,7 +25,7 @@ steps:
         parameters:
           connection_string: $(connection_string)
           git_user: $(git_user)
-          git_pass: $(git_pass)
+          git_token: $(git_token)
           branch_name: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
 ```
 

@@ -89,18 +89,18 @@ class Progress(git.remote.RemoteProgress):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--git-user', help='Your GitHub username')
-parser.add_argument('--git-pass', help='Your GitHub password')
+parser.add_argument('--git-token', help='Your GitHub token')
 parser.add_argument('--ftp-user', help='The ftp username')
 parser.add_argument('--ftp-pass', help='The ftp password')
 args = vars(parser.parse_args())
 
 git_user = args['git_user']
-git_pass = args['git_pass']
+git_token = args['git_token']
 ftp_user = args['ftp_user']
 ftp_pass = args['ftp_pass']
 
 
-if not all([git_user, git_pass, ftp_user, ftp_pass]):
+if not all([git_user, git_token, ftp_user, ftp_pass]):
     print('Enter all Arguments. Get a list of the arguments by adding --help to the script call. e.g. python build.py --help')
     exit()
 
@@ -119,7 +119,7 @@ for i, link in enumerate(repo_links):
     repo_name = link.split('/simplic/')[1]
     dest = 'clones/' + repo_name
     try:
-        authed_link = link.replace('github.com', f'{git_user}:{git_pass}@github.com')
+        authed_link = link.replace('github.com', f'{git_user}:{git_token}@github.com')
         git.Repo.clone_from(authed_link, dest, branch='master')
     except git.exc.GitCommandError as e: # git.exc.GitCommandError
         print(str(e))
