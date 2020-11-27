@@ -9,3 +9,5 @@
       href: Version/Archive.md
     - name: Verwerfen
       href: Version/reject.md
+- name: Dokumentenvorschau
+  href: Preview.md
