@@ -35,7 +35,7 @@ def add_dir(path):
 
 def generate_py_api(repo, ftp_user, ftp_pass):
     ftp = ftplib.FTP('')
-    ftp.connect('simplic.biz', 22)
+    ftp.connect('81.20.87.80', 22)
     ftp.login(user=ftp_user, passwd=ftp_pass)
     ftp.cwd('/.net-xml-doc')
 
