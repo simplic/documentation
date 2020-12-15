@@ -87,7 +87,8 @@ def write_code_samples_toc_core():
                     # All subfiles are listed
                     for subfile in Path(f'{dir}/{_file}').iterdir():
                         # And added to the subtoc string
-                        subtoc += f'- name: {subfile.name[:-3]}\n  href: {subfile.name}\n'
+                        if subfile.name.endswith('.md'):
+                            subtoc += f'- name: {subfile.name[:-3]}\n  href: {subfile.name}\n'
                     # The toc-file of the subfiles-directory is rewritten with the subtoc string      
                     with open(f'{dir}/{_file}/toc.yml', 'w+') as f:
                         f.write(subtoc)
