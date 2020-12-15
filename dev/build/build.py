@@ -64,31 +64,41 @@ def write_subdirectories_toc():
             toc = ''.join([f'- name: {_f[:-3]}\n  href: {_f}\n' for _f in os.listdir(_dir) if _f.endswith('.md')])
             f.write(toc)
 
+# Methode to generate the toc for the whole code_samples directory in api_core
 def write_code_samples_toc_core():
     toc = ''
+    # All file/directory-Paths in the code_samples directory are listed.
     for dir in Path('../api_core/code_samples').iterdir():
+        # If there's already an existing toc-file the NotADirectory-Exception has to be avoided.  
         if dir.name.endswith('.yml') == False:
+            # All directories are added with a name and a href (with/toc.yml to link the directories) to the toc-string. 
+            # Important is that only dir.name is used. Otherwise the whole Path will become the name.
             toc += f'- name: {dir.name}\n  href: {dir.name}/toc.yml\n'
         
             _toc = ''
+            # All files (including directories) are listed (with os.listdir())
             for _file in os.listdir(dir):
+                # If "_file" (the subdirectory of dir) is a directory
                 if Path(f'{dir}/{_file}').is_dir():
+                    # The name and the href (like before) are added to the beginning of the toc string 
                     _toc = f'- name: {_file}\n  href: {_file}/toc.yml\n' + _toc
-                    #_toc += ''.join([f'- name: {_file}\n  href: {_file}/toc.yml\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
-
+                    
                     subtoc = ''
-                    for subfile in Path(f'{dir}\\{_file}').iterdir():
+                    # All subfiles are listed
+                    for subfile in Path(f'{dir}/{_file}').iterdir():
+                        # And added to the subtoc string
                         subtoc += f'- name: {subfile.name[:-3]}\n  href: {subfile.name}\n'
-                          
+                    # The toc-file of the subfiles-directory is rewritten with the subtoc string      
                     with open(f'{dir}/{_file}/toc.yml', 'w+') as f:
                         f.write(subtoc)
-                        
+                # If "_file" is a file and ends with ".md" 
                 elif Path(f'{dir}/{_file}').is_file() and _file.endswith('.md'):
+                    # The name and the href are added to the _toc string 
                     _toc += f'- name: {_file[:-3]}\n  href: {_file}\n'
-        
+            # The toc-file of the _files-directory is rewritten with the _toc string 
             with open(f'{dir}/toc.yml', 'w+') as f:
                 f.write(_toc)
-
+        # The toc-file of the dir-directory is rewritten with the toc string 
         with open(f'../api_core/code_samples/toc.yml', 'w+') as f:
             f.write(toc)
 
