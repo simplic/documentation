@@ -67,20 +67,21 @@ def write_subdirectories_toc():
 def write_code_samples_toc_core():
     toc = ''
     for dir in Path('../api_core/code_samples').iterdir():
-        toc += f'- name: {dir.name}\n  href: {dir.name}/toc.yml\n'
+        if dir.name.endswith('.yml') == False:
+            toc += f'- name: {dir.name}\n  href: {dir.name}/toc.yml\n'
         
-        _toc = ''
-        for _file in os.listdir(dir):
-            if Path(f'{dir}/{_file}').is_dir():
-                _toc += ''.join([f'- name: {_f[:-3]}\n  href: {_file}/{_f}\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
-            else:
-                _toc += f'- name: {_file[:-3]}\n  href: {_file}\n'
+            _toc = ''
+            for _file in os.listdir(dir):
+                if Path(f'{dir}/{_file}').is_dir():
+                    _toc += ''.join([f'- name: {_f[:-3]}\n  href: {_file}/{_f}\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
+                elif Path(f'{dir}/{_file}').is_file() and _file.endswith('.md'):
+                    _toc += f'- name: {_file[:-3]}\n  href: {_file}\n'
         
-        with open(f'{dir}/toc.yml', 'w+') as f:
-            f.write(_toc)
+            with open(f'{dir}/toc.yml', 'w+') as f:
+                f.write(_toc)
 
-    with open(f'../api_core/code_samples/toc.yml', 'w+') as f:
-        f.write(toc)
+        with open(f'../api_core/code_samples/toc.yml', 'w+') as f:
+            f.write(toc)
 
 
 class Progress(git.remote.RemoteProgress):

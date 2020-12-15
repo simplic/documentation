@@ -1,4 +1,2 @@
-- name: Telematic
-  items:
-    - name: Telematic
-      href: Telematic/telematic.md
+- name: telematic
+  href: telematic.md

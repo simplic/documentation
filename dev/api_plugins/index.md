@@ -18,7 +18,7 @@ A plugin that provides functionality for importing csv files.
 
 ### [DB-Tools](Simplic%20DB-Tools/introduction.md)
 
-A ? that provides functionality for working with a simplic / sap sybase sql anywhere database.
+Contains a set of tools to enhance the work with a simplic / sap sybase sql anywhere database.
 
 ### [ERP](Simplic%20ERP/introduction.md)
 
@@ -42,7 +42,7 @@ A plugin that provides functionality for managing vehicles, tours, shipments and
 
 ### [Pricing](Simplic%20Pricing/introduction.md)
 
-A plugin that calculates prices for given objects.
+A plugin that provides functionaliy for calculating prices based on tariffs and conditions.
 
 ### [Projectmanagement](Simplic%20Projectmanagement/introduction.md)
 
