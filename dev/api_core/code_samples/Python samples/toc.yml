@@ -1,5 +1,5 @@
-- name: pythonFlow
-  href: pythonFlow/toc.yml
+- name: Flow
+  href: Flow/toc.yml
 - name: Add a new blob version to a document
   href: Add a new blob version to a document.md
 - name: Add a new contact and personal account
