@@ -42,7 +42,7 @@ A plugin that provides functionality for managing vehicles, tours, shipments and
 
 ### [Pricing](Simplic%20Pricing/introduction.md)
 
-A plugin that calculates prices for given objects
+A plugin that calculates prices for given objects.
 
 ### [Projectmanagement](Simplic%20Projectmanagement/introduction.md)
 
