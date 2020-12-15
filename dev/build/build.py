@@ -73,7 +73,16 @@ def write_code_samples_toc_core():
             _toc = ''
             for _file in os.listdir(dir):
                 if Path(f'{dir}/{_file}').is_dir():
-                    _toc += ''.join([f'- name: {_f[:-3]}\n  href: {_file}/{_f}\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
+                    _toc = f'- name: {_file}\n  href: {_file}/toc.yml\n' + _toc
+                    #_toc += ''.join([f'- name: {_file}\n  href: {_file}/toc.yml\n' for _f in os.listdir(Path(f'{dir}/{_file}')) if _f.endswith('.md')])
+
+                    subtoc = ''
+                    for subfile in Path(f'{dir}\\{_file}').iterdir():
+                        subtoc += f'- name: {subfile.name[:-3]}\n  href: {subfile.name}\n'
+                          
+                    with open(f'{dir}/{_file}/toc.yml', 'w+') as f:
+                        f.write(subtoc)
+                        
                 elif Path(f'{dir}/{_file}').is_file() and _file.endswith('.md'):
                     _toc += f'- name: {_file[:-3]}\n  href: {_file}\n'
         

@@ -1,3 +1,5 @@
+- name: pythonFlow
+  href: pythonFlow/toc.yml
 - name: Add a new blob version to a document
   href: Add a new blob version to a document.md
 - name: Add a new contact and personal account
@@ -26,12 +28,6 @@
   href: Log.md
 - name: Print and archive a transaction
   href: Print and archive a transaction.md
-- name: Change of document meta data in flow node
-  href: pythonFlow/Change of document meta data in flow node.md
-- name: Python flow node script
-  href: pythonFlow/Python flow node script.md
-- name: Setting user rights
-  href: pythonFlow/Setting user rights.md
 - name: Read Blob from archive
   href: Read Blob from archive.md
 - name: Set Blob in archive
