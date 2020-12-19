@@ -1,2 +1,7 @@
 - name: CRM
   href: index.md
+- name: Kontaktverwaltung
+  href: Contacts/index.md
+  items: 
+    - name: Firmenkontakt anlegen
+      href: Contacts/new_Company.md  
