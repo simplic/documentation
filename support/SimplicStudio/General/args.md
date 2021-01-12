@@ -30,6 +30,15 @@ This article is about the arguments which are available in the `Simplic Studio.e
 | `--install` | Installs the application server as windows service                             | `--install` |
 | `--uninstall` | Uninstalls the application server as windows service                             | `--install` |
 
+
+## Simplic.Archive.exe
+
+| Argument                  | Description                                                       | Sample                                               |
+|----------------------|-------------------------------------------------------------------|------------------------------------------------------|
+| `<document-id>` | Saves the blob in the file-system and opens it in the connected application. (Uses default section) | `3a7b7d34-a5f0-4b0a-b85a-0e8a576408dc` |
+| `<section> <document-id>` | Saves the blob in the file-system and opens it in the connected application. Using a specific section. | `sample_section 3a7b7d34-a5f0-4b0a-b85a-0e8a576408dc` |
+| `<section> <ArchiveConnectionName> <document-id>` | Saves the blob in the file-system and opens it in the connected application. Using a specific section and connection name for the archive db | `sample_section DatevSqlArchive 3a7b7d34-a5f0-4b0a-b85a-0e8a576408dc` |
+
 ### Sample
 
 * Login with pass through: `"Simplic Studio.exe" --username sample_user --password mypassword --passthrough`
