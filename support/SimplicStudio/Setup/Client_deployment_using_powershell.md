@@ -26,5 +26,4 @@ if($setupVersion -gt $simplicVersion) {
     $setupString = $simplicSetupFolder + "\" + $folderContent
     Invoke-Command -ComputerName localhost -ScriptBlock {msiexec /I $setupString /qn}      
 }
-
 ```
