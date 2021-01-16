@@ -12,6 +12,11 @@
   items:
   - name: Move to a new windows server
     href: Best practice/move_simplic_appserver.md
+- name: Setup
+  href: Setup/intro.md
+  items:
+  - name: Client deployment using powersehll
+    href: Setup/Client deployment using powersehll.md
 - name: Database
   href: Database/intro.md
   items:
