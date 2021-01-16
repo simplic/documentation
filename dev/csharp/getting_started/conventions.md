@@ -132,3 +132,10 @@ We use method-based LINQ queries:
 
 - √ **DO** `var ids = items.Select(x => x.ExternalId).Cast<decimal>()`.
 - X **DO NOT** `var ids = from item in items select (decimal)item.ExternalId`.
+
+
+### Large Numbers
+C# supports the use of an underscore to split down large numbers to an readable format.
+
+- √ **DO** `public const long LargeNumber = 10_000_000_000;`.
+- X **DO NOT** `public const long LargeNumber = 10000000000;`.
