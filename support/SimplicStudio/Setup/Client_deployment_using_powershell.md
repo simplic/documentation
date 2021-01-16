@@ -1,4 +1,4 @@
-# Client deployment using powersehll
+# Client deployment using powershell
 
 This article describes how to automate the deployment of a Simplic Studio installation for clients. 
 The script below must be added to `Group policies` -> `Startup scripts` (Powershell tab) for `Computer policies`.
