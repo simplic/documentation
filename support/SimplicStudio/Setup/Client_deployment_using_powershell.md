@@ -24,7 +24,7 @@ $setupVersion = $FolderContent -replace "[^0-9]"
 
 if($setupVersion -gt $simplicVersion) {
     $setupString = $simplicSetupFolder + "\" + $folderContent
-    Invoke-Command –ComputerName localhost –ScriptBlock {msiexec /I $setupString /qn}      
+    Invoke-Command -ComputerName localhost -ScriptBlock {msiexec /I $setupString /qn}      
 }
 
 ```
