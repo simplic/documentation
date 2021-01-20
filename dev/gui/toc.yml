@@ -12,6 +12,8 @@
   items:
     - name: DatePicker
       href: controls_datepicker.md
+    - name: LayoutContext
+      href: controls_layoutcontext.md  
     - name: LookUpTextBox
       href: controls_lookuptextbox.md
     - name: MessageBox
