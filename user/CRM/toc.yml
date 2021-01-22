@@ -5,3 +5,7 @@
   items: 
     - name: Firmenkontakt anlegen
       href: Contacts/new_Company.md  
+    - name: Ansprechpartner anlegen
+      href: Contacts/new_contact.md  
+
+
