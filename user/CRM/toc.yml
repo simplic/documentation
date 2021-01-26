@@ -7,5 +7,8 @@
       href: Contacts/new_Company.md  
     - name: Ansprechpartner anlegen
       href: Contacts/new_contact.md  
-
+    - name: Kontaktkategorie
+      href: Contacts/contact_category.md  
+    - name: Zahlungsbedingungen 
+      href: Contacts/payment_conditions.md  
 
