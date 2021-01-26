@@ -26,6 +26,22 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "HR/**.md",
+          "HR/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      },
+      {
+        "files": [
+          "ERP/**.md",
+          "ERP/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
       }
     ],
     "resource": [
