@@ -25,7 +25,7 @@ from Simplic.Authorization import RowAccess, IAuthorizationService
         # Getting the Authorization Service
 		service = DependencyInjection.resolve(IAuthorizationService)
 		# Sample groupId's
-        gl = 7
+        user_group_1 = 7
 		accounting = 10
         # Getting the Access of the given document_id
         # First parameter (string): Table to query (IT_Document)
@@ -38,9 +38,9 @@ from Simplic.Authorization import RowAccess, IAuthorizationService
             # If the UserGroup with the UserGroupId doesn't have access, the UserGroup will be added to the group with full access
 			if access.UserGroupId not in access_obj.GroupFullAccess:
 				access_obj.GroupFullAccess.Add(access.UserGroupId)
-        # If the group with the GroupId=7 doesn't have full access, the GroupId will be added to the full access group and now the gl-group has full access, too
-		if gl not in access_obj.GroupFullAccess:
-			access_obj.GroupFullAccess.Add(gl)
+        # If the group with the GroupId=7 doesn't have full access, the GroupId will be added to the full access group and now the user_group_1 has full access, too
+		if user_group_1 not in access_obj.GroupFullAccess:
+			access_obj.GroupFullAccess.Add(user_group_1)
 		# The same as above but with another GroupId	
 		if accounting not in access_obj.GroupFullAccess:
 			access_obj.GroupFullAccess.Add(accounting)
@@ -58,7 +58,7 @@ from Simplic.Authorization import RowAccess, IAuthorizationService
 	def set_document_access(self, document_id):
 
 		service = DependencyInjection.resolve(IAuthorizationService)
-        gl = 7
+        user_group_1 = 7
 		accounting = 10
 		access_obj = service.GetAccessRights('IT_Document', 'Guid', document_id)
 
@@ -66,9 +66,9 @@ from Simplic.Authorization import RowAccess, IAuthorizationService
             # If the UserGroup has access, it will be removed from the Group with full access
 			if access.UserGroupId in access_obj.GroupFullAccess:
 				access_obj.GroupFullAccess.Remove(access.UserGroupId)
-        # If the group with the GroupId=7 has full access, the GroupId will be removed from the full access group and now the gl-group doesn't have full access anymore
-		if gl in access_obj.GroupFullAccess:
-			access_obj.GroupFullAccess.Remove(gl)
+        # If the group with the GroupId=7 has full access, the GroupId will be removed from the full access group and now the user_group_1 doesn't have full access anymore
+		if user_group_1 in access_obj.GroupFullAccess:
+			access_obj.GroupFullAccess.Remove(user_group_1)
 		# The same as above but with another GroupId	
 		if accounting in access_obj.GroupFullAccess:
 			access_obj.GroupFullAccess.Remove(accounting)
