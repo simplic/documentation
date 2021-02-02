@@ -1,2 +1,7 @@
 - name: ERP
   href: index.md
+- name: Vorgangsverwaltung
+  href: Process/index.md
+  items: 
+    - name: Vorgangserfassung
+      href: Process/new_process.md  
