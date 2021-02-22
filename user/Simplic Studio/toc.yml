@@ -35,5 +35,12 @@
       href: Archive/copy_document.md     
     - name: Drop here-Symbol
       href: Archive/drop_here.md  
+- name: Jahreswechsel
+  href: Newyear/index.md
+  items: 
+    - name: Geschäftsjahreröffnung
+      href: Newyear/accounting.md
+    - name: Nummernkreisanpassung
+      href: Newyear/numbers.md
 
 
