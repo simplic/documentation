@@ -13,3 +13,5 @@ def init():
 
 init()
 ```
+
+> All not-ui code that is executed in the main.py should be executed in the server.py as well!

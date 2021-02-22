@@ -4,6 +4,8 @@
   href: code-convention.md
 - name: Entrypoint (main.py)
   href: mainpy.md
+- name: Entrypoint (server.py)
+  href: serverpy.md
 - name: File header
   href: fileheader.md
 - name: Packages
