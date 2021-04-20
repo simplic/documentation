@@ -4,7 +4,7 @@ In this code sample we will show how to execute sql commands.
 ## Required Modules
 
 - simplic
-  - [simplic.Sql](xref:PythonAPI.Sql)
+  - [Sql](xref:PythonAPI.Sql)
   
 
 ## Samples

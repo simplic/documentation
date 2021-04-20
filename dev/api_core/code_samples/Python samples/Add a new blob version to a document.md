@@ -12,7 +12,7 @@ In this code sample we will show how to create a document, add a new blob versio
   - [DocumentVersion](xref:Simplic.Document.DocumentVersion)
   - [IDocumentService](xref:Simplic.Document.IDocumentService)
 - [System.IO](xref:System.IO)
-  - [File](xref:Syste,.IO.File)
+  - [File](xref:System.IO.File)
   
 
 ## Samples

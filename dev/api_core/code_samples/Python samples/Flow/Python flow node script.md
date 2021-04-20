@@ -9,7 +9,7 @@ In this code sample we will show how to read and output data from the database w
   - [IFlowRuntimeService](xref:Simplic.Flow.IFlowRuntimeService)
   - [ActionNode](xref:Simplic.Flow.ActionNode)
 - simplic
-  - [simplic.Sql](xref:PythonAPI.Sql)
+  - [Sql](xref:PythonAPI.Sql)
 
 ## Samples
 

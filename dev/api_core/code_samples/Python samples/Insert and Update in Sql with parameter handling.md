@@ -4,7 +4,7 @@ In this code sample we will show how to insert and update a table in sql with co
 ## Required Modules
 
 - simplic
-  - [simplic.Sql](xref:PythonAPI.Sql)
+  - [Sql](xref:PythonAPI.Sql)
   
 
 ## Samples
