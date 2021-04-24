@@ -7,6 +7,11 @@
             "label": "user docfx",
             "type": "shell",
             "command": "docfx user/docfx.json --serve"
+        },
+        {
+            "label": "Support docfx",
+            "type": "shell",
+            "command": "docfx support/docfx.json --serve"
         }
     ]
 }
