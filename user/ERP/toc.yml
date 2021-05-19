@@ -1,2 +1,14 @@
 - name: ERP
   href: index.md
+- name: Vorgangsverwaltung
+  href: Process/index.md
+  items: 
+    - name: Vorgangserfassung
+      href: Process/new_process.md  
+- name: Steuerverwaltung
+  href: Taxes/index.md
+  items: 
+    - name: Übersicht
+      href: Taxes/Overview.md  
+    - name: Konten anlegen
+      href: Taxes/new_account.md  
