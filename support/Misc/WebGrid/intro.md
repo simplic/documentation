@@ -11,7 +11,7 @@ The structure of such a url looks like this
 ```
 For example we look at the **Document Grid**
 ```
-http://192.168.99.181:48080/api/v1-0/webgrid/show?grid=IB_WebGrid_Sample&api_key=~ssk-b3c905c6716d4d28b6751645642acdc5&user_name=DemoUser
+http://192.168.99.181:48080/api/v1-0/webgrid/show?grid=IB_WebGrid_Sample&api_key=demokey&user_name=DemoUser
 ```
 ### Conditions
 We can place simple sql conditions 
@@ -33,7 +33,7 @@ In this example we are looking for all documents where the update user name is '
 ```
 
 ```
-http://192.168.99.181:48080/api/v1-0/webgrid/show?grid=IB_WebGrid_Sample&param_updateusername_eq=demouser&api_key=~ssk-b3c905c6716d4d28b6751645642acdc5&user_name=SuperUser
+http://192.168.99.181:48080/api/v1-0/webgrid/show?grid=IB_WebGrid_Sample&param_updateusername_eq=demouser&api_key=demokey&user_name=SuperUser
 ```
 
 You can add more conditions afterwards
