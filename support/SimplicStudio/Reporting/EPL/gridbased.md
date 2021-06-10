@@ -31,4 +31,6 @@ B15,25,0,1,2,2,70,B,"{barcode}"
 P{amount}
 ```
 
+Important: All column-names in the Report-Design must be written in lower-case.
+
 The `amount`-parameter is reserved for the amount of copies from the default dialog.
