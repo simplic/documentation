@@ -15,6 +15,8 @@
 - name: Setup
   href: Setup/intro.md
   items:
+  - name: Server setup
+    href: Setup/server_setup.md
   - name: Client deployment using powershell
     href: Setup/Client_deployment_using_powershell.md
 - name: Database
