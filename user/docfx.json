@@ -42,6 +42,14 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "Logistics/**.md",
+          "Logistics/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
       }
     ],
     "resource": [
