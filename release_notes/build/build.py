@@ -195,8 +195,8 @@ def write_latest_release_notes(main_modules, release_note_type):
 
             # sort
             for main_module in main_modules:
+
                 # get the latest date of the release note
-                
                 latest_date = main_module.master_release_notes.get_latest_date()
                 # Get the latest change set (latest date)
                 latest_change_sets = main_module.master_release_notes.get_latest_change_sets_date()
@@ -364,6 +364,19 @@ if __name__ == '__main__':
     org = g.get_organization('simplic')
     
     main_modules = []
+    os.remove("../../support/error_codes.md")
+    with open("../../support/error_codes.md", "a+") as e:
+        introductionString = """
+# Error codes \n
+This page contains all error codes. Errors are separated into two parts: \n
+* Message (Contains the error message) 
+* Solution (Contains a possible solution for the error) \n
+All error codes are separated by modules and have a unique error code. \n
+## Error messages and codes 
+    """
+        write_line(e,introductionString)
+    e.close()
+
 
     # read_text() returns the decoded contents of the pointed-to file as a string
     main_repositories = json.loads(Path('main_repositories.json').read_text())
@@ -398,7 +411,7 @@ if __name__ == '__main__':
                     # the release_notes.xml is empty
                     dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
                     print(f'{dir.name.replace(".git", "")} has no release-notes.xml in dev') 
-                
+           
                 # release notes are imported from the release notes and sorted by date 
                 master_release_notes = MasterReleaseNotes(master_release_notes_xml)
                 dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
@@ -416,6 +429,43 @@ if __name__ == '__main__':
 
                 main_module = MainModule(module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
                 main_modules.append(main_module)
+
+        	# ERROR CODES
+
+            with open("../../support/error_codes.md", "a+") as e:
+                write_line(e, '## '+dir.name.replace('.git', ''))
+                if Path(f'{dir}/error_codes.xml').exists():
+                    error_codes_xml = Path(f'{dir}/error_codes.xml').read_text()
+
+                    remote_repo_error_codes = org.get_repo(dir.name.replace('.git', ''))
+                    print(f'there are error codes in {dir}')
+
+                    #write_line(e, '## '+dir.name.replace('.git', ''))
+
+                    # First row of the table (the column titles)
+                    write_line(e, "Error code|Error text|Message|Solution \n -|-|-|-")
+                    tree = ET.fromstring(error_codes_xml)
+
+                    localization_link = tree.attrib['Localization']
+                    localization_link = localization_link.replace('.*.json', '.en-US.json')
+                    # Throw exception if file not found...
+                    try:
+                        localization = json.loads(Path(f'{dir}/{localization_link}').read_text())
+                    except:
+                        print("Localization file couldn't be found")
+
+                    for node in tree:
+                        error_code = node.attrib['Code']
+                        error_text = node.text.strip()
+                        error_message = error_code+"_msg"
+                        error_solution = error_code+"_sln"
+                        try:
+                            write_line(e, f'{error_code} |{error_text}|{localization[error_message]}|{localization[error_solution]}')
+                        except:
+                            write_line(e, f'{error_code} |{error_text}|not found|not found')
+                else:
+                    write_line(e, '{errors\\}')  
+                     
                 """
                 Get the submodules for the Mainmodule
                 """
@@ -441,6 +491,41 @@ if __name__ == '__main__':
                         module_name = string.capwords(solution_name.replace('.sln', ' ').replace('-', ' ').replace('.', ' '))
                         sub_module = SubModule(module_name, master_release_notes, dev_release_notes)
                         main_module.submodules.append(sub_module)
+
+                    # ERROR CODES 
+                    with open("../../support/error_codes.md", "a+") as e:                        
+                        write_line(e, '### '+_dir.name.replace('.git', ''))
+                        if Path(f'{_dir}/error_codes.xml').exists():
+                            error_codes_xml = Path(f'{_dir}/error_codes.xml').read_text()
+                            print(f'there are error codes in {_dir}')
+                            remote_repo = org.get_repo(_dir.name.replace('.git', ''))
+
+                        
+                            
+
+                            # First row of the table (the column titles)
+                            write_line(e, "Error code|Error text|Message|Solution \n -|-|-|-")
+                            tree = ET.fromstring(error_codes_xml)
+
+                            localization_link = tree.attrib['Localization']
+                            localization_link = localization_link.replace('.*.json', '.en-US.json')
+                            # Throw exception if file not found...
+                            try:
+                                localization = json.loads(Path(f'{dir}/{localization_link}').read_text())
+                            except:
+                                print("Localization file couldn't be found")
+
+                            for node in tree:
+                                error_code = node.attrib['Code']
+                                error_text = node.text.strip()
+                                error_message = error_code+"_msg"
+                                error_solution = error_code+"_sln"
+                                try:
+                                    write_line(e, f'{error_code} |{error_text}|{localization[error_message]}|{localization[error_solution]}')
+                                except:
+                                    write_line(e, f'{error_code} |{error_text}|not found|not found')
+                        else:
+                            write_line(e, '{errors\\}')  
                 else:
                     print(f'{repo_name} was not yet added to the api documentation clone list and thus wont appear in release notes')
     
