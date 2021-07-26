@@ -272,6 +272,10 @@ def write_latest_release_notes(main_modules, release_note_type):
 
 def write_release_notes(main_module, release_note_type):
     if release_note_type == ReleaseNoteType.User:
+        try:
+            os.remove('../user/{main_module.name.title()}.md')
+        except:
+            print("")
         with open(f'../user/{main_module.name.title()}.md', 'a+') as f:
             change_sets = main_module.user_master_release_notes.change_sets
             
