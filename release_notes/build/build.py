@@ -34,8 +34,8 @@ class SubModule:
 class MasterReleaseNotes:
     def __init__(self, xml):
         root = ET.fromstring(xml)
-        self.change_sets = [ChangeSet(_change_set) for _change_set in root if _change_set.get('version')]
-        self.change_sets.sort(key=lambda x: (x.version.split('.')[0], x.version.split('.')[1], x.version.split('.')[2][:-2]), reverse=True)
+        self.change_sets = [ChangeSet(_change_set) for _change_set in root if _change_set.get('date')]
+        self.change_sets.sort(key=lambda x: (int(x.date.split('-')[0]), int(x.date.split('-')[1]), int(x.date.split('-')[2])), reverse=True)
 
     def get_latest_version_number(self):
         if self.change_sets:
@@ -43,11 +43,23 @@ class MasterReleaseNotes:
         else:
             return None
 
+    def get_latest_date(self):
+        if self.change_sets:
+            return self.change_sets[0].date
+        else:
+            return None  
+
     def get_latest_change_sets(self):
         return self.get_change_sets_with_version(self.get_latest_version_number())
+        
+    def get_latest_change_sets_date(self):
+        return self.get_change_sets_with_date(self.get_latest_date())
 
     def get_change_sets_with_version(self, version):
         return [change_set for change_set in self.change_sets if change_set.version == version]
+
+    def get_change_sets_with_date(self, date):
+        return [change_set for change_set in self.change_sets if change_set.date == date]
 
 class DevReleaseNotes:
     def __init__(self, xml, master_release_notes):
@@ -141,14 +153,20 @@ class ReleaseNoteType(Enum):
     Dev = 3
 
 def write_latest_release_notes(main_modules, release_note_type):
+   
+    # User Release Notes Latest Changes
     if release_note_type == ReleaseNoteType.User:
+        # open and append in the markdown file (if not existing, create md file)
         with open('../user/index.md', 'a+') as f:
             write_line(f, '# Latest Changes')
 
             for main_module in main_modules:
-                latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets()
+                # gets every latest change from a main module
+                latest_change_sets = main_module.user_master_release_notes.get_latest_change_sets_date()
 
+                # if there is something in the list    
                 if latest_change_sets:
+
                     write_line(f, f'## [{main_module.name.title()}]({main_module.name.title().replace(" ", "%20")}.md)')
                     latest_change_set = aggregated_change_sets(latest_change_sets)[0]
                     write_line(f, latest_change_set.to_markdown(ReleaseNoteType.User, True))
@@ -165,29 +183,65 @@ def write_latest_release_notes(main_modules, release_note_type):
                     write_line(f, upcoming_change_set.to_markdown(ReleaseNoteType.User, False))
                     write_line(f, '---')
 
+    # Dev Release Notes Latest Changes
     elif release_note_type == ReleaseNoteType.Dev:
         with open('../dev/index.md', 'a+') as f:
             write_line(f, '# Latest Changes')
 
-            for main_module in main_modules:
-                latest_version_number = main_module.master_release_notes.get_latest_version_number()
-                latest_change_sets = main_module.master_release_notes.get_latest_change_sets()
+            # sort the main_modules list by the date
 
-                if latest_change_sets or any([submodule.master_release_notes.get_change_sets_with_version(latest_version_number) for submodule in main_module.submodules]):
+            main_module_dict = {}
+            main_module_list = []
+
+            # sort
+            for main_module in main_modules:
+
+                # get the latest date of the release note
+                latest_date = main_module.master_release_notes.get_latest_date()
+                # Get the latest change set (latest date)
+                latest_change_sets = main_module.master_release_notes.get_latest_change_sets_date()
+               
+                # add the main module name as a value and the date as a key in a dictionary
+                main_module_dict[latest_date] = main_module
+                       
+            dict2={}    
+
+            for x in main_module_dict.keys():
+                if x != None:
+                    dict2[x]=main_module_dict[x]
+
+            main_module_dict = dict2
+            dict2 = {}       
+
+            for key in sorted(main_module_dict.keys(), reverse = True):
+                dict2[key]=main_module_dict[key]
+
+            # Put everything back in the main_modules list
+
+            values = dict2.values()
+            main_module_list = list(values)
+
+            main_modules = main_module_list
+                     
+            for main_module in main_modules:
+                latest_date = main_module.master_release_notes.get_latest_date()
+                latest_change_sets = main_module.master_release_notes.get_latest_change_sets_date()
+
+                if latest_change_sets or any([submodule.master_release_notes.get_change_sets_with_date(latest_date) for submodule in main_module.submodules]):
                     write_line(f, f'## [{main_module.name.title()}]({main_module.name.title().replace(" ", "%20")}/1main.md)')
 
                     if latest_change_sets:
-                        latest_change_set = aggregated_change_sets(latest_change_sets)[0]
+                        latest_change_set = aggregated_change_sets_date(latest_change_sets)[0]
                         write_line(f, latest_change_set.to_markdown(ReleaseNoteType.Dev, True))
                 
                     write_line(f, '---')
 
                 for submodule in main_module.submodules:
-                    change_sets_with_version = submodule.master_release_notes.get_change_sets_with_version(latest_version_number)
+                    change_sets_with_date = submodule.master_release_notes.get_change_sets_with_date(latest_date)
 
-                    if change_sets_with_version:
+                    if change_sets_with_date:
                         write_line(f, f'#### [{submodule.name}]({main_module.name.title().replace(" ", "%20")}/{submodule.name.title().replace(" ", "%20")}.md)')
-                        change_set = aggregated_change_sets(change_sets_with_version)[0]
+                        change_set = aggregated_change_sets_date(change_sets_with_date)[0]
                         
                         write_line(f, change_set.to_markdown(ReleaseNoteType.Dev, False))
                         write_line(f, '---')
@@ -218,6 +272,10 @@ def write_latest_release_notes(main_modules, release_note_type):
 
 def write_release_notes(main_module, release_note_type):
     if release_note_type == ReleaseNoteType.User:
+        try:
+            os.remove('../user/{main_module.name.title()}.md')
+        except:
+            print("")
         with open(f'../user/{main_module.name.title()}.md', 'a+') as f:
             change_sets = main_module.user_master_release_notes.change_sets
             
@@ -256,6 +314,9 @@ def write_line(file, string):
 
 def aggregated_change_sets(unaggregated_change_sets):
     return [sum(list(change_set_group)) for _, change_set_group in groupby(unaggregated_change_sets, key=lambda x: x.version)]
+
+def aggregated_change_sets_date(unaggregated_change_sets):
+    return [sum(list(change_set_group)) for _, change_set_group in groupby(unaggregated_change_sets, key=lambda x: x.date)]    
 
 def write_toc(release_note_type):
     if release_note_type == ReleaseNoteType.User:
@@ -307,32 +368,55 @@ if __name__ == '__main__':
     org = g.get_organization('simplic')
     
     main_modules = []
+    os.remove("../../support/error_codes.md")
+    with open("../../support/error_codes.md", "a+") as e:
+        introductionString = """
+# Error codes \n
+This page contains all error codes. Errors are separated into two parts: \n
+* Message (Contains the error message) 
+* Solution (Contains a possible solution for the error) \n
+All error codes are separated by modules and have a unique error code. \n
+## Error messages and codes 
+    """
+        write_line(e,introductionString)
+    e.close()
 
+
+    # read_text() returns the decoded contents of the pointed-to file as a string
     main_repositories = json.loads(Path('main_repositories.json').read_text())
 
+    # split the string to get the name of the repository and the Path where it will be cloned from, happens for every repository in the "main_repositories.json"
     for link in main_repositories['links']:
         repo_name = link.split('/simplic/')[1]
         dir = Path(f'../../dev/build/clones/{repo_name}')
 
         print(dir, dir.exists())
+        # If the Path exists:
         if dir.exists():
+            # documentation_config.json -> string
+            # infrastructure.json -> string  (in the infrastructure.json the subrepositories are mentioned)
             documentation_config = json.loads(Path(f'{dir}/documentation_config.json').read_text())
             infrastructure = json.loads(Path(f'{dir}/infrastructure.json').read_text())
 
             print(infrastructure)
 
+            # the name of the module is what is written after 'part_of' as long it's not "core". If it's "core" the module name is Simplic Studio 
             module_name = documentation_config['part_of'] if documentation_config['part_of'] != 'core' else 'Simplic Studio'
-
+            
+            # if the repository has a release-notes.xml file it will be converted to string
             if Path(f'{dir}/release-notes.xml').exists():
                 master_release_notes_xml = Path(f'{dir}/release-notes.xml').read_text()
 
                 remote_repo = org.get_repo(dir.name.replace('.git', ''))
                 try:
+                    # xml to string from branch dev
                     dev_release_notes_xml = remote_repo.get_contents('release-notes.xml', ref='dev').decoded_content
                 except GithubException:
+                    # the release_notes.xml is empty
                     dev_release_notes_xml = '<ReleaseNotes></ReleaseNotes>'
                     print(f'{dir.name.replace(".git", "")} has no release-notes.xml in dev') 
-                
+           
+                # release notes are imported from the release notes and sorted by date 
                 master_release_notes = MasterReleaseNotes(master_release_notes_xml)
                 dev_release_notes = DevReleaseNotes(dev_release_notes_xml, master_release_notes)
 
@@ -349,6 +433,43 @@ if __name__ == '__main__':
 
                 main_module = MainModule(module_name, master_release_notes, dev_release_notes, user_master_release_notes, user_dev_release_notes)
                 main_modules.append(main_module)
+
+        	# ERROR CODES
+
+            with open("../../support/error_codes.md", "a+") as e:
+                write_line(e, '## '+dir.name.replace('.git', ''))
+                if Path(f'{dir}/error_codes.xml').exists():
+                    error_codes_xml = Path(f'{dir}/error_codes.xml').read_text()
+
+                    remote_repo_error_codes = org.get_repo(dir.name.replace('.git', ''))
+                    print(f'there are error codes in {dir}')
+
+                    #write_line(e, '## '+dir.name.replace('.git', ''))
+
+                    # First row of the table (the column titles)
+                    write_line(e, "Error code|Error text|Message|Solution \n -|-|-|-")
+                    tree = ET.fromstring(error_codes_xml)
+
+                    localization_link = tree.attrib['Localization']
+                    localization_link = localization_link.replace('.*.json', '.en-US.json')
+                    # Throw exception if file not found...
+                    try:
+                        localization = json.loads(Path(f'{dir}/{localization_link}').read_text())
+                    except:
+                        print("Localization file couldn't be found")
+
+                    for node in tree:
+                        error_code = node.attrib['Code']
+                        error_text = node.text.strip()
+                        error_message = error_code+"_msg"
+                        error_solution = error_code+"_sln"
+                        try:
+                            write_line(e, f'{error_code} |{error_text}|{localization[error_message]}|{localization[error_solution]}')
+                        except:
+                            write_line(e, f'{error_code} |{error_text}|not found|not found')
+                else:
+                    write_line(e, '{errors\\}')  
+                     
                 """
                 Get the submodules for the Mainmodule
                 """
@@ -374,6 +495,41 @@ if __name__ == '__main__':
                         module_name = string.capwords(solution_name.replace('.sln', ' ').replace('-', ' ').replace('.', ' '))
                         sub_module = SubModule(module_name, master_release_notes, dev_release_notes)
                         main_module.submodules.append(sub_module)
+
+                    # ERROR CODES 
+                    with open("../../support/error_codes.md", "a+") as e:                        
+                        write_line(e, '### '+_dir.name.replace('.git', ''))
+                        if Path(f'{_dir}/error_codes.xml').exists():
+                            error_codes_xml = Path(f'{_dir}/error_codes.xml').read_text()
+                            print(f'there are error codes in {_dir}')
+                            remote_repo = org.get_repo(_dir.name.replace('.git', ''))
+
+                        
+                            
+
+                            # First row of the table (the column titles)
+                            write_line(e, "Error code|Error text|Message|Solution \n -|-|-|-")
+                            tree = ET.fromstring(error_codes_xml)
+
+                            localization_link = tree.attrib['Localization']
+                            localization_link = localization_link.replace('.*.json', '.en-US.json')
+                            # Throw exception if file not found...
+                            try:
+                                localization = json.loads(Path(f'{dir}/{localization_link}').read_text())
+                            except:
+                                print("Localization file couldn't be found")
+
+                            for node in tree:
+                                error_code = node.attrib['Code']
+                                error_text = node.text.strip()
+                                error_message = error_code+"_msg"
+                                error_solution = error_code+"_sln"
+                                try:
+                                    write_line(e, f'{error_code} |{error_text}|{localization[error_message]}|{localization[error_solution]}')
+                                except:
+                                    write_line(e, f'{error_code} |{error_text}|not found|not found')
+                        else:
+                            write_line(e, '{errors\\}')  
                 else:
                     print(f'{repo_name} was not yet added to the api documentation clone list and thus wont appear in release notes')
     
@@ -382,8 +538,11 @@ if __name__ == '__main__':
     """
     Generate Markdown
     """
-    os.mkdir('../dev/')
-    os.mkdir('../user/')
+    if not Path('../dev/').exists():
+        os.mkdir('../dev/')
+    if not Path('../user/').exists():
+        os.mkdir('../user/')
+  
     
     for module in main_modules:
         try:
