@@ -7,6 +7,8 @@
       href: markup_extensions/icon.md
     - name: Localization
       href: markup_extensions/localization.md
+    - name: EnumBindingSource
+      href: markup_extensions/enumBindingSource.md
 - name: Controls
   href: controls_intro.md
   items:
