@@ -31,6 +31,18 @@ After you have set both of this you should see your description text displayed i
         [Description("Datum")]
         DateTime = 3
     }
+    
+## Localization and EnumDescriptionTypeConverter
+
+The EnumDescriptionTypeConverter supports the simplic localizationservice.
+To utilize it simply use the desired key as the description tag.
+
+    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+    public enum ExampleEnum
+    {
+        [Description("test_localization_key")]
+        Example = 0,
+    }
 
 
 Source: https://brianlagunas.com/a-better-way-to-data-bind-enums-in-wpf/
