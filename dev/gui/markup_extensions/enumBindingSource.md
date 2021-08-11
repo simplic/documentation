@@ -6,7 +6,9 @@ To use the EnumBindingSource simply reference the Simplic.Studio package and add
 In this example it's named 'studio'. 
 To specify the enum use x:Type as show in this example. Here it is the 'FieldDataType' in our 'local' namespace.
 
-\<ComboBox ItemsSource="{Binding Source={studio:EnumBindingSource {x:Type local:FieldDataType}}}"/>
+```xml
+<ComboBox ItemsSource="{Binding Source={studio:EnumBindingSource {x:Type local:FieldDataType}}}"/>
+```
 
 For a simple binding without alias/user-friendly text this is all you need to do to get your enum as a itemsource.
 
@@ -19,6 +21,7 @@ Aswell as doing that you also need to define the typeconverter for your enum wit
 In addion to that you need to give the attribute the type of converter you want to use, which is the 'EnumDescriptionTypeConverter'.
 After you have set both of this you should see your description text displayed in the combobox
 
+```c#
     [TypeConverter(typeof(EnumDescriptionTypeConverter))]
     public enum FieldDataType
     {
@@ -31,18 +34,20 @@ After you have set both of this you should see your description text displayed i
         [Description("Datum")]
         DateTime = 3
     }
+```
     
 ## Localization and EnumDescriptionTypeConverter
 
 The EnumDescriptionTypeConverter supports the simplic localizationservice.
 To utilize it simply use the desired key as the description tag.
 
+```c#
     [TypeConverter(typeof(EnumDescriptionTypeConverter))]
     public enum ExampleEnum
     {
         [Description("test_localization_key")]
         Example = 0,
     }
-
+```
 
 Source: https://brianlagunas.com/a-better-way-to-data-bind-enums-in-wpf/
