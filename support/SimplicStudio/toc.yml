@@ -108,3 +108,8 @@
     href: Troubleshooting/license.md
   - name: Log sql queries
     href: Troubleshooting/Sql-Log.md
+- name: LieferantenBewertung
+  href: SupplierRating/intro.md
+  items:
+    name: IAutoFillService
+    href: 
