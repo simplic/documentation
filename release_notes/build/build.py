@@ -63,10 +63,16 @@ class MasterReleaseNotes:
 
 class DevReleaseNotes:
     def __init__(self, xml, master_release_notes):
+        
+        self.upcoming_change_sets = []
+        
+        if not xml:
+            self.change_sets = []
+            return
+        
         root = ET.fromstring(xml)
         self.change_sets = [ChangeSet(_change_set) for _change_set in root]
-
-        self.upcoming_change_sets = []
+        
         for change_set in self.change_sets:
             if not any([master_change_set for master_change_set in master_release_notes.change_sets if
                         master_change_set.guid == change_set.guid]):
@@ -145,7 +151,9 @@ class ChangeSet:
 class Change:
     def __init__(self, _change):
         self.type = _change.get('type')
-        self.text = _change.text.strip()
+        
+        if _change.text:
+            self.text = _change.text.strip()
 
 class ReleaseNoteType(Enum):
     User = 1
