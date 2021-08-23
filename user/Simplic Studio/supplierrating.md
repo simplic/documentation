@@ -1,4 +1,4 @@
-In der Lieferantenbewertung können Sie für Ihre Kontakte, wie zum Beispiel Lieferanten, bewerten.
+In der Lieferantenbewertung können Sie Ihre Kontakte, wie zum Beispiel Lieferanten, bewerten.
 
 # Lieferantenbewertung
 
