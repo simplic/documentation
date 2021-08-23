@@ -42,5 +42,7 @@
       href: Newyear/accounting.md
     - name: Nummernkreisanpassung
       href: Newyear/numbers.md
+- name: Lieferantenbewertung
+  href: supplierrating.md
 
 
