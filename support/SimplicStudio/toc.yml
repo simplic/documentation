@@ -111,6 +111,5 @@
 - name: SupplierRating
   href: SupplierRating/intro.md
   items:
-    name: IAutoFillService
-    href: SupplierRating/fillfieldservice_interface.md
-    
+  - name: IAutoFillService
+    href: SupplierRating/fillfieldservice_interface.md    
