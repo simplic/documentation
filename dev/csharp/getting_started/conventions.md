@@ -139,3 +139,37 @@ C# supports the use of an underscore to split down large numbers to an readable 
 
 - √ **DO** `public const long LargeNumber = 10_000_000_000;`.
 - X **DO NOT** `public const long LargeNumber = 10000000000;`.
+
+### Order inside a class
+Inside a class the different elements should be ordered as following:
+- Fields
+- Constructor
+- Private-Methods
+- Public-Methods
+- Properties
+
+```csharp
+public class Example
+{
+  // Field(s)
+  private string Field = "Field";
+
+  // Constructor
+  public void Example
+  {
+  }
+
+  // private Method(s)
+  private void DoPrivateSomething()
+  {
+  }
+
+  // public Method(s)
+  public void DoPublicSomething()
+  {
+  }
+
+  // Property/Properties
+  public string Property { get; set; }
+}
+```
