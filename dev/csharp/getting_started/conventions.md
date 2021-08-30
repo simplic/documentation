@@ -155,19 +155,13 @@ public class Example
   private string Field = "Field";
 
   // Constructor
-  public void Example
-  {
-  }
+  public void Example { .. }
 
   // private Method(s)
-  private void DoPrivateSomething()
-  {
-  }
+  private void DoPrivateSomething() { .. }
 
   // public Method(s)
-  public void DoPublicSomething()
-  {
-  }
+  public void DoPublicSomething() { .. }
 
   // Property/Properties
   public string Property { get; set; }
