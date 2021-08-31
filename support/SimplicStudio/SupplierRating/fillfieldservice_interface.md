@@ -25,7 +25,7 @@ class SampleFillService(IFillFieldValueService):
         
     def FillFieldValue(self, rating, entry, field):
         manager = ContactManager()
-        contact = manager.GetById(rating.ContactId);
+        contact = manager.GetById(rating.ContactId)
 
         field.StringValue = contact.CompanyName
         return True    
