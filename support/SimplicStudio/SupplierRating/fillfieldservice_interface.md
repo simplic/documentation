@@ -7,27 +7,27 @@ Services should be registered in the main.py file!
 Below you can see a simple implementation of a service which implements the IFillFieldValueService.
 
 # Example
+This example uses the rating.ContactId to get the full contact and fill the fields StringValue with the companyname.
 
 ```python
 from simplic import DependencyInjection, Sql
 
-
 from Simplic.SupplierEvaluation import IFillFieldValueService
-
+from Simplic.PlugIn.SAC.Contact import ContactManager
 
 class SampleFillService(IFillFieldValueService):
 
     def get_ServiceName(self):
         return 'SampleFillService'
 
-
     def get_DisplayName(self):
         return 'SampleFillService'
         
-    def FillFieldValue(self, field):
-        user_id = Sql.execute('SELECT MAX(Ident) Id from ESS_MS_Intern_User')
-    
-        field.IntegerValue = user_id[0].Id
+    def FillFieldValue(self, rating, entry, field):
+        manager = ContactManager()
+        contact = manager.GetById(rating.ContactId);
+
+        field.StringValue = contact.CompanyName
         return True    
 
 DependencyInjection.register_instance(IFillFieldValueService, 'SampleFillService', SampleFillService())
