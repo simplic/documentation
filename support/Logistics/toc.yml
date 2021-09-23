@@ -7,3 +7,6 @@
     href: Tour/shipment_reorder.md
 - name: Shipment management
   href: Shipment/intro.md
+  items:
+  - name: Status conditions
+    href: Shipment/shipment_status_conditions.md
