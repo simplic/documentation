@@ -5,3 +5,5 @@
   items:
   - name: Shipment order
     href: Tour/shipment_reorder.md
+- name: Shipment management
+  href: Shipment/intro.md
