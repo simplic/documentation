@@ -14,5 +14,7 @@
   href: BI/
 - name: PM
   href: ProjectManagement/
+- name: Misc
+  href: Misc/
 - name: Error-Codes
   href: error_codes.md

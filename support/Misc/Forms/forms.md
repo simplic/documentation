@@ -6,7 +6,7 @@ This way the customer will be able to modify his own forms without the help of S
 First the User click "Konfiguration" and then Form Designer to start the Form Designer.
 ![Taskbar](~/images/Forms/taskbar.jpg)
 Otherwise the User can search and then clicking Form Designer to start it.
-![Search](searchbar.jpg)
+![Search](~/images/Forms/searchbar.jpg)
 The Grid is open and with a "right Click" or press the Key "F8" a new Form is open.
 ![NewFormButton](~/images/Forms/newFormButton.jpg)
 When a Form exists the User can edit it with a "right click" or press the Key "F5" and the Form will open.
