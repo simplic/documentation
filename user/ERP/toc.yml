@@ -5,10 +5,12 @@
   items: 
     - name: Vorgangserfassung
       href: Process/new_process.md  
+    - name: Daueraufträge
+      href: Process/standing_order.md       
 - name: Steuerverwaltung
   href: Taxes/index.md
   items: 
     - name: Übersicht
       href: Taxes/Overview.md  
     - name: Konten anlegen
-      href: Taxes/new_account.md  
+      href: Taxes/new_account.md        
