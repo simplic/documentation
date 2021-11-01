@@ -20,7 +20,8 @@ Die Dauerauftragseinrichtung findet sich im Bereich Warenwirtschaft / Auswahl Vo
 ## Auswahl "Dauerauftrag"
 
 ### Neuen Dauerauftrag anlegen / bestehenden bearbeiten
-Sie wählen auf der rechten Seite in der Tabelle mit der rechten Maustaste im Menu den Punkt Neuer Vorgang.
+Sie wählen auf der rechten Seite in der Tabelle mit der rechten Maustaste im Menu den Punkt "Neuer Vorgang".
+
 Entsprechend können Sie auch einen bestehenden Vorgang bearbeiten welcher dort angezeigt wird.
 
 ![Daueraufträge](../../images/StandingOrder/Dauerauftrag4.png)
