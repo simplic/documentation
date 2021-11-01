@@ -154,7 +154,8 @@ Das Fenster
 
 muss noch geschlossen werden.
 
-Die ausgewählten Einträge sind aus Fäälige Daueraufträge verschwunden. Sie nicht nicht mehr fällig.
+Die ausgewählten Einträge sind aus Fällige Daueraufträge verschwunden. Sie nicht nicht mehr fällig.
+
 In der Ansicht der Daueraufträge können Sie jetzt erkennen, dass ein neuer Beleg erzeugt wurde:
 
 ![Daueraufträge](../../images/StandingOrder/Dauerauftrag19.png) 
