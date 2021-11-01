@@ -32,7 +32,8 @@ Es öffnet sich das Vorgangsfenster.
 
 ![Daueraufträge](../../images/StandingOrder/Dauerauftrag5.png)
 
-Der obere Teil des Fensters stellt die Kopfdaten eines jeden Vorganges dar, der unterer die Positionsdaten.
+Der obere Teil des Fensters stellt die Kopfdaten eines jeden Vorganges dar, der untere die Positionsdaten.
+
 
 ### Kopfteil
 
