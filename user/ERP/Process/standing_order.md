@@ -3,7 +3,8 @@
 ## Definition Daueraufträge
 
 Daueraufträge beuten im <span style="color:hotpink;font-weight:bold">SIMPLIC</span> die periodisch wiederkehrende Vorgangsanlage für z.B. Rechnungen oder Gutschriften.
-Belege, welche zu einem definierten Zeitpunkt automatisch mit gleichem Inhalt erstelltwerden sollen.
+Belege, welche zu einem definierten Zeitpunkt automatisch mit gleichem Inhalt erstellt werden sollen.
+
 
 > <span style="color:orange">Kundenanpassungen. Orangener Text ist nicht bei allen Installationen so eingerichtet.</span>
 
