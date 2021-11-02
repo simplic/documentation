@@ -144,8 +144,8 @@ C# supports the use of an underscore to split down large numbers to an readable 
 Inside a class the different elements should be ordered as following:
 - Fields
 - Constructor
-- Private-Methods
 - Public-Methods
+- Private-Methods
 - Properties
 
 ```csharp
@@ -157,11 +157,11 @@ public class Example
   // Constructor
   public void Example { .. }
 
-  // private Method(s)
-  private void DoPrivateSomething() { .. }
-
   // public Method(s)
   public void DoPublicSomething() { .. }
+
+  // private Method(s)
+  private void DoPrivateSomething() { .. }
 
   // Property/Properties
   public string Property { get; set; }
