@@ -1,7 +1,7 @@
 #TODO: Comments and refactor
 import json
 import os
-import git
+import GitPython
 from py3_api_doc import generate_documentation_from_xml
 import ftplib
 import subprocess
@@ -104,7 +104,7 @@ def write_code_samples_toc_core():
             f.write(toc)
 
 
-class Progress(git.remote.RemoteProgress):
+class Progress(GitPython.remote.RemoteProgress):
     def update(self, op_code, cur_count, max_count=None, message=''):
         print (f'{op_code}, {cur_count}, {max_count},{message}')
 
@@ -141,8 +141,8 @@ for i, link in enumerate(repo_links):
     dest = 'clones/' + repo_name
     try:
         authed_link = link.replace('github.com', f'{git_user}:{git_token}@github.com')
-        git.Repo.clone_from(authed_link, dest, branch='master')
-    except git.exc.GitCommandError as e: # git.exc.GitCommandError
+        GitPython.Repo.clone_from(authed_link, dest, branch='master')
+    except GitPython.exc.GitCommandError as e: # git.exc.GitCommandError
         print(str(e))
 
     repo = Repo(dest, repo_name)
