@@ -1,7 +1,7 @@
 #TODO: Comments and refactor
 import json
 import os
-import git
+import GitPython as git
 from py3_api_doc import generate_documentation_from_xml
 import ftplib
 import subprocess
