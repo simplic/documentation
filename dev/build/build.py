@@ -67,7 +67,7 @@ def write_subdirectories_toc():
 
 # Methode to generate the toc for the whole code_samples directory in api_core
 def write_code_samples_toc_core():
-    prit('-- Write code sampes toc')
+    print('-- Write code sampes toc')
     toc = ''
     # All file/directory-Paths in the code_samples directory are listed.
     for dir in Path('../api_core/code_samples').iterdir():
