@@ -9,5 +9,7 @@
       href: Version/Archive.md
     - name: Verwerfen
       href: Version/reject.md
+- name: Posteingang
+  href: Inbox/Posteingang.md      
 - name: Dokumentenvorschau
   href: Preview.md
