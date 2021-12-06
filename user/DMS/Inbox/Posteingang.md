@@ -128,7 +128,7 @@ Diese Vorschau kann auch auf einen anderen Bildschirmverschoben und in der Grö�
 
 ![Posteingang](PosteingangStep5.jpg)
 
-Je nach Dokumenttyp welcher in der Vorschau ausgewählt ist,
+Je nach Dokumenttyp, welcher in der Vorschau ausgewählt ist,
 wird am Oberen Rand das Menu der Vorschau mit Standardfunktionen wie blättern, zoomen, drehen, speichern etc. angezeigt.
 Bei anderen Dateitypen fehlt dieses.
 
