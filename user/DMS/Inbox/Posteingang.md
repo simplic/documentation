@@ -157,7 +157,7 @@ Hierzu wird zuerst das erste Dokument ausgewählt und im Menü die Funktion Neue
 Es öffnet sich ein kleines Fenster, in dem der neue Stapel angezeigt wird. Der Name kann hier auch geändert werden. 
 Sollten Sie bereits mehrere Stapel erzeugt haben, werden sie in Tabs angezeigt.
 
-Bei geöffnetem Fenster, wird ein weiters Dokument - egal ob im Posteingang oder in der Dokumentenverwaltung - mit dem Menue Eintrag "Zum Stapel hinzufügen" hinzugefügt.
+Bei geöffnetem Fenster wird ein weiters Dokument - egal ob im Posteingang oder in der Dokumentenverwaltung - mit dem Menüeintrag "Zum Stapel hinzufügen" hinzugefügt.
 
 Innerhalb des Stapels kann die Reihenfolge der Dokumente durch verschieben geändert werden.
 
