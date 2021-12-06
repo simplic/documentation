@@ -46,7 +46,7 @@ Wichtig bei Workflows ist, dass diesen auch ein entsprechender Workflow zugewies
 
 Die reinen Ordner dienen lediglich als Ablagestruktur und haben keine Posteigenschaften.
 
-Mit der rechten Maustaste haben Sie im Menu folgende Auswahl
+Mit der rechten Maustaste haben Sie im Menü folgende Auswahl
 - sonstiges
 - Ordner löschen
 - Metadaten bearbeiten
