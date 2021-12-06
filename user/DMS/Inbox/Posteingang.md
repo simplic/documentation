@@ -153,7 +153,7 @@ Zur Verwendung hier eine Animation:
 Diese Funktionalität findet sich auch in der Dokumentenverwaltung.
 
 Durch die Stapelverarbeitung lassen sich mehrere Dokumente zu einem neuen Dokument oder zu einer neuen Version zusammenfassen.
-Hierzu wird zuerst das erste Dokument ausgewählt und im Menu die Funktion Neuer Stapel ausgewählt.
+Hierzu wird zuerst das erste Dokument ausgewählt und im Menü die Funktion Neuer Stapel ausgewählt.
 Es öffnet sich ein kleines Fenster, in dem der neue Stapel angezeigt wird. Der Name kann hier auch geändert werden. 
 Sollten Sie bereits mehrere Stapel erzeugt haben, werden sie in Tabs angezeigt.
 
