@@ -75,7 +75,8 @@ Sie können auch ein Dokument per "Drag and Drop" in den entsprechenden Ordner z
 
 ### Tab Explorer Dokumentenbereich
 Im Dokumentenbereich werden alle Dokumente angezeigt, welchen in Ihrem Posteingang liegen.
-Zum aktualisieren sollten Sie das Aktualisierungssymbol anklicken.
+Zum Aktualisieren sollten Sie das Aktualisierungssymbol anklicken.
+
 
 ![Posteingang](PosteingangStep3.jpg)
 
