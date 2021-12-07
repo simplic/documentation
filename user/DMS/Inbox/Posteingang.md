@@ -19,7 +19,7 @@ Die Workflow-Übersicht hilft bei der Nachverfolgung der Belege.
 
 Der Posteingang ist unter dem Reiter Dokumente / Posteingang zu finden.
 
-![Posteingang](PosteingangStep1.jpg)
+![Posteingang](PosteingangStep1.png)
 
 Es öffnet sich die eigentliche Oberfläche.
 Wir sehen hier drei Tabs 
@@ -31,7 +31,7 @@ Wir sehen hier drei Tabs
 | Einstellungen | Für Einstellungen |
 
 
-![Posteingang](PosteingangStep2.jpg)
+![Posteingang](PosteingangStep2.png)
 
 
 
@@ -78,7 +78,7 @@ Im Dokumentenbereich werden alle Dokumente angezeigt, welchen in Ihrem Posteinga
 Zum Aktualisieren sollten Sie das Aktualisierungssymbol anklicken.
 
 
-![Posteingang](PosteingangStep3.jpg)
+![Posteingang](PosteingangStep3.png)
 
 Im Standard sind folgende Spalten von Interesse:
 
@@ -93,7 +93,7 @@ TIP: Diese Vorschau können Sie auch auf einen andere Bildschirm verschieben.
 
 Mit der rechten Maustaste kann nach der Auswahl eines Dokumentes folgende Aktionen durchgeführt werden:
 
-![Posteingang](PosteingangStep4.jpg)
+![Posteingang](PosteingangStep4.png)
 
 | Taste | Aktion|
 | --- | ---|
@@ -126,7 +126,7 @@ Sie kann auf alle Dokumente angewendet werden, welche einen sichtbaren Inhalt ha
 Durch Auswahl eines Dokumentes öffnet sich am rechten Bildschirmrand die Vorschau des Dokumentes.
 Diese Vorschau kann auch auf einen anderen Bildschirmverschoben und in der Größe angepasst werden.
 
-![Posteingang](PosteingangStep5.jpg)
+![Posteingang](PosteingangStep5.png)
 
 Je nach Dokumenttyp, welcher in der Vorschau ausgewählt ist,
 wird am oberen Rand das Menü der Vorschau mit Standardfunktionen wie blättern, zoomen, drehen, speichern etc. angezeigt.
@@ -134,7 +134,7 @@ Bei anderen Dateitypen fehlt dieses.
 
 Für PDF werden außerdem weitere Funktionen angezeigt.
 
-![Posteingang](PosteingangStep6.jpg)
+![Posteingang](PosteingangStep6.png)
 
 | Symbol | Bedeutung |
 | --- | --- |
@@ -176,5 +176,5 @@ Auch der Ablageort des Dokumentes im Posteingang wird angezeigt.
 Eine Bearbeitung der Daten an dieser Stelle ist nicht möglich.
 Die Anzeige dient einzig der Recherche.
 
-![Posteingang](PosteingangStep7.jpg)
+![Posteingang](PosteingangStep7.png)
 
