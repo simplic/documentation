@@ -19,7 +19,7 @@ Die Workflow-Übersicht hilft bei der Nachverfolgung der Belege.
 
 Der Posteingang ist unter dem Reiter Dokumente / Posteingang zu finden.
 
-![Posteingang](PosteingangStep1.png)
+![Posteingang](/user/images/Inbox/PosteingangStep1.png)
 
 Es öffnet sich die eigentliche Oberfläche.
 Wir sehen hier drei Tabs 
@@ -31,7 +31,7 @@ Wir sehen hier drei Tabs
 | Einstellungen | Für Einstellungen |
 
 
-![Posteingang](PosteingangStep2.png)
+![Posteingang](/user/images/Inbox/PosteingangStep2.png)
 
 
 
@@ -77,7 +77,7 @@ Sie können auch ein Dokument per "Drag and Drop" in den entsprechenden Ordner z
 Im Dokumentenbereich werden alle Dokumente angezeigt, welchen in Ihrem Posteingang liegen.
 Zum aktualisieren sollten Sie das Aktualisierungssymbol anklicken.
 
-![Posteingang](PosteingangStep3.png)
+![Posteingang](/user/images/Inbox/PosteingangStep3.png)
 
 Im Standard sind folgende Spalten von Interesse:
 
@@ -92,7 +92,7 @@ TIP: Diese Vorschau können Sie auch auf einen andere Bildschirm verschieben.
 
 Mit der rechten Maustaste kann nach der Auswahl eines Dokumentes folgende Aktionen durchgeführt werden:
 
-![Posteingang](PosteingangStep4.png)
+![Posteingang](/user/images/Inbox/PosteingangStep4.png)
 
 | Taste | Aktion|
 | --- | ---|
@@ -125,7 +125,7 @@ Sie kann auf alle Dokumente angewendet werden, welche einen sichtbaren Inhalt ha
 Durch Auswahl eines Dokumentes öffnet sich am rechten Bildschirmrand die Vorschau des Dokumentes.
 Diese Vorschau kann auch auf einen anderen Bildschirmverschoben und in der Größe angepasst werden.
 
-![Posteingang](PosteingangStep5.png)
+![Posteingang](/user/images/Inbox/PosteingangStep5.png)
 
 Je nach Dokumenttyp welcher in der Vorschau ausgewählt ist,
 wird am Oberen Rand das Menu der Vorschau mit Standardfunktionen wie blättern, zoomen, drehen, speichern etc. angezeigt.
@@ -133,7 +133,7 @@ Bei anderen Dateitypen fehlt dieses.
 
 Für PDF werden außerdem weitere Funktionen angezeigt.
 
-![Posteingang](PosteingangStep6.png)
+![Posteingang](/user/images/Inbox/PosteingangStep6.png)
 
 | Symbol | Bedeutung |
 | --- | --- |
@@ -146,7 +146,7 @@ Für PDF werden außerdem weitere Funktionen angezeigt.
 | Symbol orange | Button zum Festschreiben der Änderung | 
 
 Zur Verwendung hier eine Animation:
-![Posteingang](vorschau.gif)
+![Posteingang](/user/images/Inbox/vorschau.gif)
 
 ### Die Stapelfunktion
 Diese Funktionalität findet sich auch in der Dokumentenverwaltung.
@@ -164,7 +164,7 @@ Abschließend kann ein neues Dokument erzeugt werden.
 Alternativ kann eine neue Version des Dokumentes erzeugt werden, welches vorher markiert wurde.
 
 Hierzu eine kleine Animation:
-![Posteingang](stapel.gif)
+![Posteingang](/user/images/Inbox/stapel.gif)
 
 ## Workflow Übersicht
 
@@ -175,5 +175,5 @@ Auch der Ablageort des Dokumentes im Posteingang wird angezeigt.
 Eine Bearbeitung der Daten an dieser Stelle ist nicht möglich.
 Die Anzeige dient einzig der Recherche.
 
-![Posteingang](PosteingangStep7.png)
+![Posteingang](/user/images/Inbox/PosteingangStep7.png)
 
