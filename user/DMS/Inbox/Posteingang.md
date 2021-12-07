@@ -146,7 +146,7 @@ Für PDF werden außerdem weitere Funktionen angezeigt.
 | Symbol orange | Button zum Festschreiben der Änderung | 
 
 Zur Verwendung hier eine Animation:
-![Posteingang](/user/images/Inbox/vorschau.gif)
+![Posteingang](/user/images/Inbox/Vorschau.gif)
 
 ### Die Stapelfunktion
 Diese Funktionalität findet sich auch in der Dokumentenverwaltung.
@@ -164,7 +164,7 @@ Abschließend kann ein neues Dokument erzeugt werden.
 Alternativ kann eine neue Version des Dokumentes erzeugt werden, welches vorher markiert wurde.
 
 Hierzu eine kleine Animation:
-![Posteingang](/user/images/Inbox/stapel.gif)
+![Posteingang](/user/images/Inbox/Stapel.gif)
 
 ## Workflow Übersicht
 
