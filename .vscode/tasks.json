@@ -12,6 +12,11 @@
             "label": "Support docfx",
             "type": "shell",
             "command": "docfx support/docfx.json --serve"
+        },
+        {
+            "label": "Dev docfx",
+            "type": "shell",
+            "command": "docfx dev/docfx.json --serve"
         }
     ]
 }
