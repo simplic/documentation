@@ -112,7 +112,6 @@ The user selects "Telerik.Windows.Controls.GridViewDataColumn" from the combo bo
 For each Column from the Grid the user must fill these Attributes.  
 *Name* The name of the GridViewDataColumn.  
 *Header* The name of the header in the GridView.  
-*UniqueName* The unique name of the Column.  
 
 ![ListColumnAddDesign](~/images/Forms/listColumnAddDesign.png)  
 
