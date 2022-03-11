@@ -1,4 +1,5 @@
 # Flow Node Documentation Standard
+This is a standard for the documentation of flow nodes.
 
 ## Basics:
 The flow node documentation works in the same way as the standard API documentation for classes, methods and properties by using XAML tags in front of classes that constitute nodes and properties that constitute pins.
