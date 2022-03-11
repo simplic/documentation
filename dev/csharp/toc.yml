@@ -51,4 +51,7 @@
     items:
 - name: Flow System
   href: flow/intro.md
+  items:
+    - name: Node Documentation Standard
+      href: flow/node_documentation_standard.md
 
