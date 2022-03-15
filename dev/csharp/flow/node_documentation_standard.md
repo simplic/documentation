@@ -2,14 +2,14 @@
 This is a standard for the documentation of flow nodes.
 
 ## Basics
-The flow node documentation works in the same way as the standard API documentation for classes, methods and properties by using XAML tags in front of classes that constitute nodes and properties that constitute pins.
+The flow node documentation works in the same way as the standard API documentation for classes, methods and properties by using XML tags in front of classes that constitute nodes and properties that constitute pins.
 
 In some cases the documentation_config.json file in the root directory of a repository containing flow nodes must be modified so that projects containing the nodes aren't excluded from the documentation.
 
 ## Node
-The class of each node is preceded by an XAML summary containing at least a short description of the node's function in one or at maximum two sentences.
+The class of each node is preceded by an XML summary containing at least a short description of the node's function in one or at maximum two sentences.
 
-This description can be further extended by the use of an XAML paragraph containing a more detailed description and additional functionality the node provides.
+This description can be further extended by the use of an XML paragraph containing a more detailed description and additional functionality the node provides.
 
 ### Example
 ```csharp
@@ -24,9 +24,9 @@ This description can be further extended by the use of an XAML paragraph contain
 ```
 
 ## Flow pins
-Each outgoing flow pin property is preceded by an XAML summary describing what triggers it.
+Each outgoing flow pin property is preceded by an XML summary describing what triggers it.
 
-An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XAML paragraph.
+An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XML paragraph.
 
 ### Example 1
 ```csharp
@@ -47,9 +47,9 @@ An additional more abstract/contextual description further explaining the pin's 
 ```
 
 ## Data pins
-Each data pin property is preceded by an XAML summary containing what kind of data the pin accepts or provides and the data type.
+Each data pin property is preceded by an XML summary containing what kind of data the pin accepts or provides and the data type.
 
-An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XAML paragraph.
+An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XML paragraph.
 
 ### Example 1 InPin
 ```csharp
