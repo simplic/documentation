@@ -1,17 +1,17 @@
 # Flow Node Documentation Standard
 This is a standard for the documentation of flow nodes.
 
-## Basics:
+## Basics
 The flow node documentation works in the same way as the standard API documentation for classes, methods and properties by using XAML tags in front of classes that constitute nodes and properties that constitute pins.
 
 In some cases the documentation_config.json file in the root directory of a repository containing flow nodes must be modified so that projects containing the nodes aren't excluded from the documentation.
 
-## Node:
+## Node
 The class of each node is preceded by an XAML summary containing at least a short description of the node's function in one or at maximum two sentences.
 
 This description can be further extended by the use of an XAML paragraph containing a more detailed description and additional functionality the node provides.
 
-### Example:
+### Example
 ```csharp
     /// <summary>
     /// Extracts a barcode from a .tif or .pdf file.
@@ -23,12 +23,12 @@ This description can be further extended by the use of an XAML paragraph contain
         ...
 ```
 
-## Flow pins:
+## Flow pins
 Each outgoing flow pin property is preceded by an XAML summary describing what triggers it.
 
 An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XAML paragraph.
 
-### Example 1:
+### Example 1
 ```csharp
         /// <summary>
         /// Triggers for each extracted barcode.
@@ -37,7 +37,7 @@ An additional more abstract/contextual description further explaining the pin's 
         public ActionNode OutNodeEachBarcode { get; set; }
 ```
 
-### Example 2:
+### Example 2
 ```csharp
         /// <summary>
         /// Triggers when the barcode extraction was successful.
@@ -46,12 +46,12 @@ An additional more abstract/contextual description further explaining the pin's 
         public ActionNode OutNodeSuccess { get; set; }
 ```
 
-## Data pins:
+## Data pins
 Each data pin property is preceded by an XAML summary containing what kind of data the pin accepts or provides and the data type.
 
 An additional more abstract/contextual description further explaining the pin's purpose can be provided in an added XAML paragraph.
 
-### Example 1 InPin:
+### Example 1 InPin
 ```csharp
         /// <summary>
         /// Accepts the formats of the barcodes to be extracted as a list of string.
@@ -66,7 +66,7 @@ An additional more abstract/contextual description further explaining the pin's 
         public DataPin InPinBarcodeFormats { get; set; }
 ```
 
-### Example 2 InPin:
+### Example 2 InPin
 ```csharp
         /// <summary>
         /// Accepts the information whether to convert to black-and-white or not as a boolean.
@@ -81,7 +81,7 @@ An additional more abstract/contextual description further explaining the pin's 
         public DataPin InPinConvertBlackAndWhite { get; set; }
 ```
 
-### Example 1 OutPin:
+### Example 1 OutPin
 ```csharp
         /// <summary>
         /// Provides the barcode recognition results as a list of BarcodeRecognitionResult.
@@ -96,7 +96,7 @@ An additional more abstract/contextual description further explaining the pin's 
         public DataPin OutPinBarcodePages { get; set; }
 ```
 
-### Example 2 OutPin:
+### Example 2 OutPin
 ```csharp
         /// <summary>
         /// Provides the containing page number for each barcode as a string.
