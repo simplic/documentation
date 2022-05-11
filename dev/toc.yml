@@ -19,3 +19,6 @@
 - name: Documentation
   href: documentation/
   homepage: documentation/adding_repositories.md
+- name: Bughunt
+  href: bug_hunt/
+  homepage: bug_hunt/general_approach.md
