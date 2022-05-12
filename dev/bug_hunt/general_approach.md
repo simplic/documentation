@@ -23,7 +23,7 @@ Sometimes you already have an idea why the bug is happening because you have see
 - Check the input and output
 - Create clear cases what could cause the problem.
 - Reduce the time testing by creating the smallest possible test case where the bug occurs.
-- Priotize your possible error cases by effort, knowhow & likelyhood
+- Prioritize your possible error cases by effort, knowhow & likelihood.
 
 By checking the input and output starting with the general process and the gradually reducing the scope to more specific cases/processes, you get a good idea where exactly things go wrong.
 
