@@ -33,7 +33,7 @@ into the data inside the database first.**
 When you have a process that works with 100 entries and none of them work, you do not need to try to run the process with all 100 entries. Work on getting 1 entry to work
 after that you can expand your testing to the rest.
 
-Giving priority to cases that take little effort, don't need specific knowhow and have a high likelyhood of fixing the problem will increase the efficency of your bug hunt.
+Giving priority to cases that take little effort, don't need specific knowhow and have a high likelihood of fixing the problem will increase the efficency of your bug hunt.
 Starting with the most time consuming proble, you have no idea about is a terrible idea.
 
 
