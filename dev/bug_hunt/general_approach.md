@@ -4,7 +4,7 @@
 ## Define the bug scope
 
 - Where is/isn't the bug?
-- What should have happend?
+- What should happen?
 - When does/doesn't the bug happen?
 - Why does the bug happen? 
 
