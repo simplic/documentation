@@ -34,7 +34,7 @@ When you have a process that works with 100 entries and none of them work, you d
 after that you can expand your testing to the rest.
 
 Giving priority to cases that take little effort, don't need specific knowhow and have a high likelihood of fixing the problem will increase the efficency of your bug hunt.
-Starting with the most time consuming proble, you have no idea about is a terrible idea.
+Starting with the most time consuming problem, you have no idea about is a terrible idea.
 
 
 ### Getting someone elses help
