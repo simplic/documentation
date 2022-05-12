@@ -47,5 +47,5 @@ Sometimes they won't know how to fix it either but nontheless you should inform 
 ### Look for similar code that works
 
 Rarely will you have a problem nobody has had before. So looking inside our GitHub for another case where the same components have been used and compare it to the problem side.
-Another good option is search for other with a similar or the same problem. If you have a specific error code search for tha in combination with the tool you are using.
+Another good option is search for other with a similar or the same problem. If you have a specific error code search for that in combination with the tool you are using.
 If that doesn't deliver the solution you can look for a more general use case of the tools involved in the problem case.
