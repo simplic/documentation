@@ -41,7 +41,7 @@ Starting with the most time consuming problem, you have no idea about is a terri
 
 Before getting someone else involved in the problem be sure to be clear on what the exact problem is and how to describe it to someone else. (See questions above)
 Tell them what you have done and what you have tried already.
-Sometimes they won't know how to fix it either but nontheless you should inform them after finding the problems solution without them.
+Sometimes they won't know how to fix it either but nonetheless you should inform them after finding the problems solution without them.
 
 
 ### Look for similar code that works
