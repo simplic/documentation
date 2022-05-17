@@ -73,13 +73,63 @@ The user can test the form at any time by clicking "Ausführen" and will see the
 
 When the user clicks "Speichern und schließen" in the main window, the form is saved.  
 
-## Create Database Table
-The user must create the dataBase table.  
-The name of the table must be the same as the designer name.  
-The columns "Guid", "TenantId", "IsDeleted", "CreateDateTime", "UpdateDateTime", "CreateUserId", "UpdateUserId" and "ConfigurationGuid" are always important.  
-The other columns must have the same name and data type as in the form designer.  
+## Create a List
+When the user creates a new field, he must set the "Datentyp" to List. 
 
-![DataBase](~/images/Forms/dataBaseTable.png)  
+![AddListTreeView](~/images/Forms/addListTreeView.png)  
+
+To create a child field the user clicks on "Neues Feld" inside the context menu, which is opened by right clicking on a "List Field".  
+To change a child field the user clicks on "Feld bearbeiten" inside the context menu.
+
+![AddListTreeViewChild](~/images/Forms/addListTreeViewChild.png)  
+
+When a Field is not required the user enables "Null-Werte zulassen", so the field can be empty.   
+
+![AddListTreeViewChildNullable](~/images/Forms/addListTreeViewChildNullable.png)  
+
+The user selects the item "GridViewTemplate" from the tool box "Simplic.Forms.UI.dll" and drags it to the designer surface.  
+
+![DesignTabList](~/images/Forms/designTabList.png)  
+
+In the attribute list the attribut "ItemSource" will be expanded.  
+Three attributes are very important.  
+**Mode** it must be TwoWay  
+**Path** the name of the data from the "Datenstruktur"  
+**UpdateSourceTrigger** the default value is "PropertyChanged" or for text it is "LostFocus"  
+*PropertyChanged:* Updates the binding source immediately whenever the binding target property changes.  
+*LostFocus:* Updates the binding source whenever the binding target element loses focus.  
+
+![ImportantListBinding](~/images/Forms/importantBindingList1.png)  
+
+Clicking on the "..." button for the property "Columns" the user can add columns to the grid.   
+
+![ListColumnCreateClick](~/images/Forms/listColumnCreateClick.png)  
+
+The user selects "Telerik.Windows.Controls.GridViewDataColumn" from the combo box and then clicks the button "Add".  
+
+![ListColumnAdd](~/images/Forms/listColumnAdd.png)  
+
+For each Column from the Grid the user must fill these Attributes.  
+*Name* The name of the GridViewDataColumn.  
+*Header* The name of the header in the GridView.  
+
+![ListColumnAddDesign](~/images/Forms/listColumnAddDesign.png)  
+
+The last step is binding to the DataMemberBinding.  
+Three attributes are very important.  
+**Mode** it must be TwoWay  
+**Path** the name of the column which is the same from the "Datenstruktur".   
+**UpdateSourceTrigger** the default value is "PropertyChanged" or for text it is "LostFocus"  
+*PropertyChanged:* Updates the binding source immediately whenever the binding target property changes.  
+*LostFocus:* Updates the binding source whenever the binding target element loses focus.  
+
+![ListColumnBinding](~/images/Forms/listColumnBinding.png)  
+
+## Create Database Table
+When the user clicks "Tabelle hinzufügen/bearbeiten" a new Database table will be created.  
+If a new Field was added and the user clicks "Tabelle hinzufügen/bearbeiten" the table will be updated.  
+
+![DataBase](~/images/Forms/CreateDynamicDatabase.png)  
 
 ## Create Grid
 Once the database table is created, the user must create a grid.  
