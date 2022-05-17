@@ -74,16 +74,16 @@ The user can test the form at any time by clicking "Ausführen" and will see the
 When the user clicks "Speichern und schließen" in the main window, the form is saved.  
 
 ## Create a List
-When the user creates a new Field then the user must set the "Datentyp" to List.  
+When the user creates a new field, he must set the "Datentyp" to List. 
 
 ![AddListTreeView](~/images/Forms/addListTreeView.png)  
 
-With a right click on a "List Field" the user can create a Child Field, when the user clicks "Neues Feld".  
-If the user will update a Field, then clicks "Feld bearbeiten".  
+To create a child field the user clicks on "Neues Feld" inside the context menu, which is opened by right clicking on a "List Field".  
+To change a child field the user clicks on "Feld bearbeiten" inside the context menu.
 
 ![AddListTreeViewChild](~/images/Forms/addListTreeViewChild.png)  
 
-When a Field is unnecessary then the user clicks "Null-Werte zulassen", so the Field can be empty.  
+When a Field is not required the user enables "Null-Werte zulassen", so the field can be empty.   
 
 ![AddListTreeViewChildNullable](~/images/Forms/addListTreeViewChildNullable.png)  
 
@@ -101,7 +101,7 @@ Three attributes are very important.
 
 ![ImportantListBinding](~/images/Forms/importantBindingList1.png)  
 
-The user clicks in the Property "Columns" the button "..." and can add Columns to the Grid.  
+Clicking on the "..." button for the property "Columns" the user can add columns to the grid.   
 
 ![ListColumnCreateClick](~/images/Forms/listColumnCreateClick.png)  
 
@@ -126,7 +126,7 @@ Three attributes are very important.
 ![ListColumnBinding](~/images/Forms/listColumnBinding.png)  
 
 ## Create Database Table
-When the user clicks "Tabelle hinzufügen/bearbeiten" a new Database table will be create.  
+When the user clicks "Tabelle hinzufügen/bearbeiten" a new Database table will be created.  
 If a new Field was added and the user clicks "Tabelle hinzufügen/bearbeiten" the table will be updated.  
 
 ![DataBase](~/images/Forms/CreateDynamicDatabase.png)  
