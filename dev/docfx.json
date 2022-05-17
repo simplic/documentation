@@ -33,7 +33,8 @@
       { "files": ["api_plugins/**"] },
       { "files": ["api_core/**"] },
       { "files": ["database/**"] },
-      { "files": ["documentation/**"] }
+      { "files": ["documentation/**"] },
+	  { "files": ["bug_hunt/**"] }
     ],
     "resource": [{ "files": ["images/**"] }],
     "overwrite": [
