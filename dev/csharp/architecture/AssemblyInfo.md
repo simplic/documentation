@@ -8,6 +8,6 @@ Example:
 
 Blueprint:
 ```csharp
-[assembly: AssemblyVersion("Major.Minor.Patch|Year.Month|Day")]
-[assembly: AssemblyFileVersion("Major.Minor.Patch|Year.Month|Day")]
+[assembly: AssemblyVersion("[Major] . [Minor] . [Patch|Year] . [Month|Day]")]
+[assembly: AssemblyFileVersion("[Major] . [Minor] . [Patch|Year] . [Month|Day]")]
 ```
