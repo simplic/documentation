@@ -14,6 +14,7 @@ pool:
 
 variables:
 - group: simplic-deployment
+- group: simplic-deployment-dev02
 
 stages:
   - stage: GenerateApiDocumentation
@@ -67,7 +68,7 @@ stages:
             inputs:
               script: |
                 cd D:/documentation/dev/build
-                python build_database.py -c $(connection_string_dev02)
+                python build_database.py -c $(connection_string)
             displayName: "Generating Database Documentation"
 
           - task: CmdLine@2
