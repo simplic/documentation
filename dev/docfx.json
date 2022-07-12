@@ -2,8 +2,8 @@
   "metadata": [],
   "build": {
     "content": [
-      { "files": ["gui/**.md", "gui/**/toc.yml", "toc.yml", "*.md"] },
-      { "files": ["csharp/**.md", "csharp/**/toc.yml", "toc.yml", "*.md"] },
+      { "files": [ "gui/**.md", "gui/**/toc.yml", "toc.yml", "*.md" ] },
+      { "files": [ "csharp/**.md", "csharp/**/toc.yml", "toc.yml", "*.md" ] },
       {
         "files": [
           "database_design/**.md",
@@ -28,13 +28,14 @@
           "*.md"
         ]
       },
-      { "files": ["git/**.md", "git/**/toc.yml", "toc.yml", "*.md"] },
-      { "files": ["cloud/**.md", "cloud/**/toc.yml", "toc.yml", "*.md"] },
-      { "files": ["api_plugins/**"] },
-      { "files": ["api_core/**"] },
-      { "files": ["database/**"] },
-      { "files": ["documentation/**"] },
-	  { "files": ["bug_hunt/**"] }
+      { "files": [ "git/**.md", "git/**/toc.yml", "toc.yml", "*.md" ] },
+      { "files": [ "cloud/**.md", "cloud/**/toc.yml", "toc.yml", "*.md" ] },
+      { "files": [ "api_plugins/**" ] },
+      { "files": [ "api_core/**" ] },
+      { "files": [ "database/**" ] },
+      { "files": [ "documentation/**" ] },
+      { "files": [ "bug_hunt/**" ] },
+      { "files": [ "setup/**" ] }
     ],
     "resource": [{ "files": ["images/**"] }],
     "overwrite": [
