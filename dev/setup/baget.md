@@ -15,7 +15,7 @@ Create a new .cmd file using any editor containing the following commands:
 Save the file to the following directory: `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup`
 
 ## How to use BaGet:
-After completing these steps and either restarting your Windows machine or executing the .cmd file manually a BaGet server will be running locally on your system (localhost:5000).
+After completing these steps and either restarting your Windows machine or executing the .cmd file manually, a BaGet server will be running locally on your system (localhost:5000).
 
 When creating local NuGet packages for .NET standard projects using the Local NuGet Manager included in the simplic-sdk repository, 
 the created packages will be uploaded to the BaGet server making them accessible for use in Docker Compose.
