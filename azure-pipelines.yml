@@ -39,8 +39,9 @@ stages:
 
           - task: UsePythonVersion@0
             inputs:
-              versionSpec: "3.6.*."
-            displayName: "Use Python 3.6.*."
+              versionSpec: "3.x"
+              architecture: 'x86'
+            displayName: "Use Python 3.x"
             
           - task: CmdLine@2
             inputs:
