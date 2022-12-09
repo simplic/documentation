@@ -51,6 +51,7 @@ stages:
                 git config --global user.email "git@simplic.biz"
                 git config --global user.name "simplic-bot"
                 pip install setuptools
+                echo 'Installing ...'
                 
             displayName: "Installing SetupTools"
 
@@ -65,7 +66,7 @@ stages:
                 choco install docfx -y --version=2.58.5
                 pip install wheel
                 cd D:/documentation/dev/build
-                pip install lxml
+                easy_install lxml
                 echo 'installing lxml'
                 pip install -r requirements.txt 
                 
