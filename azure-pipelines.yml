@@ -53,6 +53,7 @@ stages:
                 pip install wheel
                 cd D:/documentation/dev/build
                 pip install -r requirements.txt 
+                pip install lxml
                 cd D:/documentation/dev/build/db_drivers
                 regsvr32 /s dbodbc12simplic_azure.dll
             displayName: "Installing prequisites"
