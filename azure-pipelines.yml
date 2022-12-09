@@ -41,6 +41,18 @@ stages:
             inputs:
               versionSpec: "3"
             displayName: "Use Python 3.x"
+            
+          - task: CmdLine@2
+            inputs:
+              script: |
+                git config --global credential.interactive false
+                git config --system core.longpaths true
+                git config --global user.email "git@simplic.biz"
+                git config --global user.name "simplic-bot"
+                pip install setuptools
+                
+            displayName: "Installing SetupTools"
+
 
           - task: CmdLine@2
             inputs:
