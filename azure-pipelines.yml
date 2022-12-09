@@ -69,8 +69,6 @@ stages:
                 choco install docfx -y --version=2.58.5
                 pip install wheel
                 cd D:/documentation/dev/build
-                easy_install lxml
-                echo 'installing lxml'
                 pip install -r requirements.txt 
                 
                 cd D:/documentation/dev/build/db_drivers
