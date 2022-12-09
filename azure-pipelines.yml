@@ -52,8 +52,9 @@ stages:
                 git config --global user.name "simplic-bot"
                 echo 'Installing'
                 pip install setuptools
+                pip install wheel
                 echo 'lxmx installing...'
-                pip install lxml
+                pip install lxml --use-pep517
                 echo 'Installing succeced'
                 
             displayName: "Installing SetupTools"
