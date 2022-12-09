@@ -50,8 +50,11 @@ stages:
                 git config --system core.longpaths true
                 git config --global user.email "git@simplic.biz"
                 git config --global user.name "simplic-bot"
+                echo 'Installing'
                 pip install setuptools
-                echo 'Installing ...'
+                echo 'lxmx installing...'
+                pip install lxml
+                echo 'Installing succeced'
                 
             displayName: "Installing SetupTools"
 
