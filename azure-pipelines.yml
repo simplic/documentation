@@ -39,7 +39,7 @@ stages:
 
           - task: UsePythonVersion@0
             inputs:
-              versionSpec: "3"
+              versionSpec: "3.6.*."
             displayName: "Use Python 3.6.*."
             
           - task: CmdLine@2
