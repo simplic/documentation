@@ -51,7 +51,6 @@ stages:
                 git config --global user.name "simplic-bot"
                 choco install docfx -y --version=2.58.5
                 pip install wheel
-                pip install gitpython
                 cd D:/documentation/dev/build
                 pip install -r requirements.txt 
                 cd D:/documentation/dev/build/db_drivers
