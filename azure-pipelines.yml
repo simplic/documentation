@@ -53,7 +53,7 @@ stages:
                 pip install wheel
                 cd D:/documentation/dev/build
                 pip install lxml
-                echo installing lxml
+                echo 'installing lxml'
                 pip install -r requirements.txt 
                 
                 cd D:/documentation/dev/build/db_drivers
