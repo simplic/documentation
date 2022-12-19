@@ -89,7 +89,7 @@ stages:
             inputs:
               script: |
                 cd D:/documentation/dev/build
-                python build_database.py -c $(connection_string)
+                print(connection_string)
             displayName: "Generating Database Documentation"
 
           - task: CmdLine@2
