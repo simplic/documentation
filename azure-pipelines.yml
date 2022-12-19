@@ -51,6 +51,8 @@ stages:
                 git config --global user.email "git@simplic.biz"
                 git config --global user.name "simplic-bot"
                 echo 'Installing'
+                pip install --upgrade pip
+                python -c "import lxml"
                 pip install setuptools
                 pip install wheel
                 echo 'lxmx installing...'
