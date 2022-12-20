@@ -69,7 +69,7 @@ stages:
                 git config --system core.longpaths true
                 git config --global user.email "git@simplic.biz"
                 git config --global user.name "simplic-bot"
-                choco install docfx -y --version=2.58.5
+                choco install docfx -y --version=2.59.5
                 pip install wheel
                 cd D:/documentation/dev/build
                 pip install -r requirements.txt 
