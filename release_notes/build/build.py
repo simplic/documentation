@@ -33,6 +33,7 @@ class SubModule:
 
 class MasterReleaseNotes:
     def __init__(self, xml):
+        print(xml)
         root = ET.fromstring(xml)
         self.change_sets = [ChangeSet(_change_set) for _change_set in root if _change_set.get('date')]
         self.change_sets.sort(key=lambda x: (int(x.date.split('-')[0]), int(x.date.split('-')[1]), int(x.date.split('-')[2])), reverse=True)
