@@ -414,7 +414,7 @@ All error codes are separated by modules and have a unique error code. \n
             
             # if the repository has a release-notes.xml file it will be converted to string
             if Path(f'{dir}/release-notes.xml').exists():
-                master_release_notes_xml = Path(f'{dir}/release-notes.xml').read_text()
+                master_release_notes_xml = Path(f'{dir}/release-notes.xml').read_text(encoding="UTF-8-sig")
 
                 remote_repo = org.get_repo(dir.name.replace('.git', ''))
                 try:
