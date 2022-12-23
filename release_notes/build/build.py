@@ -488,7 +488,7 @@ All error codes are separated by modules and have a unique error code. \n
                 
                 if _dir.exists():
                     if Path(f'{_dir}/release-notes.xml').exists():
-                        master_release_notes_xml = Path(f'{_dir}/release-notes.xml').read_text()
+                        master_release_notes_xml = Path(f'{_dir}/release-notes.xml').read_text(encoding="UTF-8-sig")
 
                         remote_repo = org.get_repo(_dir.name.replace('.git', ''))
                         try:
