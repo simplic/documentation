@@ -5,6 +5,23 @@
     href: getting_started/conventions.md
   - name: How to track changes
     href: getting_started/changetracking.md
+- name: Extensions
+  href: extensions/intro.md
+  items:
+  - name: Getting started
+    href: extensions/intro.md
+  - name: Create repository
+    href: extensions/intro.md
+  - name: Create project
+    href: extensions/intro.md
+  - name: Create service/repository
+    href: extensions/intro.md
+  - name: Create web-api
+    href: extensions/intro.md
+  - name: Create hub/collaboration
+    href: extensions/intro.md
+  - name: Add auto-relational-mapper
+    href: extensions/intro.md
 - name: Architecture
   href: architecture/intro.md
   items:
