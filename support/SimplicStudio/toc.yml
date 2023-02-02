@@ -8,10 +8,10 @@
   - name: Application arguments
     href: general/args.md
 - name: Best practice
-  href: Best practice/intro.md
+  href: best_practice/intro.md
   items:
   - name: Move to a new windows server
-    href: Best practice/move_simplic_appserver.md
+    href: best_practice/move_simplic_appserver.md
 - name: Setup
   href: Setup/intro.md
   items:
@@ -43,12 +43,12 @@
   - name: Database
     href: kanban/database.md
 - name: Task scheduler
-  href: Task scheduler/intro.md
+  href: task_scheduler/intro.md
   items:
   - name: Flow integration
-    href: Task scheduler/flowintegration.md
+    href: task_scheduler/flowintegration.md
   - name: Dashboard
-    href: Task scheduler/dashboard.md
+    href: task_scheduler/dashboard.md
 - name: Reporting
   href: Reporting/intro.md
   items:
