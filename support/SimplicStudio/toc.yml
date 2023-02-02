@@ -49,6 +49,11 @@
     href: task_scheduler/flowintegration.md
   - name: Dashboard
     href: task_scheduler/dashboard.md
+- name: Tenant system
+  href: tenant/intro.md
+  items:
+  - name: Tenant Editor
+    href: tenant/tenant_editor.md
 - name: Reporting
   href: Reporting/intro.md
   items:
