@@ -6,21 +6,21 @@
   - name: Geocoding
     href: Contact/geocoding.md
 - name: Document processing
-  href: Document processing/intro.md
+  href: document_processing/intro.md
   items:
   - name: Barcode Validation
-    href: Document processing/Barcode validation.md
+    href: document_processing/barcode_validation.md
 - name: File structure
-  href: File structure/intro.md
+  href: file_structure/intro.md
   items:
   - name: Grid configuration
-    href: File structure/grid_configuration.md
+    href: file_structure/grid_configuration.md
   - name: Keyboard
-    href: File structure/keyboard.md
+    href: file_structure/keyboard.md
   - name: Metadata
-    href: File structure/metadata.md
+    href: file_structure/metadata.md
 - name: Newsletter
-  href: Newsletter/intro.md
+  href: newsletter/intro.md
   items:
   - name: Configuration
     href: Newsletter/configuration.md
