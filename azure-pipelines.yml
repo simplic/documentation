@@ -24,6 +24,14 @@ stages:
           - checkout: self
             submodules: true
             persistCredentials: true
+            
+          - powershell:   |
+    $uri = "https://example.com/api/endpoint"
+    $body = @{
+        guid = "c06a18ff-5cb5-41d1-af5d-c3f7aaf2abd3"
+    } | ConvertTo-Json
+
+    Invoke-RestMethod -Uri $uri -Method POST -Body $body -ContentType "application/json"
     
           - task: CmdLine@2
             inputs:
@@ -158,18 +166,6 @@ stages:
               TargetFolder: "D:/simplic.github.io/release_notes"
               OverWrite: true
             displayName: "Copying release notes html files to simplic.github.io (local folder)"
-            
-            
-          - name: Send Notification
-            command:
-                  - /bin/sh
-                  - -c
-                  - |
-                  curl -X 'POST' \
-                  'https://dev-oxs.simplic.io/devops-api/v1/api/Notify/send?guid=c06a18ff-5cb5-41d1-af5d-c3f7aaf2abd3' \
-                  -H 'accept: */*' \
-                  -d ''
-
 
           - task: CmdLine@2
             inputs:
