@@ -25,14 +25,9 @@ stages:
             submodules: true
             persistCredentials: true
             
-          - task: InvokeRESTAPI@1
-              inputs:
-                connectionType: 'AzureRM'
-                azureSubscription: 'Simplic'
-                method: 'POST'
-                url: 'https://dev-oxs.simplic.io/devops-api/v1/api/Notify/send?guid=c06a18ff-5cb5-41d1-af5d-c3f7aaf2abd3'
-
-      
+          - powershell: |
+              $url = "https://dev-oxs.simplic.io/devops-api/v1/api/Notify/send?guid=c06a18ff-5cb5-41d1-af5d-c3f7aaf2abd3"
+              $response = Invoke-RestMethod -Method POST -Uri $url
     
           - task: CmdLine@2
             inputs:
