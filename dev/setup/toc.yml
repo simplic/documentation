@@ -1,2 +1,6 @@
 - name: Setup AWS CLI
   href: aws_cli.md
+- name: Setting up BaGet (local NuGet server)
+  href: baget.md
+- name: Installing Plug-ins for SQL Central
+  href: sql_central.md
