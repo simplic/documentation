@@ -79,6 +79,7 @@ stages:
                 pip install -r requirements.txt 
                 echo 'installing git'
                 python3 -m pip install gitpython
+                pip3 install PyGithub
                 echo 'git installed'
                 
                 cd D:/documentation/dev/build/db_drivers
