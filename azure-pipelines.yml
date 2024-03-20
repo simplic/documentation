@@ -84,6 +84,7 @@ stages:
                 pip install azure-identity
                 pip install azure-mgmt-resource
                 pip install Flask
+                pip install azure-functions
                 echo 'git installed'
                 
                 cd D:/documentation/dev/build/db_drivers
