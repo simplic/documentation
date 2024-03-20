@@ -80,6 +80,10 @@ stages:
                 echo 'installing git'
                 python3 -m pip install gitpython
                 pip3 install PyGithub
+                pip install azure-keyvault-secrets==4.7.0
+                pip install azure-identity
+                pip install azure-mgmt-resource
+                pip install Flask
                 echo 'git installed'
                 
                 cd D:/documentation/dev/build/db_drivers
