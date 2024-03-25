@@ -115,13 +115,6 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                cd D:/documentation/dev/build/clones
-                python ../update_todos.py -t $(devops_token)
-            displayName: "Generating ToDo's"
-
-          - task: CmdLine@2
-            inputs:
-              script: |
                 cd D:/documentation/dev
                 docfx build
                 cd D:/documentation/support
