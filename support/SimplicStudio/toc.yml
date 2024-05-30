@@ -31,6 +31,8 @@
   items:
   - name: Hierarchical grid
     href: Grid/hierarchical_grid.md
+  - name: ArchiveAndEnqueue grid menu function
+    href: Grid/archive_and_enqueue_grid_menu_function.md
 - name: Kanban
   href: kanban/intro.md
   items:
