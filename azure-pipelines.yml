@@ -112,6 +112,7 @@ stages:
                 cd D:/documentation/release_notes/build
                 python build.py --git-token $(git_token)
             displayName: "Generating Release Notes"
+            continueOnError: true
 
           - task: CmdLine@2
             inputs:
@@ -165,6 +166,7 @@ stages:
               TargetFolder: "D:/simplic.github.io/release_notes"
               OverWrite: true
             displayName: "Copying release notes html files to simplic.github.io (local folder)"
+            continueOnError: true
 
           - task: CmdLine@2
             inputs:
