@@ -88,13 +88,13 @@ A Post request can also be used when a resource is get but the query would no lo
 fit in the URL and requires a request body.
 
 ##### PUT
-|                                            |     |     |
-| ------------------------------------------ | --- | --- |
-| Request has body                           | Yes |     |
-| Successful response has body               | May |     |
-| Safe (Does not change state of the Server) | No  |     |
-| Idempontent                                | Yes |     |
-| Cacheable                                  | No  |     |
+|                                            |     |
+| ------------------------------------------ | --- |
+| Request has body                           | Yes |
+| Successful response has body               | May |
+| Safe (Does not change state of the Server) | No  |
+| Idempontent                                | No  |
+| Cacheable                                  | No  |
 A __Put__ Request should be used when a resource is replaced to the microservice.
 
 ##### PATCH
@@ -112,9 +112,9 @@ A __PATCH__ Request should be used when a resource is parially manipulated in th
 | ------------------------------------------ | --- | 
 | Request has body                           | May |     
 | Successful response has body               | May |     
-| Safe (Does not change state of the Server) | Yes |     
+| Safe (Does not change state of the Server) | No  |     
 | Idempontent                                | Yes |     
-| Cacheable                                  | Yes | 
+| Cacheable                                  | No  | 
 A __DELETE__ Request should be used when a resource is deleted in the microservice.
 #### Naming
 
