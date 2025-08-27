@@ -17,3 +17,5 @@
     href: automapper.md
   - name: Repositories
     href: repositories.md
+  - name: Naming Conventions
+    href: naming_conventions.md
